@@ -1,0 +1,106 @@
+/* GQ Law - App Specific Styles */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1410;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8B6914 0%, #C4993B 50%, #D4AF61 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #C4993B 0%, #D4AF61 50%, #C4993B 100%);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(196, 153, 59, 0.3);
+  color: #F7F3ED;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #C4993B;
+  outline-offset: 2px;
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent text selection on interactive elements */
+button,
+a {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Loading state for images */
+img[src=""] {
+  visibility: hidden;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* GPU acceleration for animated elements */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Prevent layout shift */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Typography refinements */
+p {
+  orphans: 3;
+  widows: 3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  orphans: 2;
+  widows: 2;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
