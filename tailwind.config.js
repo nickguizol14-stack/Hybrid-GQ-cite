@@ -54,16 +54,16 @@ module.exports = {
           'dark-warm': '#3d3220',
           light: '#FAF6F0',
           'light-warm': '#F0E8DC',
-          gold: '#D4A84A',
-          'gold-light': '#E4C070',
-          'gold-dark': '#A67C2E',
+          gold: '#C5A869', /* Refined Champagne Gold */
+          'gold-light': '#E6D3A3',
+          'gold-dark': '#8E733E',
           burgundy: '#9B2D3D',
           'burgundy-light': '#B03A4A',
           'burgundy-dark': '#7A232F',
         },
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'serif'],
+        serif: ['"Playfair Display"', 'serif'],
         sans: ['Inter', 'sans-serif'],
       },
       borderRadius: {
@@ -123,7 +123,7 @@ module.exports = {
       backgroundImage: {
         'gq-dark-gradient': 'linear-gradient(180deg, #2d2418 0%, #3d3220 100%)',
         'gq-light-gradient': 'linear-gradient(180deg, #FAF6F0 0%, #F0E8DC 100%)',
-        'gq-gold-gradient': 'linear-gradient(135deg, #A67C2E 0%, #D4A84A 50%, #E4C070 100%)',
+        'gq-gold-gradient': 'linear-gradient(135deg, #8E733E 0%, #C5A869 50%, #E6D3A3 100%)',
         'gq-burgundy-gradient': 'linear-gradient(135deg, #7A232F 0%, #9B2D3D 50%, #B03A4A 100%)',
       },
     },

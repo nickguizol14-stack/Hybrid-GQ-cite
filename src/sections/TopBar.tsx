@@ -54,8 +54,8 @@ const TopBar = ({ isScrolled = false }: TopBarProps) => {
     <div
       ref={barRef}
       className={`w-full py-3 relative z-50 transition-all duration-500 ${isScrolled
-          ? 'bg-gq-dark/80 text-gq-light'
-          : 'bg-transparent text-gq-light'
+        ? 'bg-gq-dark/80 text-gq-light'
+        : 'bg-transparent text-gq-light'
         }`}
     >
       <div className="container-gq flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0">
@@ -102,7 +102,7 @@ const TopBar = ({ isScrolled = false }: TopBarProps) => {
         className={`absolute bottom-0 left-0 right-0 h-[1px] gold-shimmer origin-left transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'
           }`}
         style={{
-          background: 'linear-gradient(90deg, #A67C2E 0%, #D4A84A 50%, #E4C070 100%)',
+          background: 'linear-gradient(90deg, #8E733E 0%, #C5A869 50%, #E6D3A3 100%)',
         }}
       />
     </div>

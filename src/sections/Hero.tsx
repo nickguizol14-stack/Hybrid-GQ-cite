@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Magnetic from '../components/Magnetic';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,20 +118,20 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full"
         style={{
           objectFit: 'cover',
-          objectPosition: 'center 55%',
-          transform: 'scale(1.1)', // slight zoom to crop Padding
+          objectPosition: 'center 50%',
+          transform: 'scale(1.02)', // Reduced zoom to show more of the video
         }}
         poster="/hero-image.jpg"
       >
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
 
-      {/* Gradient Overlay - Lighter browns */}
+      {/* Gradient Overlay - Lighter browns with subtle blur */}
       <div
         ref={overlayRef}
-        className="absolute inset-0"
+        className="absolute inset-0 backdrop-blur-[2px]"
         style={{
-          background: `linear-gradient(135deg, rgba(45, 36, 24, 0.9) 0%, rgba(45, 36, 24, 0.75) 50%, rgba(61, 50, 32, 0.65) 100%)`,
+          background: `linear-gradient(135deg, rgba(26, 20, 16, 0.85) 0%, rgba(35, 28, 20, 0.70) 50%, rgba(45, 36, 24, 0.55) 100%)`,
         }}
       />
 
@@ -143,7 +144,7 @@ const Hero = () => {
           {/* Firm Name - Single line with shimmer animation */}
           <p
             ref={firmNameRef}
-            className="font-serif text-gq-gold text-base sm:text-lg md:text-xl lg:text-2xl tracking-wider uppercase mb-4 font-bold shimmer-text whitespace-nowrap"
+            className="font-serif text-[#E6D3A3] text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.2em] uppercase mb-6 font-medium shimmer-text whitespace-nowrap"
           >
             The Law Offices of Gary David Quinnett, PLLC
           </p>
@@ -151,7 +152,7 @@ const Hero = () => {
           {/* Tagline */}
           <h1
             ref={taglineRef}
-            className="font-serif font-bold text-gq-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-6 leading-none"
+            className="font-serif font-medium text-gq-light text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] mb-8 leading-[1.1] drop-shadow-lg"
           >
             We play to win.
           </h1>
@@ -159,38 +160,40 @@ const Hero = () => {
           {/* Subheadline */}
           <p
             ref={subheadlineRef}
-            className="text-gq-light/90 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mb-8 max-w-2xl"
+            className="text-gq-light/90 text-lg sm:text-xl md:text-2xl leading-loose mb-12 max-w-2xl font-light"
           >
             Aggressive, business-savvy legal representation for Oklahoma&apos;s
             contractors, business owners, and dealmakers.{' '}
-            <span className="text-gq-gold font-semibold shimmer-hover">34 years of results.</span>
+            <span className="text-[#E6D3A3] font-medium shimmer-hover">34 years of results.</span>
           </p>
 
           {/* CTA Button */}
-          <a
-            ref={ctaRef}
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="inline-flex btn-primary text-base sm:text-lg group py-3 px-6"
-          >
-            <span>Schedule Your Consultation</span>
-            <svg
-              className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <Magnetic strength={0.15}>
+            <a
+              ref={ctaRef}
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex btn-primary text-base sm:text-lg tracking-wide group py-4 px-10 border border-[#B03A4A]/30 backdrop-blur-sm"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
+              <span>Schedule Your Consultation</span>
+              <svg
+                className="w-5 h-5 ml-3 group-hover:translate-x-2 transition-transform duration-500 ease-out"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </Magnetic>
         </div>
       </div>
     </section>

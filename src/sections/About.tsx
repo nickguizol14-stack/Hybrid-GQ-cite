@@ -211,7 +211,7 @@ const About = () => {
               {/* Intro Paragraph */}
               <p
                 ref={introRef}
-                className="font-serif text-xl sm:text-2xl text-gq-light leading-relaxed mb-8"
+                className="font-serif font-medium tracking-wide text-xl sm:text-2xl text-gq-light leading-relaxed mb-8"
               >
                 Before practicing law, Gary Quinnett spent years in private equity
                 and Fortune 500 corporate environments, negotiating high-stakes
@@ -247,7 +247,7 @@ const About = () => {
                 &ldquo;
               </span>
 
-              <p className="font-serif text-2xl sm:text-3xl text-gq-light leading-relaxed italic relative z-10">
+              <p className="font-serif font-medium tracking-wide text-2xl sm:text-3xl text-gq-light leading-relaxed italic relative z-10">
                 Gary is selective about his cases. He doesn&apos;t take work he
                 can&apos;t win. That&apos;s not arrogance. It&apos;s respect for
                 your time and money. When Gary takes your case, he&apos;s{' '}
@@ -266,7 +266,7 @@ const About = () => {
             {/* Closing */}
             <p
               ref={closingRef}
-              className="font-serif text-xl text-gq-gold text-center shimmer-text"
+              className="font-serif font-medium tracking-wide text-xl text-[#C5A869] text-center shimmer-text"
             >
               That&apos;s the difference 34 years makes.
             </p>

@@ -167,7 +167,7 @@ const Contact = () => {
       <div className="container-gq relative z-10">
         {/* Headline */}
         <div ref={headlineRef} className="text-center mb-8">
-          <h2 className="font-serif font-bold text-gq-light text-3xl sm:text-4xl md:text-5xl mb-2">
+          <h2 className="font-serif font-medium text-gq-light text-4xl sm:text-5xl md:text-6xl mb-4">
             Ready to <span className="text-gq-gold-gradient shimmer-hover">Win?</span>
           </h2>
           <p className="text-gq-light/70 text-base">
@@ -184,10 +184,10 @@ const Contact = () => {
               href="tel:405-607-2266"
               className="block group mb-6"
             >
-              <span className="text-gq-gold text-xs uppercase tracking-widest mb-1 block">
+              <span className="text-[#C5A869] text-xs uppercase tracking-widest mb-1 block font-medium">
                 Call Now
               </span>
-              <span className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-gq-light group-hover:text-gq-gold transition-colors duration-300 block">
+              <span className="font-serif font-medium tracking-tight text-4xl sm:text-5xl md:text-6xl text-gq-light group-hover:text-[#C5A869] transition-colors duration-500 block">
                 (405) 607-2266
               </span>
             </a>

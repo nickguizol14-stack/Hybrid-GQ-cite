@@ -1,89 +1,79 @@
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  HardHat,
-  Briefcase,
-  Home,
-  Droplet,
-  ArrowRight,
-  CheckCircle2,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const practiceAreas = [
   {
     id: 'construction',
+    number: '01',
     title: 'Construction Law',
     link: '/construction-law',
+    shortDesc: 'Protecting the people who build Oklahoma.',
     description:
-      "Oklahoma's go-to counsel for contractors, subcontractors, and suppliers. From contract negotiation through dispute resolution, we protect the people who build Oklahoma.",
-    icon: HardHat,
+      "Oklahoma's go-to counsel for contractors, subcontractors, and suppliers. From contract negotiation through dispute resolution, we protect the people who build.",
     services: [
-      'Construction contract drafting and review',
-      "Mechanics' and materialmen's lien filing",
+      'Contract drafting & review',
+      "Mechanics' & materialmen's liens",
       'Payment bond claims',
-      'Dispute resolution and litigation',
-      'Project documentation and compliance',
-      'Contractor defense',
+      'Dispute resolution & litigation',
     ],
   },
   {
     id: 'ma',
+    number: '02',
     title: 'Mergers & Acquisitions',
     link: '/mergers-and-acquisitions',
+    shortDesc: 'Precision and acumen for high-stakes deals.',
     description:
-      "Buying or selling a business is one of the biggest decisions you'll make. We bring legal precision and business acumen to every deal, because understanding the numbers matters as much as understanding the law.",
-    icon: Briefcase,
+      "Buying or selling a business is one of the biggest decisions you'll make. We bring legal precision and business acumen to every deal, ensuring your interests are secured.",
     services: [
-      'Business sale and acquisition transactions',
-      'Asset vs. stock purchase structuring',
+      'Sale & acquisition transactions',
+      'Asset vs. stock structuring',
       'Due diligence review',
       'Deal negotiation',
-      'Letter of intent drafting',
-      'Closing documentation',
     ],
   },
   {
     id: 'realestate',
+    number: '03',
     title: 'Real Estate Law',
     link: '/real-estate-law',
+    shortDesc: 'Safeguarding your commercial assets.',
     description:
-      "Real estate is about protecting what you've built. We negotiate and defend contracts that safeguard your assets, whether you're buying, selling, developing, or leasing.",
-    icon: Home,
+      "Real estate is about protecting what you've built. We negotiate and defend contracts that safeguard your assets, whether you're buying, selling, or developing.",
     services: [
-      'Purchase and sale agreements',
+      'Purchase & sale agreements',
       'Commercial leases',
-      'Title review and clearance',
-      'Easements and encumbrances',
-      'Asset protection strategies',
-      'Real estate dispute resolution',
+      'Title review & clearance',
+      'Dispute resolution',
     ],
   },
   {
     id: 'oilgas',
+    number: '04',
     title: 'Oil & Gas Law',
     link: '/oil-and-gas-law',
+    shortDesc: 'Representing operators and mineral owners.',
     description:
-      'Oklahoma runs on energy. We represent operators, mineral owners, and service companies in contract matters, protecting your interests in an industry where the stakes are always high.',
-    icon: Droplet,
+      'Oklahoma runs on energy. We represent operators, mineral owners, and service companies in contract matters, protecting your interests where the stakes are high.',
     services: [
-      'Oil and gas contract negotiation',
+      'Contract negotiation',
       'Joint operating agreements',
       'Surface use agreements',
       'Regulatory compliance',
-      'Title opinions',
-      'Royalty disputes',
     ],
   },
 ];
 
 const PracticeAreas = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(0); // Default first one open
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const accordionRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -105,27 +95,24 @@ const PracticeAreas = () => {
         }
       );
 
-      // Cards staggered entrance - Unified Trigger
-      const cards = cardsRef.current?.querySelectorAll('.practice-card');
-      if (cards && cardsRef.current) {
-        gsap.fromTo(
-          cards,
-          { y: 50, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: 'top 85%',
-              once: true,
-            },
-          }
-        );
-      }
-    });
+      // Accordion container animation
+      gsap.fromTo(
+        accordionRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          delay: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: accordionRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
@@ -134,155 +121,125 @@ const PracticeAreas = () => {
     <section
       ref={sectionRef}
       id="practice-areas"
-      className="w-full bg-gq-dark-gradient section-padding relative"
+      className="w-full bg-gq-dark-gradient py-24 lg:py-32 relative overflow-hidden"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #C4993B 1px, transparent 0)`,
-            backgroundSize: '40px 40px',
-          }}
-        />
-      </div>
+      {/* Subtle texture */}
+      <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
 
       <div className="container-gq relative z-10">
         {/* Section Header */}
-        <div ref={titleRef} className="text-center mb-16">
-          <h2 className="font-serif font-bold text-gq-light text-4xl sm:text-5xl md:text-6xl mb-4">
-            Practice <span className="text-gq-gold-gradient">Areas</span>
-          </h2>
-          <p className="text-gq-light/70 text-lg max-w-2xl mx-auto">
-            Four decades of focused expertise in the areas that matter most to
-            Oklahoma businesses.
+        <div ref={titleRef} className="text-center md:text-left mb-16 lg:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-[#C5A869]/20 pb-8">
+          <div>
+            <h2 className="font-serif font-medium text-gq-light text-5xl sm:text-6xl md:text-7xl mb-4">
+              Practice <span className="text-gq-gold-gradient italic">Areas</span>
+            </h2>
+          </div>
+          <p className="text-gq-light/70 text-lg max-w-md font-light tracking-wide md:text-right">
+            Four decades of focused expertise in the areas that matter most to Oklahoma businesses.
           </p>
         </div>
 
-        {/* Practice Areas Grid */}
+        {/* Horizontal Accordion Container */}
         <div
-          ref={cardsRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8"
+          ref={accordionRef}
+          className="flex flex-col lg:flex-row w-full lg:h-[650px] border border-[#C5A869]/30 rounded-2xl overflow-hidden shadow-2xl bg-[#1A1510]"
         >
-          {practiceAreas.map((area) => {
-            const Icon = area.icon;
-            // Check if active (only relevant for mobile click interaction if we added state, 
-            // but for now we are just cleaning up the hover text and contrast as requested)
-            // The user requested "click/tap toggle" for mobile.
-            // We'll use a simple approach: The hover effect works on desktop. 
-            // On mobile, the first tap acts as a hover.
+          {practiceAreas.map((area, index) => {
+            const isHovered = hoveredIndex === index;
 
             return (
               <div
                 key={area.id}
-                className="practice-card group relative bg-gq-dark-warm/50 backdrop-blur-sm rounded-xl p-8 border border-gq-gold/10 hover:border-gq-gold/40 transition-all duration-700 ease-in-out delay-0 hover:delay-200 cursor-pointer shadow-lg hover:shadow-2xl h-[180px] hover:h-[625px] will-change-transform"
-                style={{ perspective: '1000px' }}
-                onMouseMove={(e) => {
-                  const card = e.currentTarget;
-                  const rect = card.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-
-                  // Map range for subtle 3D tilt
-                  const rotateX = ((y - centerY) / centerY) * -5; // -5 to 5 deg
-                  const rotateY = ((x - centerX) / centerX) * 5; // -5 to 5 deg
-
-                  gsap.to(card, {
-                    rotateX: rotateX,
-                    rotateY: rotateY,
-                    scale: 1.02,
-                    duration: 0.5,
-                    ease: 'power2.out',
-                  });
-                }}
-                onMouseLeave={(e) => {
-                  const card = e.currentTarget;
-                  gsap.to(card, {
-                    rotateX: 0,
-                    rotateY: 0,
-                    scale: 1,
-                    duration: 0.5,
-                    ease: 'power2.out',
-                  });
-                }}
+                onMouseEnter={() => setHoveredIndex(index)}
                 onClick={() => {
-                  if (area.link) {
-                    // Navigate to explicit link if available
-                    navigate(area.link);
-                    window.scrollTo(0, 0);
+                  if (window.innerWidth < 1024) {
+                    setHoveredIndex(isHovered ? null : index);
                   }
-                  // Mobile tap logic fallback
                 }}
+                className={`relative group border-b lg:border-b-0 lg:border-r border-[#C5A869]/20 last:border-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer overflow-hidden flex flex-col lg:flex-row
+                  ${isHovered ? 'lg:flex-[3] bg-[#2A2219]' : 'lg:flex-1 bg-[#1A1510] hover:bg-[#231C14]'}
+                `}
               >
-                {/* Content Container - Needs to preserve 3D */}
-                <div style={{ transformStyle: 'preserve-3d' }}>
-                  {/* Header - Always visible */}
-                  <div className="flex items-center gap-5 translate-z-10" style={{ transform: 'translateZ(20px)' }}>
-                    <div className="w-16 h-16 rounded-xl bg-gq-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gq-gold/20 transition-colors duration-300">
-                      <Icon className="w-8 h-8 text-gq-gold" />
-                    </div>
-                    <div>
-                      <h3 className="font-serif font-semibold text-2xl sm:text-3xl text-gq-light group-hover:text-gq-gold transition-colors duration-300">
-                        {area.title}
-                      </h3>
-                      <div className="w-16 h-1 bg-gq-gold-gradient rounded-full mt-2 opacity-60 group-hover:opacity-100 group-hover:w-24 transition-all duration-500 delay-100 group-hover:delay-200" />
-                    </div>
+                {/* Background Hover Highlight */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-b from-[#C5A869]/10 to-transparent opacity-0 transition-opacity duration-700 ${isHovered ? 'opacity-100' : ''}`}
+                />
+
+                {/* Vertical Header (Visible when collapsed on Desktop, always top on Mobile) */}
+                <div
+                  className={`p-6 lg:p-8 flex lg:flex-col justify-between items-center lg:items-start lg:w-32 lg:min-w-[8rem] shrink-0 border-r-0 lg:border-r border-[#C5A869]/10 transition-colors duration-500
+                    ${isHovered ? 'border-transparent' : ''}
+                  `}
+                >
+                  <div className="flex lg:flex-col items-center lg:items-start gap-4 lg:gap-8 w-full">
+                    {/* Number */}
+                    <span className="font-sans font-light text-sm tracking-widest text-[#C5A869] opacity-70">
+                      /{area.number}
+                    </span>
+
+                    {/* Vertical Title (Desktop) / Horizontal Title (Mobile) */}
+                    <h3
+                      className="font-serif font-medium text-2xl lg:text-3xl text-gq-light whitespace-nowrap lg:rotate-180 lg:[writing-mode:vertical-lr] tracking-wide"
+                    >
+                      {area.title}
+                    </h3>
                   </div>
 
-                  {/* Reveal Content - Hidden by default, shown on hover with delay */}
-                  <div className="overflow-hidden opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out delay-100 group-hover:delay-200 max-h-0 group-hover:max-h-[800px] translate-z-0" style={{ transform: 'translateZ(0px)' }}>
-                    {/* Description - UPDATED CONTRAST */}
-                    <p className="text-white/90 font-medium leading-relaxed mt-6 pt-6 border-t border-gq-gold/20 text-base sm:text-lg">
+                  {/* Icon/Arrow indicator */}
+                  <div className={`mt-auto transition-transform duration-500 hidden lg:block ${isHovered ? '-rotate-45 text-[#C5A869]' : 'text-[#C5A869]/30'}`}>
+                    <ArrowRight className="w-6 h-6" strokeWidth={1} />
+                  </div>
+                </div>
+
+                {/* Expanded Content Area */}
+                <div
+                  className={`flex-1 overflow-y-auto overflow-x-hidden hide-scrollbar transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+                    ${isHovered ? 'max-h-[1000px] lg:max-h-none opacity-100' : 'max-h-0 lg:max-h-none lg:opacity-0 hidden lg:block'}
+                  `}
+                >
+                  <div className="p-6 lg:p-10 lg:pl-12 h-full flex flex-col justify-center min-w-[280px] lg:min-w-[450px]">
+
+                    <h4 className="font-serif text-3xl md:text-4xl text-[#E6D3A3] mb-6 font-medium leading-[1.2]">
+                      {area.shortDesc}
+                    </h4>
+
+                    <p className="text-gq-light/70 text-base lg:text-lg leading-relaxed mb-8 max-w-lg font-light">
                       {area.description}
                     </p>
 
-                    {/* Services List - UPDATED CONTRAST */}
-                    <ul className="space-y-3 mt-6">
-                      {area.services.map((service, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-center gap-3 text-gq-light/90"
-                        >
-                          <CheckCircle2 className="w-5 h-5 text-gq-gold flex-shrink-0" />
-                          <span className="text-sm sm:text-base font-medium">{service}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="mb-10 lg:mb-12">
+                      <div className="text-xs uppercase tracking-[0.2em] text-[#C5A869] mb-4 font-semibold">Key Capabilities</div>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
+                        {area.services.map((service, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-[#C5A869] mt-1.5 w-1 h-1 rounded-full bg-[#C5A869] shrink-0" />
+                            <span className="text-gq-light/90 text-sm font-light tracking-wide">{service}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                    {/* CTA Link */}
-                    <a
-                      href="#contact"
-                      onClick={(e) => {
-                        if (area.link) {
-                          navigate(area.link);
-                          window.scrollTo(0, 0);
-                        }
-                        // Mobile tap support preserved
-                        e.stopPropagation();
-                        document
-                          .querySelector('#contact')
-                          ?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="inline-flex items-center gap-2 text-gq-gold font-bold hover:text-white transition-colors duration-300 mt-8 group/link text-lg"
-                    >
-                      <span className="underline-animate">Discuss Your Case</span>
-                      <ArrowRight className="w-5 h-5 group-hover/link:translate-x-1 transition-transform duration-300" />
-                    </a>
+                    <div className="mt-auto">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (area.link) {
+                            navigate(area.link);
+                            window.scrollTo(0, 0);
+                          }
+                        }}
+                        className="inline-flex items-center gap-4 text-gq-light hover:text-[#C5A869] transition-colors group/btn"
+                      >
+                        <span className="font-sans text-sm tracking-widest uppercase relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-px after:bottom-0 after:left-0 after:bg-[#C5A869] after:origin-bottom-right after:transition-transform after:duration-300 group-hover/btn:after:scale-x-100 group-hover/btn:after:origin-bottom-left">
+                          Explore Practice Area
+                        </span>
+                        <ArrowRight className="w-5 h-5 -rotate-45 group-hover/btn:rotate-0 transition-transform duration-500" strokeWidth={1.5} />
+                      </button>
+                    </div>
+
                   </div>
                 </div>
 
-                {/* Hover glow */}
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ transform: 'translateZ(0px)' }}>
-                  <div className="absolute inset-0 rounded-xl bg-gq-gold/5" />
-                </div>
-
-                {/* Hover hint - UPDATED VISIBILITY */}
-                <div className="absolute bottom-6 right-6 opacity-60 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none flex items-center gap-2" style={{ transform: 'translateZ(10px)' }}>
-                  <span className="text-gq-gold text-xs font-bold uppercase tracking-widest">Tap to Explore</span>
-                  <div className="w-2 h-2 rounded-full bg-gq-gold animate-pulse" />
-                </div>
               </div>
             );
           })}

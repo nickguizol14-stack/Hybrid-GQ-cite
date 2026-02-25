@@ -1,128 +1,110 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { BookOpen, Users, Clock, Star, FileText } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const credentials = [
   {
+    number: '01',
     value: 34,
     prefix: '',
     suffix: '',
     label: 'Years of Experience',
-    description:
-      'Specialized legal expertise in Oklahoma construction, business, and energy law',
-    icon: Clock,
+    description: 'Specialized expertise in OK construction & business law',
     isNumber: true,
   },
   {
+    number: '02',
     value: null,
     display: 'Author',
     label: 'Lexis Nexis Treatise',
-    description:
-      'Wrote the definitive bar treatise on Oklahoma construction law that other attorneys study',
-    icon: BookOpen,
+    description: 'Wrote the definitive bar treatise on OK construction law',
     isNumber: false,
   },
-  // Years distinguished item removed per user request
   {
+    number: '03',
     value: null,
     display: 'Published',
     label: 'Lien Book Author',
-    description:
-      'Author of "The Oklahoma Mechanics and Materialmen\'s Lien Book", the industry standard',
-    icon: FileText,
+    description: 'Author of the industry standard OK Mechanics Lien Book',
     isNumber: false,
   },
   {
+    number: '04',
     value: 100,
     prefix: '',
     suffix: '+',
     label: 'Attorneys Trained',
-    description:
-      'Teaching CLE courses on construction law and lien practice across Oklahoma',
-    icon: Users,
+    description: 'Teaching CLE courses on lien practice across Oklahoma',
     isNumber: true,
   },
-  // $10M+ Item removed per user request
 ];
 
 const Credentials = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Set initial hidden state for title
-      gsap.set(titleRef.current, { y: 30, opacity: 0 });
-      gsap.set(subtitleRef.current, { y: 20, opacity: 0 });
+      // Banner container reveal
+      gsap.fromTo(
+        containerRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
 
-      // Title animation on scroll
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: 'top 85%',
-        once: true,
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            y: 0,
+      // Grid items staggered animation
+      const items = containerRef.current?.querySelectorAll('.cred-column');
+      if (items) {
+        gsap.fromTo(
+          items,
+          { opacity: 0, scale: 0.95 },
+          {
             opacity: 1,
-            duration: 0.7,
-            ease: 'power3.out',
-          });
-          gsap.to(subtitleRef.current, {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            delay: 0.2,
-            ease: 'power3.out',
-          });
-        },
-      });
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            delay: 0.3,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 85%',
+              once: true,
+            },
+          }
+        );
 
-      // Cards animation on scroll - Unified Trigger
-      const cards = cardsRef.current?.querySelectorAll('.credential-card');
-      if (cards && cardsRef.current) {
-        // Prepare cards heavily hidden
-        gsap.set(cards, { y: 50, opacity: 0 });
+        // Animate numbers independently
+        items.forEach((item, index) => {
+          const numberEl = item.querySelector('.number-display');
+          const cred = credentials[index];
 
-        ScrollTrigger.create({
-          trigger: cardsRef.current,
-          start: 'top 85%',
-          once: true,
-          onEnter: () => {
-            // Animate cards in
-            gsap.to(cards, {
-              y: 0,
-              opacity: 1,
-              duration: 0.8,
-              stagger: 0.1,
-              ease: 'power3.out',
-            });
-
-            // Animate numbers
-            cards.forEach((card, index) => {
-              const numberEl = card.querySelector('.number-display');
-              const cred = credentials[index];
-
-              if (cred.isNumber && numberEl && cred.value !== null) {
-                const obj = { value: 0 };
-                gsap.to(obj, {
-                  value: cred.value,
-                  duration: 2.0,
-                  // Delay matches the stagger of the card appearing + a little beat
-                  delay: index * 0.1 + 0.2,
-                  ease: 'power2.out',
-                  onUpdate: () => {
-                    numberEl.textContent =
-                      (cred.prefix || '') +
-                      Math.round(obj.value) +
-                      (cred.suffix || '');
-                  },
-                });
-              }
+          if (cred.isNumber && numberEl && cred.value !== null) {
+            const obj = { value: 0 };
+            gsap.to(obj, {
+              value: cred.value,
+              duration: 2.0,
+              delay: index * 0.15 + 0.6,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 85%',
+                once: true,
+              },
+              onUpdate: () => {
+                numberEl.textContent = Math.round(obj.value).toString();
+              },
             });
           }
         });
@@ -136,78 +118,65 @@ const Credentials = () => {
     <section
       ref={sectionRef}
       id="credentials"
-      className="w-full bg-gq-light-gradient py-16 lg:py-24 relative overflow-hidden"
+      className="w-full bg-gq-dark-gradient py-16 lg:py-20 relative overflow-hidden"
     >
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-48 h-48 bg-gq-gold/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-gq-burgundy/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+      {/* Subtle Noise */}
+      <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
 
       <div className="container-gq relative z-10">
-        {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2
-            ref={titleRef}
-            className="font-serif font-bold text-gq-dark text-3xl sm:text-4xl md:text-5xl mb-3"
-          >
-            Proven <span className="text-gq-gold-gradient">Authority</span>
-          </h2>
-          <p
-            ref={subtitleRef}
-            className="text-gq-dark/70 text-base max-w-xl mx-auto"
-          >
-            Three decades of specialized experience. Recognition from the highest
-            levels of the legal profession.
-          </p>
-        </div>
-
-        {/* Credentials Grid - Centered Layout */}
         <div
-          ref={cardsRef}
-          className="flex flex-wrap justify-center gap-4 lg:gap-6 max-w-6xl mx-auto"
+          ref={containerRef}
+          className="w-full border-y md:border border-[#C5A869]/20 md:rounded-xl overflow-hidden bg-gq-dark/80 backdrop-blur-md shadow-2xl relative"
         >
-          {credentials.map((cred, index) => {
-            const Icon = cred.icon;
-            return (
+          {/* Subtle Inner Glow */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C5A869]/30 to-transparent" />
+
+          <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-[#C5A869]/10">
+            {credentials.map((cred, index) => (
               <div
                 key={index}
-                className="credential-card group relative bg-white rounded-lg p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex-1 min-w-[280px] max-w-[350px] border border-gray-100 hover:border-gq-gold/30 hover:-translate-y-1"
+                className="cred-column flex-1 relative p-6 lg:p-10 group overflow-hidden bg-gq-dark transition-colors hover:bg-[#1A1510] duration-500"
               >
-                {/* Gold accent line */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gq-gold-gradient rounded-t-lg opacity-50 group-hover:opacity-100 transition-opacity" />
-
-                {/* Icon and Number Row */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-gq-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gq-gold/20 transition-colors duration-300">
-                    <Icon className="w-6 h-6 text-gq-gold" />
-                  </div>
-
-                  {/* Number or Badge */}
-                  {cred.isNumber ? (
-                    <span className="number-display font-serif font-bold text-3xl sm:text-4xl text-gq-dark group-hover:text-gq-burgundy transition-colors duration-300">
-                      {cred.prefix}0{cred.suffix}
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      <Star className="w-5 h-5 text-gq-gold fill-gq-gold animate-pulse-slow" />
-                      <span className="font-serif font-bold text-lg text-gq-gold tracking-wide">
-                        {cred.display}
-                      </span>
-                    </span>
-                  )}
+                {/* 
+                  Visual Stimulation: Huge, faint typographic background 
+                */}
+                <div className="absolute lg:-bottom-6 lg:-right-4 bottom-2 right-4 font-serif italic text-7xl lg:text-9xl tracking-tighter text-[#C5A869] opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500 select-none pointer-events-none z-0">
+                  {cred.number}
                 </div>
 
-                {/* Label */}
-                <h3 className="font-serif font-semibold text-lg text-gq-dark mb-2 leading-tight">
-                  {cred.label}
-                </h3>
+                <div className="relative z-10 flex flex-col h-full justify-between gap-4">
+                  {/* Geometric Anchor/Header */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-1 h-1 bg-[#C5A869] opacity-60 group-hover:scale-150 group-hover:opacity-100 transition-all duration-300" />
+                    <h3 className="font-sans font-medium tracking-[0.15em] text-[10px] lg:text-xs uppercase text-[#C5A869]">
+                      {cred.label}
+                    </h3>
+                  </div>
 
-                {/* Description */}
-                <p className="text-gq-dark/70 text-sm leading-relaxed">
-                  {cred.description}
-                </p>
+                  {/* Value/Metric display */}
+                  <div className="my-2">
+                    {cred.isNumber ? (
+                      <div className="flex items-baseline font-serif font-medium tracking-tight text-4xl lg:text-5xl text-gq-light group-hover:text-[#E6D3A3] transition-colors duration-500">
+                        {cred.prefix && <span>{cred.prefix}</span>}
+                        <span className="number-display">0</span>
+                        {cred.suffix && <span>{cred.suffix}</span>}
+                      </div>
+                    ) : (
+                      <div className="font-serif font-medium tracking-tight text-3xl lg:text-4xl text-gq-light group-hover:text-[#E6D3A3] transition-colors duration-500">
+                        {cred.display}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gq-light/60 text-xs lg:text-sm leading-relaxed font-light mt-auto">
+                    {cred.description}
+                  </p>
+                </div>
+
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>

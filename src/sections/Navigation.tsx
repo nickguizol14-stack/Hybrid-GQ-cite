@@ -20,7 +20,7 @@ const navLinks = [
     ]
   },
   { label: 'Lien Predictor', href: '/#lien-predictor' },
-  { label: 'Resources', href: '/#resources' },
+  { label: 'Resources', href: '/lien-book' },
 ];
 
 interface NavigationProps {
@@ -152,7 +152,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
                 <a
                   href={link.href}
                   onClick={(e) => hasChildren ? e.preventDefault() : handleNavClick(e, link.href)}
-                  className={`flex items-center gap-1 transition-colors duration-300 text-base font-medium relative py-2 ${isActive ? 'text-gq-gold' : 'text-gq-light/90 hover:text-gq-gold'
+                  className={`flex items-center gap-1 transition-colors duration-300 text-[15px] font-medium tracking-wide relative py-2 ${isActive ? 'text-[#C5A869]' : 'text-gq-light/80 hover:text-[#C5A869]'
                     } ${hasChildren ? 'cursor-default' : 'cursor-pointer'}`}
                 >
                   {link.label}
@@ -196,7 +196,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
                       className="absolute top-full -left-4 pt-6 w-72 z-50 perspective-1000"
                     >
                       {/* Glassmorphism Card */}
-                      <div className="bg-[#1a1510]/95 backdrop-blur-2xl border border-white/10 rounded-xl shadow-2xl overflow-hidden ring-1 ring-black/5">
+                      <div className="bg-[#1a1510]/95 backdrop-blur-3xl border border-[#C5A869]/20 rounded-xl shadow-2xl overflow-hidden ring-1 ring-black/5">
                         <div className="p-2 flex flex-col gap-1">
                           {link.children?.map((child, i) => (
                             <motion.a
@@ -239,7 +239,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
           ref={ctaRef}
           href="/contact"
           onClick={(e) => handleNavClick(e, '/contact')}
-          className="hidden sm:inline-flex btn-primary text-sm py-2 px-4 cursor-pointer"
+          className="hidden sm:inline-flex btn-primary text-sm py-2 px-6 rounded-md tracking-wide border border-[#B03A4A]/30 cursor-pointer"
         >
           Contact Us
         </a>

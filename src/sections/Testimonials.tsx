@@ -198,35 +198,35 @@ const Testimonials = () => {
 
       <div className="container-gq relative z-10">
         {/* Section Header */}
-        <div ref={titleRef} className="text-center mb-12">
-          <h2 className="font-serif font-bold text-gq-dark text-4xl sm:text-5xl md:text-6xl mb-4">
-            What Clients <span className="shimmer-hover">Say</span>
+        <div ref={titleRef} className="text-center mb-16">
+          <h2 className="font-serif font-medium text-gq-dark text-5xl sm:text-6xl md:text-7xl mb-6">
+            What Clients <span className="text-[#C5A869] italic">Say</span>
           </h2>
-          <div className="w-24 h-1 bg-gq-gold-gradient rounded-full mx-auto" />
+          <div className="w-24 h-px bg-[#C5A869] mx-auto opacity-60" />
         </div>
 
         {/* Lawyers of Distinction Badges */}
-        <div ref={badgesRef} className="flex flex-wrap justify-center gap-6 mb-16">
-          <div className="badge-item flex items-center gap-4 bg-white/60 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-gq-gold/10 hover:shadow-md transition-all duration-300">
+        <div ref={badgesRef} className="flex flex-wrap justify-center gap-6 mb-20">
+          <div className="badge-item flex items-center gap-4 bg-white/60 backdrop-blur-md rounded-xl p-4 shadow-sm border border-[#C5A869]/10 hover:shadow-md transition-all duration-500">
             <img
               src="/lawyers-distinction-2021.png"
               alt="Lawyers of Distinction 2021"
               className="h-14 w-auto object-contain"
             />
             <div className="text-left">
-              <p className="font-serif font-semibold text-gq-dark text-sm">Lawyers of Distinction</p>
-              <p className="text-gq-gold text-xs font-medium">2021 Recipient</p>
+              <p className="font-serif font-medium tracking-wide text-gq-dark text-base">Lawyers of Distinction</p>
+              <p className="text-[#C5A869] text-sm tracking-widest uppercase mt-1">2021 Recipient</p>
             </div>
           </div>
-          <div className="badge-item flex items-center gap-4 bg-white/60 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-gq-gold/10 hover:shadow-md transition-all duration-300">
+          <div className="badge-item flex items-center gap-4 bg-white/60 backdrop-blur-md rounded-xl p-4 shadow-sm border border-[#C5A869]/10 hover:shadow-md transition-all duration-500">
             <img
               src="/lawyers-distinction-2022.png"
               alt="Lawyers of Distinction 2022"
               className="h-14 w-auto object-contain"
             />
             <div className="text-left">
-              <p className="font-serif font-semibold text-gq-dark text-sm">Lawyers of Distinction</p>
-              <p className="text-gq-gold text-xs font-medium">2022 Recipient</p>
+              <p className="font-serif font-medium tracking-wide text-gq-dark text-base">Lawyers of Distinction</p>
+              <p className="text-[#C5A869] text-sm tracking-widest uppercase mt-1">2022 Recipient</p>
             </div>
           </div>
         </div>
@@ -256,16 +256,16 @@ const Testimonials = () => {
                   </div>
 
                   {/* Quote Text */}
-                  <blockquote className="font-serif text-xl sm:text-2xl text-gq-dark leading-relaxed mb-8 italic">
+                  <blockquote className="font-serif text-2xl sm:text-3xl text-gq-dark leading-relaxed mb-8 italic font-medium tracking-wide">
                     &ldquo;{testimonial.quote}&rdquo;
                   </blockquote>
 
                   {/* Author */}
                   <div className="mt-auto">
-                    <p className="font-semibold text-gq-dark text-lg mb-1">
+                    <p className="font-medium tracking-wide text-gq-dark text-lg mb-1">
                       {testimonial.author}
                     </p>
-                    <p className="text-gq-gold text-sm tracking-wide uppercase font-medium">{testimonial.location}</p>
+                    <p className="text-[#C5A869] text-xs tracking-[0.2em] uppercase font-medium">{testimonial.location}</p>
                   </div>
 
                   {/* Decorative corner accent */}

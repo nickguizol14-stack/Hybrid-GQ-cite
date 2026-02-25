@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatePresence } from 'framer-motion';
+import Lenis from 'lenis';
 
 import TopBar from './sections/TopBar';
 import Navigation from './sections/Navigation';
@@ -14,6 +15,9 @@ import ConstructionLaw from './pages/ConstructionLaw';
 import RealEstateLaw from './pages/RealEstateLaw';
 import OilAndGasLaw from './pages/OilAndGasLaw';
 import MergersAndAcquisitions from './pages/MergersAndAcquisitions';
+import LienBook from './pages/LienBook';
+
+import Preloader from './components/Preloader';
 
 import './App.css';
 
@@ -31,6 +35,7 @@ function ScrollToTop() {
 }
 
 function AppContent() {
+  const [showPreloader, setShowPreloader] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -45,6 +50,25 @@ function AppContent() {
     ScrollTrigger.defaults({
       toggleActions: 'play none none none',
     });
+
+    // Initialize Lenis for Smooth Scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    // Sync Lenis scroll with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
 
     // Scroll listener for header background
     const handleScroll = () => {
@@ -68,46 +92,71 @@ function AppContent() {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      // Clean up all ScrollTriggers on unmount
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      // Clean up Lenis
+      lenis.destroy();
+      gsap.ticker.remove(lenis.raf);
     };
-  }, [location.pathname]); // Re-run effect on route change to refresh triggers
+  }, []); // Run only once on mount
+
+  // Refresh ScrollTrigger and fix layout jumps on route change
+  useEffect(() => {
+    // Slight delay to allow new page to mount and DOM to calculate heights
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
+  // Lock body scroll while preloading
+  useEffect(() => {
+    if (showPreloader) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showPreloader]);
 
   return (
-    <div className="min-h-screen bg-gq-dark flex flex-col">
-      {/* Sticky Header - TopBar + Navigation - transparent over hero */}
-      <div
-        ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-gq-dark/95 backdrop-blur-xl shadow-lg' : 'bg-transparent'
-          }`}
-      >
-        {/* Top Utility Bar */}
-        <TopBar isScrolled={isScrolled} />
+    <>
+      {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+      <div className="min-h-screen bg-gq-dark flex flex-col">
+        {/* Sticky Header - TopBar + Navigation - transparent over hero */}
+        <div
+          ref={headerRef}
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-gq-dark/95 backdrop-blur-xl shadow-lg' : 'bg-transparent'
+            }`}
+        >
+          {/* Top Utility Bar */}
+          <TopBar isScrolled={isScrolled} />
 
-        {/* Navigation */}
-        <Navigation isScrolled={isScrolled} />
+          {/* Navigation */}
+          <Navigation isScrolled={isScrolled} />
+        </div>
+
+        <ScrollToTop />
+
+        {/* Main Content */}
+        <main className="flex-grow">
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/construction-law" element={<ConstructionLaw />} />
+              <Route path="/real-estate-law" element={<RealEstateLaw />} />
+              <Route path="/oil-and-gas-law" element={<OilAndGasLaw />} />
+              <Route path="/mergers-and-acquisitions" element={<MergersAndAcquisitions />} />
+              <Route path="/lien-book" element={<LienBook />} />
+            </Routes>
+          </AnimatePresence>
+        </main>
+
+        <Footer />
       </div>
-
-      <ScrollToTop />
-
-      {/* Main Content */}
-      <main className="flex-grow">
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/construction-law" element={<ConstructionLaw />} />
-            <Route path="/real-estate-law" element={<RealEstateLaw />} />
-            <Route path="/oil-and-gas-law" element={<OilAndGasLaw />} />
-            <Route path="/mergers-and-acquisitions" element={<MergersAndAcquisitions />} />
-          </Routes>
-        </AnimatePresence>
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </>
   );
 }
 
