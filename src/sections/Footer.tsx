@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Facebook, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-import { motion, type Variants } from 'framer-motion';
+import { motion, type Variants, type Easing } from 'framer-motion';
 
 const quickLinks = [
   { label: 'About', href: '#about' },
@@ -26,7 +26,7 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' }
+    transition: { duration: 0.6, ease: 'easeOut' as Easing }
   },
 };
 
