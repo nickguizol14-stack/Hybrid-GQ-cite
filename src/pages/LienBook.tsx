@@ -80,7 +80,7 @@ const LienBook = () => {
             className="min-h-screen bg-[#FDFBF7] relative w-full"
         >
             {/* Dedicated Dark Hero Header */}
-            <section className="relative w-full bg-gq-dark-gradient pt-56 pb-20 lg:pt-48 lg:pb-48 xl:pb-64 overflow-hidden flex flex-col items-center justify-center text-center">
+            <section className="relative w-full bg-gq-dark-gradient pt-56 pb-20 lg:pt-48 lg:pb-24 xl:pb-32 overflow-hidden flex flex-col items-center justify-center text-center">
                 {/* Subtle Noise Texture for paper feel on Hero */}
                 <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-multiply pointer-events-none z-0" />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#1A1510] to-transparent opacity-80 z-0 pointer-events-none" />
@@ -163,7 +163,7 @@ const LienBook = () => {
                         </div>
 
                         {/* Right Column: Checkout Card (Safe Static Float) */}
-                        <div className="lg:flex-1 w-full lg:sticky lg:top-32 lg:-mt-12 xl:-mt-16 z-10" ref={cardRef}>
+                        <div className="lg:flex-1 w-full lg:sticky lg:top-40 lg:mt-12 xl:mt-20 z-10" ref={cardRef}>
                             <div className="bg-white border border-[#C5A869]/30 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden mt-8 lg:mt-0">
                                 {/* Card top accent */}
                                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8E733E] via-[#C5A869] to-[#E6D3A3]" />
