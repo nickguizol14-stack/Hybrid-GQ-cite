@@ -144,7 +144,7 @@ const Hero = () => {
           {/* Firm Name - Single line with shimmer animation */}
           <p
             ref={firmNameRef}
-            className="font-serif text-[#E6D3A3] text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.2em] uppercase mb-6 font-medium shimmer-text whitespace-nowrap"
+            className="font-serif text-[#E6D3A3] text-[0.65rem] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl tracking-[0.1em] sm:tracking-[0.2em] uppercase mb-6 font-medium shimmer-text max-w-full leading-relaxed"
           >
             The Law Offices of Gary David Quinnett, PLLC
           </p>
@@ -152,7 +152,7 @@ const Hero = () => {
           {/* Tagline */}
           <h1
             ref={taglineRef}
-            className="font-serif font-medium text-gq-light text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] mb-8 leading-[1.1] drop-shadow-lg"
+            className="font-serif font-medium text-gq-light text-[3.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] mb-6 sm:mb-8 drop-shadow-lg"
           >
             We play to win.
           </h1>
@@ -160,11 +160,11 @@ const Hero = () => {
           {/* Subheadline */}
           <p
             ref={subheadlineRef}
-            className="text-gq-light/90 text-lg sm:text-xl md:text-2xl leading-loose mb-12 max-w-2xl font-light"
+            className="text-gq-light/90 text-[1.1rem] leading-[1.8] sm:text-lg md:text-xl lg:text-2xl sm:leading-loose mb-10 max-w-2xl font-light pr-4 sm:pr-0"
           >
             Aggressive, business-savvy legal representation for Oklahoma&apos;s
             contractors, business owners, and dealmakers.{' '}
-            <span className="text-[#E6D3A3] font-medium shimmer-hover">34 years of results.</span>
+            <span className="text-[#E6D3A3] font-medium shimmer-hover block mt-2 sm:inline sm:mt-0">34 years of results.</span>
           </p>
 
           {/* CTA Button */}

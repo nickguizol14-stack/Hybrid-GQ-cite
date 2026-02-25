@@ -59,24 +59,24 @@ const LienBook = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="min-h-screen bg-[#FDFBF7] pt-32 pb-24 relative overflow-hidden"
+            className="min-h-screen bg-[#FDFBF7] pt-40 lg:pt-32 pb-24 relative overflow-hidden"
         >
             {/* Subtle Noise Texture for paper feel */}
             <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-multiply pointer-events-none" />
 
             {/* Decorative Gold Header Underlay */}
-            <div className="absolute top-0 left-0 right-0 h-96 bg-gq-dark-gradient origin-top pointer-events-none z-0">
+            <div className="absolute top-0 left-0 right-0 h-[28rem] sm:h-[32rem] lg:h-96 bg-gq-dark-gradient origin-top pointer-events-none z-0">
                 <div className="absolute inset-0 bg-gradient-to-b from-[#1A1510] to-transparent opacity-80" />
             </div>
 
             <div className="container-gq relative z-10">
-                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
 
                     {/* Left Column: Editorial Content */}
                     <div className="lg:flex-[1.4] w-full" ref={contentRef}>
 
                         {/* Tag/Kicker */}
-                        <div className="mb-6 reveal-text mt-8">
+                        <div className="mb-6 reveal-text mt-4 lg:mt-8">
                             <span className="inline-flex items-center gap-2 border border-[#C5A869]/30 rounded-full px-4 py-1.5 bg-[#1A1510]/40 backdrop-blur-sm">
                                 <BookOpen className="w-3.5 h-3.5 text-[#E6D3A3]" strokeWidth={2} />
                                 <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#E6D3A3] font-medium">
@@ -86,8 +86,8 @@ const LienBook = () => {
                         </div>
 
                         {/* Headline */}
-                        <h1 className="reveal-text font-serif font-medium text-[#1A1510] text-5xl md:text-6xl lg:text-7xl mb-6 leading-[1.1] tracking-tight text-shadow-sm">
-                            The Oklahoma Mechanics <span className="block mt-2 font-light italic text-[#C5A869]">& Materialmen&apos;s Lien Book</span>
+                        <h1 className="reveal-text font-serif font-medium text-gq-light text-[3rem] leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl mb-6 lg:mb-8 tracking-tight drop-shadow-lg">
+                            The Oklahoma Mechanics <span className="block mt-2 font-light italic text-[#E6D3A3]">& Materialmen&apos;s Lien Book</span>
                         </h1>
 
                         {/* Subheadline/Author */}

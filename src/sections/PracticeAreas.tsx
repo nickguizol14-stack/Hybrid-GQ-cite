@@ -130,7 +130,7 @@ const PracticeAreas = () => {
         {/* Section Header */}
         <div ref={titleRef} className="text-center md:text-left mb-16 lg:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-[#C5A869]/20 pb-8">
           <div>
-            <h2 className="font-serif font-medium text-gq-light text-5xl sm:text-6xl md:text-7xl mb-4">
+            <h2 className="font-serif font-medium text-gq-light text-[3rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl mb-4">
               Practice <span className="text-gq-gold-gradient italic">Areas</span>
             </h2>
           </div>
@@ -179,7 +179,7 @@ const PracticeAreas = () => {
 
                     {/* Vertical Title (Desktop) / Horizontal Title (Mobile) */}
                     <h3
-                      className="font-serif font-medium text-2xl lg:text-3xl text-gq-light whitespace-nowrap lg:rotate-180 lg:[writing-mode:vertical-lr] tracking-wide"
+                      className="font-serif font-medium text-[1.3rem] leading-tight sm:text-2xl lg:text-3xl text-gq-light lg:whitespace-nowrap lg:rotate-180 lg:[writing-mode:vertical-lr] tracking-wide"
                     >
                       {area.title}
                     </h3>
@@ -199,7 +199,7 @@ const PracticeAreas = () => {
                 >
                   <div className="p-6 lg:p-10 lg:pl-12 h-full flex flex-col justify-center min-w-[280px] lg:min-w-[450px]">
 
-                    <h4 className="font-serif text-3xl md:text-4xl text-[#E6D3A3] mb-6 font-medium leading-[1.2]">
+                    <h4 className="font-serif text-[1.4rem] sm:text-2xl md:text-3xl lg:text-4xl text-[#E6D3A3] mb-4 sm:mb-6 font-medium leading-[1.2] pt-4 lg:pt-0">
                       {area.shortDesc}
                     </h4>
 
