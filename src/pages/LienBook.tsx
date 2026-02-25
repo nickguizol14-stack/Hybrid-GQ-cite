@@ -63,11 +63,10 @@ const LienBook = () => {
                         ease: 'power3.out',
                         delay: 0.6,
                         onComplete: () => {
-                            // Only pin after entrance animation settles and on desktop
                             if (window.innerWidth >= 1024) {
                                 ScrollTrigger.create({
                                     trigger: cardRef.current,
-                                    start: "top 300px",  // Increased significantly to offset the -mt-40 negative CSS margin pull
+                                    start: "top 300px",  // Offset the -mt-40 margin pull
                                     end: () => `+=${contentRef.current?.offsetHeight ? contentRef.current.offsetHeight - cardRef.current!.offsetHeight : 0}`,
                                     pin: true,
                                     pinSpacing: false,
@@ -93,7 +92,7 @@ const LienBook = () => {
             className="min-h-screen bg-[#FDFBF7] relative w-full"
         >
             {/* Dedicated Dark Hero Header */}
-            <section className="relative w-full bg-gq-dark-gradient pt-56 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex flex-col items-center justify-center text-center">
+            <section className="relative w-full bg-gq-dark-gradient pt-56 pb-20 lg:pt-48 lg:pb-48 xl:pb-64 overflow-hidden flex flex-col items-center justify-center text-center">
                 {/* Subtle Noise Texture for paper feel on Hero */}
                 <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-multiply pointer-events-none z-0" />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#1A1510] to-transparent opacity-80 z-0 pointer-events-none" />
