@@ -1,10 +1,6 @@
-import { useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Facebook, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from 'framer-motion';
 
 const quickLinks = [
   { label: 'About', href: '#about' },
@@ -14,132 +10,29 @@ const quickLinks = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const Footer = () => {
-  const footerRef = useRef<HTMLElement>(null);
-  const borderRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
-  const contactRef = useRef<HTMLDivElement>(null);
-  const legalRef = useRef<HTMLDivElement>(null);
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' }
+  },
+};
+
+const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    let ctx = gsap.context(() => { });
-
-    // Adding a slight delay to ensure the DOM has fully rendered the new page's height
-    const timer = setTimeout(() => {
-      ctx.add(() => {
-        // Top border gradient wipe
-        gsap.fromTo(
-          borderRef.current,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: footerRef.current,
-              start: 'top 95%',
-              once: true,
-            },
-          }
-        );
-
-        // Logo fade + scale
-        gsap.fromTo(
-          logoRef.current,
-          { opacity: 0, scale: 0.9 },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 0.6,
-            delay: 0.2,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: footerRef.current,
-              start: 'top 95%',
-              once: true,
-            },
-          }
-        );
-
-        // Links stagger
-        const links = linksRef.current?.querySelectorAll('a');
-        if (links) {
-          gsap.fromTo(
-            links,
-            { y: 15, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.4,
-              stagger: 0.06,
-              delay: 0.4,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: footerRef.current,
-                start: 'top 95%',
-                once: true,
-              },
-            }
-          );
-        }
-
-        // Contact info stagger
-        const contactItems = contactRef.current?.querySelectorAll('.contact-item');
-        if (contactItems) {
-          gsap.fromTo(
-            contactItems,
-            { y: 15, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.4,
-              stagger: 0.08,
-              delay: 0.5,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: footerRef.current,
-                start: 'top 95%',
-                once: true,
-              },
-            }
-          );
-        }
-
-        // Mobile Legal specific animation
-        if (window.innerWidth < 768 && legalRef.current) {
-          gsap.fromTo(
-            legalRef.current,
-            { opacity: 0, y: 10 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              delay: 0.8,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: footerRef.current,
-                start: 'top 90%',
-                once: true,
-              },
-            }
-          );
-        }
-      });
-
-      // Force refresh of all scroll triggers to calculate correct positions after animations are added
-      ScrollTrigger.refresh();
-
-    }, 300);
-
-    return () => {
-      clearTimeout(timer);
-      ctx.revert();
-    };
-  }, [location.pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -165,10 +58,13 @@ const Footer = () => {
   };
 
   return (
-    <footer ref={footerRef} className="w-full bg-gq-dark relative">
+    <footer className="w-full bg-gq-dark relative overflow-hidden">
       {/* Animated top border */}
-      <div
-        ref={borderRef}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+        transition={{ duration: 1, ease: 'easeOut' }}
         className="absolute top-0 left-0 right-0 h-0.5 gold-shimmer origin-left"
         style={{
           background: 'linear-gradient(90deg, #8E733E 0%, #C5A869 50%, #E6D3A3 100%)',
@@ -177,9 +73,15 @@ const Footer = () => {
       />
 
       <div className="container-gq py-16 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+        >
           {/* Logo & Description */}
-          <div ref={logoRef} className="lg:col-span-2 pr-4">
+          <motion.div variants={itemVariants} className="lg:col-span-2 pr-4">
             <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="flex items-center gap-3 mb-6 group inline-block">
               <img
                 src="/logo-gwinnett.png"
@@ -211,10 +113,10 @@ const Footer = () => {
                 <Mail className="w-4 h-4" />
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div ref={linksRef}>
+          <motion.div variants={itemVariants}>
             <h4 className="font-serif font-medium tracking-wide text-[#E6D3A3] text-lg mb-6">
               Menu
             </h4>
@@ -246,10 +148,10 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div ref={contactRef}>
+          <motion.div variants={itemVariants}>
             <h4 className="font-serif font-medium tracking-wide text-[#E6D3A3] text-lg mb-6">
               Contact
             </h4>
@@ -289,12 +191,18 @@ const Footer = () => {
                 </div>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      {/* Legal Bar with generous padding to prevent cramping */}
-      <div ref={legalRef} className="border-t border-[#C5A869]/10 bg-[#0F0C09]">
+      {/* Legal Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="border-t border-[#C5A869]/10 bg-[#0F0C09]"
+      >
         <div className="container-gq py-8 lg:py-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <p className="text-gq-light/40 text-[11px] text-center lg:text-left max-w-3xl leading-relaxed font-light tracking-wide">
@@ -308,7 +216,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };
