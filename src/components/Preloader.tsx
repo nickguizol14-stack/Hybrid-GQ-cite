@@ -20,6 +20,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     useEffect(() => {
         if (isReady && containerRef.current && logoWrapperRef.current && logoRef.current) {
             // Find the actual logo in the Navigation header that is rendering behind the preloader
+            // Find the actual logo in the Navigation header that is rendering behind the preloader
             const targetLogo = document.querySelector('nav img[src="/logo-gwinnett.png"]');
 
             const tl = gsap.timeline({
@@ -72,8 +73,18 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                     ease: "power3.inOut" // A very smooth, swooping curve
                 }, 0);
             } else {
-                // Fallback fade out if DOM target missing
-                tl.to(containerRef.current, { opacity: 0, duration: 0.8 }, 0);
+                // FALLBACK: If the DOM target is completely missing (e.g. mobile breakpoint navigation hiding),
+                // we gracefully fade out the entire screen and FORCE the onComplete callback.
+
+                // Hide ghost elements immediately
+                gsap.set(".ghost-fade", { opacity: 0 });
+
+                // Fade out the main container
+                tl.to(containerRef.current, {
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: "power2.inOut"
+                }, 0);
             }
         }
     }, [isReady, onComplete]);
