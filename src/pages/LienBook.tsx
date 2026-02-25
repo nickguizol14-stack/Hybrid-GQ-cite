@@ -51,7 +51,7 @@ const LienBook = () => {
                 );
             }
 
-            // Card slight slide in & up
+            // Card slight slide in & up + Pinning
             if (cardRef.current) {
                 gsap.fromTo(
                     cardRef.current,
@@ -62,6 +62,19 @@ const LienBook = () => {
                         duration: 1,
                         ease: 'power3.out',
                         delay: 0.6,
+                        onComplete: () => {
+                            // Only pin after entrance animation settles and on desktop
+                            if (window.innerWidth >= 1024) {
+                                ScrollTrigger.create({
+                                    trigger: cardRef.current,
+                                    start: "top 300px",  // Increased significantly to offset the -mt-40 negative CSS margin pull
+                                    end: () => `+=${contentRef.current?.offsetHeight ? contentRef.current.offsetHeight - cardRef.current!.offsetHeight : 0}`,
+                                    pin: true,
+                                    pinSpacing: false,
+                                    markers: false,
+                                });
+                            }
+                        }
                     }
                 );
             }
@@ -162,8 +175,8 @@ const LienBook = () => {
                             </div>
                         </div>
 
-                        {/* Right Column: Checkout Card (Floating up into Hero, Sticking lower) */}
-                        <div className="lg:flex-1 w-full lg:sticky lg:top-40 xl:top-48 lg:-mt-32 xl:-mt-40 z-20" ref={cardRef}>
+                        {/* Right Column: Checkout Card (Floating up into Hero, Pinned by GSAP) */}
+                        <div className="lg:flex-1 w-full lg:-mt-32 xl:-mt-40 z-20 will-change-transform" ref={cardRef}>
                             <div className="bg-white border border-[#C5A869]/30 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden mt-8 lg:mt-0">
                                 {/* Card top accent */}
                                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8E733E] via-[#C5A869] to-[#E6D3A3]" />
