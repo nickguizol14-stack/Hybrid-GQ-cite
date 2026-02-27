@@ -19,72 +19,78 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
 
     useEffect(() => {
         if (isReady && containerRef.current && logoWrapperRef.current && logoRef.current) {
-            // Find the actual logo in the Navigation header that is rendering behind the preloader
-            // Find the actual logo in the Navigation header that is rendering behind the preloader
-            const targetLogo = document.querySelector('nav img[src="/logo-gwinnett.png"]');
+            try {
+                // Find the actual logo in the Navigation header that is rendering behind the preloader
+                const targetLogo = document.querySelector('nav img[src="/logo-gwinnett.png"]');
 
-            const tl = gsap.timeline({
-                onComplete: () => {
-                    onComplete(); // Tell App to unmount preloader
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        onComplete(); // Tell App to unmount preloader
+                    }
+                });
+
+                if (targetLogo) {
+                    // Get exact pixel coordinates of both logos
+                    const targetRect = targetLogo.getBoundingClientRect();
+                    const sourceRect = logoRef.current.getBoundingClientRect();
+
+                    // Calculate the difference in positioning
+                    const destX = targetRect.left;
+                    const destY = targetRect.top;
+                    const currentX = sourceRect.left;
+                    const currentY = sourceRect.top;
+
+                    // Calculate scale precisely (based on height, as the Nav log is h-12/14/16)
+                    // Ensure denominator is never 0
+                    const sourceHeight = sourceRect.height || 1;
+                    const scale = targetRect.height / sourceHeight;
+
+                    // 1. Fade out the dark background overlay completely
+                    tl.to(containerRef.current, {
+                        backgroundColor: 'rgba(26, 21, 16, 0)',
+                        backdropFilter: 'blur(0px)',
+                        duration: 1.0,
+                        ease: "power2.inOut"
+                    }, 0);
+
+                    // 1b. Quickly fade out the stationary 'ghost' elements (glow and mask container) 
+                    // so they don't awkwardly linger in the center while the real logo flies away.
+                    tl.to(".ghost-fade", {
+                        opacity: 0,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    }, 0);
+
+                    // 2. Fly the logo to the exact target position using top-left matching
+                    // We use x/y transforms to avoid reflows. Because the origin is top-left,
+                    // scaling down means we move the top-left corner exactly point-to-point.
+                    gsap.set(logoRef.current, { transformOrigin: "top left" });
+
+                    tl.to(logoRef.current, {
+                        x: destX - currentX,
+                        y: destY - currentY,
+                        scale: scale,
+                        opacity: 0, // Fade out right at the end to hand off to the real logo
+                        duration: 1.0,
+                        ease: "power3.inOut" // A very smooth, swooping curve
+                    }, 0);
+                } else {
+                    // FALLBACK: If the DOM target is completely missing (e.g. mobile breakpoint navigation hiding),
+                    // we gracefully fade out the entire screen and FORCE the onComplete callback.
+
+                    // Hide ghost elements immediately
+                    gsap.set(".ghost-fade", { opacity: 0 });
+
+                    // Fade out the main container
+                    tl.to(containerRef.current, {
+                        opacity: 0,
+                        duration: 0.6,
+                        ease: "power2.inOut"
+                    }, 0);
                 }
-            });
-
-            if (targetLogo) {
-                // Get exact pixel coordinates of both logos
-                const targetRect = targetLogo.getBoundingClientRect();
-                const sourceRect = logoRef.current.getBoundingClientRect();
-
-                // Calculate the difference in positioning
-                const destX = targetRect.left;
-                const destY = targetRect.top;
-                const currentX = sourceRect.left;
-                const currentY = sourceRect.top;
-
-                // Calculate scale precisely (based on height, as the Nav log is h-12/14/16)
-                const scale = targetRect.height / sourceRect.height;
-
-                // 1. Fade out the dark background overlay completely
-                tl.to(containerRef.current, {
-                    backgroundColor: 'rgba(26, 21, 16, 0)',
-                    backdropFilter: 'blur(0px)',
-                    duration: 1.0,
-                    ease: "power2.inOut"
-                }, 0);
-
-                // 1b. Quickly fade out the stationary 'ghost' elements (glow and mask container) 
-                // so they don't awkwardly linger in the center while the real logo flies away.
-                tl.to(".ghost-fade", {
-                    opacity: 0,
-                    duration: 0.4,
-                    ease: "power2.out"
-                }, 0);
-
-                // 2. Fly the logo to the exact target position using top-left matching
-                // We use x/y transforms to avoid reflows. Because the origin is top-left,
-                // scaling down means we move the top-left corner exactly point-to-point.
-                gsap.set(logoRef.current, { transformOrigin: "top left" });
-
-                tl.to(logoRef.current, {
-                    x: destX - currentX,
-                    y: destY - currentY,
-                    scale: scale,
-                    opacity: 0, // Fade out right at the end to hand off to the real logo
-                    duration: 1.0,
-                    ease: "power3.inOut" // A very smooth, swooping curve
-                }, 0);
-            } else {
-                // FALLBACK: If the DOM target is completely missing (e.g. mobile breakpoint navigation hiding),
-                // we gracefully fade out the entire screen and FORCE the onComplete callback.
-
-                // Hide ghost elements immediately
-                gsap.set(".ghost-fade", { opacity: 0 });
-
-                // Fade out the main container
-                tl.to(containerRef.current, {
-                    opacity: 0,
-                    duration: 0.6,
-                    ease: "power2.inOut"
-                }, 0);
+            } catch (error) {
+                console.error("Preloader animation error, forcing complete:", error);
+                onComplete();
             }
         }
     }, [isReady, onComplete]);

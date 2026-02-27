@@ -81,13 +81,15 @@ function AppContent() {
     // Refresh ScrollTrigger on load
     ScrollTrigger.refresh();
 
-    // Handle reduced motion preference
+    // Handle reduced motion preference gracefully
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
     if (prefersReducedMotion) {
-      gsap.globalTimeline.timeScale(0);
+      // Instead of stopping time entirely (which breaks onComplete callbacks),
+      // we speed up the global timeline so animations finish instantly.
+      gsap.globalTimeline.timeScale(100);
     }
 
     return () => {

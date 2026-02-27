@@ -258,57 +258,75 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-gq-dark/98 backdrop-blur-xl transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-[80vh] opacity-100 overflow-y-auto' : 'max-h-0 opacity-0'
-          }`}
-      >
-        <div className="container-gq py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <div key={link.label} className="flex flex-col">
-              {link.children ? (
-                <>
-                  <button
-                    onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
-                    className="flex items-center justify-between text-gq-light/90 hover:text-gq-gold transition-colors duration-300 text-base font-medium py-2 w-full text-left"
-                  >
-                    {link.label}
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileExpanded === link.label ? 'rotate-180' : ''}`} />
-                  </button>
-                  {/* Submenu */}
-                  <div className={`pl-4 flex flex-col gap-2 overflow-hidden transition-all duration-300 ${mobileExpanded === link.label ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
-                    {link.children.map(child => (
-                      <a
-                        key={child.label}
-                        href={child.href}
-                        onClick={(e) => handleNavClick(e, child.href)}
-                        className={`text-sm py-2 px-2 rounded hover:bg-white/5 ${location.pathname === child.href ? 'text-gq-gold' : 'text-gq-light/70'}`}
-                      >
-                        {child.label}
-                      </a>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <a
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-gq-light/90 hover:text-gq-gold transition-colors duration-300 text-base font-medium py-2 cursor-pointer ${location.pathname === link.href ? 'text-gq-gold' : ''
-                    }`}
-                >
-                  {link.label}
-                </a>
-              )}
-            </div>
-          ))}
-          <a
-            href="/contact"
-            onClick={(e) => handleNavClick(e, '/contact')}
-            className="btn-primary text-sm text-center mt-2 py-2 cursor-pointer"
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="lg:hidden absolute top-full left-0 right-0 bg-[#2d2418] shadow-2xl overflow-hidden pointer-events-auto border-b border-[#C5A869]/20"
           >
-            Contact Us
-          </a>
-        </div>
-      </div>
+            <div className="container-gq py-6 flex flex-col gap-5 max-h-[80vh] overflow-y-auto">
+              {navLinks.map((link) => (
+                <div key={link.label} className="flex flex-col">
+                  {link.children ? (
+                    <>
+                      <button
+                        onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
+                        className="flex items-center justify-between text-gq-light/90 hover:text-gq-gold transition-colors duration-300 text-lg font-medium py-2 w-full text-left"
+                      >
+                        {link.label}
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileExpanded === link.label ? 'rotate-180' : ''}`} />
+                      </button>
+                      {/* Submenu */}
+                      <AnimatePresence>
+                        {mobileExpanded === link.label && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="pl-4 flex flex-col gap-3 overflow-hidden"
+                          >
+                            <div className="pt-2 pb-2 flex flex-col gap-2 border-l-2 border-gq-gold/30 pl-4">
+                              {link.children.map(child => (
+                                <a
+                                  key={child.label}
+                                  href={child.href}
+                                  onClick={(e) => handleNavClick(e, child.href)}
+                                  className={`text-base py-2 px-2 rounded hover:bg-white/5 ${location.pathname === child.href ? 'text-gq-gold' : 'text-gq-light/70'}`}
+                                >
+                                  {child.label}
+                                </a>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleNavClick(e, link.href)}
+                      className={`text-gq-light/90 hover:text-gq-gold transition-colors duration-300 text-lg font-medium py-2 cursor-pointer border-b border-transparent ${location.pathname === link.href ? 'text-gq-gold border-gq-gold/30' : ''
+                        }`}
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </div>
+              ))}
+              <a
+                href="/contact"
+                onClick={(e) => handleNavClick(e, '/contact')}
+                className="btn-primary w-full text-center mt-4 py-3 cursor-pointer font-semibold shadow-burgundy-glow"
+              >
+                Book a Consultation
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
