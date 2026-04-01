@@ -22,19 +22,19 @@ export const useScrollReveal = <T extends HTMLElement>(
   const ref = useRef<T>(null);
   const triggersRef = useRef<ScrollTrigger[]>([]);
 
+  const {
+    delay = 0,
+    duration = 0.6,
+    y = 30,
+    x = 0,
+    scale = 1,
+    rotate = 0,
+    ease = 'power3.out',
+  } = options;
+
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
-
-    const {
-      delay = 0,
-      duration = 0.6,
-      y = 30,
-      x = 0,
-      scale = 1,
-      rotate = 0,
-      ease = 'power3.out',
-    } = options;
 
     // Set initial state
     gsap.set(element, {
@@ -70,7 +70,7 @@ export const useScrollReveal = <T extends HTMLElement>(
       triggersRef.current.forEach(t => t.kill());
       triggersRef.current = [];
     };
-  }, [options.delay, options.duration, options.ease, options.rotate, options.scale, options.x, options.y]);
+  }, [delay, duration, ease, rotate, scale, x, y]);
 
   return ref;
 };
@@ -82,21 +82,21 @@ export const useStaggerReveal = <T extends HTMLElement>(
   const containerRef = useRef<T>(null);
   const triggersRef = useRef<ScrollTrigger[]>([]);
 
+  const {
+    delay = 0,
+    duration = 0.6,
+    y = 30,
+    x = 0,
+    stagger = 0.1,
+    ease = 'power3.out',
+  } = options;
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     const elements = container.querySelectorAll(selector);
     if (elements.length === 0) return;
-
-    const {
-      delay = 0,
-      duration = 0.6,
-      y = 30,
-      x = 0,
-      stagger = 0.1,
-      ease = 'power3.out',
-    } = options;
 
     // Set initial state
     gsap.set(elements, {
@@ -129,7 +129,7 @@ export const useStaggerReveal = <T extends HTMLElement>(
       triggersRef.current.forEach(t => t.kill());
       triggersRef.current = [];
     };
-  }, [selector, options.delay, options.duration, options.ease, options.stagger, options.x, options.y]);
+  }, [selector, delay, duration, ease, stagger, x, y]);
 
   return containerRef;
 };

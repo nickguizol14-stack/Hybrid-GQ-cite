@@ -115,7 +115,6 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
       <div className="container-gq flex items-center justify-between">
         {/* Logo */}
         <Link
-          // @ts-ignore
           ref={logoRef}
           to="/"
           className="flex items-center group"

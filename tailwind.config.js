@@ -62,6 +62,9 @@ module.exports = {
           'burgundy-dark': '#7A232F',
         },
       },
+      transitionTimingFunction: {
+        'accordion': 'cubic-bezier(0.25, 1, 0.5, 1)',
+      },
       fontFamily: {
         serif: ['"Playfair Display"', 'serif'],
         sans: ['Inter', 'sans-serif'],

@@ -156,7 +156,7 @@ const PracticeAreas = () => {
                     setHoveredIndex(isHovered ? null : index);
                   }
                 }}
-                className={`relative group border-b lg:border-b-0 lg:border-r border-[#C5A869]/20 last:border-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer overflow-hidden flex flex-col lg:flex-row
+                className={`relative group border-b lg:border-b-0 lg:border-r border-[#C5A869]/20 last:border-0 transition-all duration-700 ease-accordion cursor-pointer overflow-hidden flex flex-col lg:flex-row
                   ${isHovered ? 'lg:flex-[3] bg-[#2A2219]' : 'lg:flex-1 bg-[#1A1510] hover:bg-[#231C14]'}
                 `}
               >
@@ -193,7 +193,7 @@ const PracticeAreas = () => {
 
                 {/* Expanded Content Area */}
                 <div
-                  className={`flex-1 overflow-y-auto overflow-x-hidden hide-scrollbar transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+                  className={`flex-1 overflow-y-auto overflow-x-hidden hide-scrollbar transition-all duration-700 ease-accordion
                     ${isHovered ? 'max-h-[1000px] lg:max-h-none opacity-100' : 'max-h-0 lg:max-h-none lg:opacity-0 hidden lg:block'}
                   `}
                 >

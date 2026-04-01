@@ -48,6 +48,7 @@
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     --ease-liquid: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-accordion: cubic-bezier(0.25, 1, 0.5, 1);
   }
 }
 
