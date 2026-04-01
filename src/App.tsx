@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, lazy, Suspense } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatePresence } from 'framer-motion';
@@ -10,14 +10,14 @@ import TopBar from './sections/TopBar';
 import Navigation from './sections/Navigation';
 import Footer from './sections/Footer';
 import Home from './pages/Home';
-import AboutPage from './pages/About';
-import ContactPage from './pages/Contact';
-import ConstructionLaw from './pages/ConstructionLaw';
-import RealEstateLaw from './pages/RealEstateLaw';
-import OilAndGasLaw from './pages/OilAndGasLaw';
-import MergersAndAcquisitions from './pages/MergersAndAcquisitions';
-import LienBook from './pages/LienBook';
-import LienPredictorPage from './pages/LienPredictor';
+const AboutPage = lazy(() => import('./pages/About'));
+const ContactPage = lazy(() => import('./pages/Contact'));
+const ConstructionLaw = lazy(() => import('./pages/ConstructionLaw'));
+const RealEstateLaw = lazy(() => import('./pages/RealEstateLaw'));
+const OilAndGasLaw = lazy(() => import('./pages/OilAndGasLaw'));
+const MergersAndAcquisitions = lazy(() => import('./pages/MergersAndAcquisitions'));
+const LienBook = lazy(() => import('./pages/LienBook'));
+const LienPredictorPage = lazy(() => import('./pages/LienPredictor'));
 
 import Preloader from './components/Preloader';
 
@@ -156,6 +156,7 @@ function AppContent() {
             mode="wait"
             onExitComplete={() => setIsTransitioning(false)}
           >
+            <Suspense fallback={null}>
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutPage />} />
@@ -167,6 +168,7 @@ function AppContent() {
               <Route path="/lien-book" element={<LienBook />} />
               <Route path="/lien-predictor" element={<LienPredictorPage />} />
             </Routes>
+            </Suspense>
           </AnimatePresence>
         </main>
 
