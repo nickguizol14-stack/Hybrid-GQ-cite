@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gq-law.com/sitemap.xml

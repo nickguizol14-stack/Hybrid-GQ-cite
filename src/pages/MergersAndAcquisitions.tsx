@@ -4,6 +4,7 @@ import { pageVariants, pageTransition } from '../lib/transitions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Briefcase, TrendingUp, ShieldCheck, FileSearch, ArrowRight, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,6 +85,7 @@ const MergersAndAcquisitions = () => {
             exit="exit"
             transition={pageTransition}
         >
+            <SEO title="Oklahoma Mergers and Acquisitions Attorney" description="Legal precision and business acumen for deal structuring, due diligence, risk allocation, and post-closing integration." path="/mergers-and-acquisitions" />
             {/* HERO SECTION */}
             <section className="hero-section-ma relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
                 <div className="absolute inset-0 z-0 opacity-40">

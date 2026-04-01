@@ -4,6 +4,7 @@ import { pageVariants, pageTransition } from '../lib/transitions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HardHat, Hammer, FileText, ShieldAlert, ArrowRight, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,6 +85,7 @@ const ConstructionLaw = () => {
             exit="exit"
             transition={pageTransition}
         >
+            <SEO title="Oklahoma Construction Lawyer" description="Oklahoma's go-to counsel for contractors, subcontractors, and suppliers. Contract negotiation, lien claims, and dispute resolution." path="/construction-law" />
             {/* HERO SECTION */}
             <section className="hero-section relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
                 <div className="absolute inset-0 z-0 opacity-40">

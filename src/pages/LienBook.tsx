@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../lib/transitions';
 import { BookOpen, CheckCircle, ShieldCheck, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,6 +82,7 @@ const LienBook = () => {
             transition={pageTransition}
             className="min-h-screen bg-[#FDFBF7] relative w-full"
         >
+            <SEO title="The Oklahoma Mechanics and Materialmen's Lien Book" description="The definitive guide to M&M liens in Oklahoma. Written by lien law expert Gary David Quinnett." path="/lien-book" />
             {/* Dedicated Dark Hero Header */}
             <section className="relative w-full bg-gq-dark-gradient pt-56 pb-20 lg:pt-48 lg:pb-24 xl:pb-32 overflow-hidden flex flex-col items-center justify-center text-center">
                 {/* Subtle Noise Texture for paper feel on Hero */}

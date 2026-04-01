@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../lib/transitions';
 import { Award, BookOpen, Shield, Briefcase, MapPin, Mail, Phone, CheckCircle2, Star, TrendingUp } from 'lucide-react';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,6 +121,7 @@ const AboutPage = () => {
             exit="exit"
             transition={pageTransition}
         >
+            <SEO title="About Gary Quinnett" description="34 years of specialized expertise in Oklahoma construction law, real estate, oil and gas, and business transactions." path="/about" />
 
             {/* --- HERO SECTION --- */}
             <section ref={heroRef} className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-gq-dark text-white px-6 overflow-hidden">

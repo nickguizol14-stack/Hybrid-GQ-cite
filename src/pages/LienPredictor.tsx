@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../lib/transitions';
 import PredictorWizard from '../components/lien-predictor/PredictorWizard';
 import { ShieldCheck } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const LienPredictorPage = () => {
   return (
@@ -14,6 +15,7 @@ const LienPredictorPage = () => {
       exit="exit"
       transition={pageTransition}
     >
+      <SEO title="Lien Claim Predictor" description="Evaluate the strength of your Oklahoma mechanics lien claim. Free assessment based on statutory requirements." path="/lien-predictor" />
       {/* Page Header */}
       <div className="container-gq text-center mb-12">
         <div className="inline-flex items-center gap-2 border border-[#C5A869]/20 rounded-full px-5 py-2 bg-[#C5A869]/5 mb-6">

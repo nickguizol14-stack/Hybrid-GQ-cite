@@ -4,6 +4,7 @@ import { pageVariants, pageTransition } from '../lib/transitions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FileCheck, Scale, History, ArrowRight, CheckCircle2, Droplet, Cog } from 'lucide-react';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,6 +85,7 @@ const OilAndGasLaw = () => {
             exit="exit"
             transition={pageTransition}
         >
+            <SEO title="Oklahoma Oil and Gas Lawyer" description="Representing operators, mineral owners, and service companies in lease negotiation, title examination, and regulatory matters." path="/oil-and-gas-law" />
             {/* HERO SECTION */}
             <section className="hero-section-og relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-black flex items-center">
                 <div className="absolute inset-0 z-0 opacity-50">

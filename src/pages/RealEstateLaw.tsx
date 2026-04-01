@@ -4,6 +4,7 @@ import { pageVariants, pageTransition } from '../lib/transitions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Building2, Key, Map, FileSignature, ArrowRight, CheckCircle2, Home } from 'lucide-react';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,6 +85,7 @@ const RealEstateLaw = () => {
             exit="exit"
             transition={pageTransition}
         >
+            <SEO title="Oklahoma Real Estate Attorney" description="Comprehensive legal counsel for developers, investors, and property owners. Purchase agreements, leases, title work, and disputes." path="/real-estate-law" />
             {/* HERO SECTION */}
             <section className="hero-section-re relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
                 <div className="absolute inset-0 z-0 opacity-40">
