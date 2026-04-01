@@ -20,7 +20,14 @@ const navLinks = [
     ]
   },
   { label: 'Lien Predictor', href: '/lien-predictor' },
-  { label: 'Resources', href: '/lien-book' },
+  {
+    label: 'Resources',
+    href: '#',
+    children: [
+      { label: 'Lien Book', href: '/lien-book' },
+      { label: 'Articles', href: '/articles' },
+    ]
+  },
 ];
 
 interface NavigationProps {

@@ -7,7 +7,8 @@ const quickLinks = [
   { label: 'Construction Law', href: '/construction-law' },
   { label: 'Real Estate Law', href: '/real-estate-law' },
   { label: 'Lien Predictor', href: '/lien-predictor' },
-  { label: 'Resources', href: '/lien-book' },
+  { label: 'Lien Book', href: '/lien-book' },
+  { label: 'Articles', href: '/articles' },
   { label: 'Contact', href: '/contact' },
 ];
 

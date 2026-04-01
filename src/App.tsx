@@ -18,6 +18,7 @@ const OilAndGasLaw = lazy(() => import('./pages/OilAndGasLaw'));
 const MergersAndAcquisitions = lazy(() => import('./pages/MergersAndAcquisitions'));
 const LienBook = lazy(() => import('./pages/LienBook'));
 const LienPredictorPage = lazy(() => import('./pages/LienPredictor'));
+const ArticlesPage = lazy(() => import('./pages/Articles'));
 
 import Preloader from './components/Preloader';
 
@@ -167,6 +168,7 @@ function AppContent() {
                 <Route path="/mergers-and-acquisitions" element={<MergersAndAcquisitions />} />
                 <Route path="/lien-book" element={<LienBook />} />
                 <Route path="/lien-predictor" element={<LienPredictorPage />} />
+                <Route path="/articles" element={<ArticlesPage />} />
               </Routes>
             </AnimatePresence>
           </Suspense>
