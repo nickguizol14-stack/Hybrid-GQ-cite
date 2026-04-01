@@ -3,9 +3,7 @@ import { pageVariants, pageTransition } from '../lib/transitions';
 import {
   FileText,
   Search,
-  Scale,
   Shield,
-  Gavel,
   BookOpen,
   Briefcase,
   FileCheck,
