@@ -16,8 +16,8 @@ const RATING_LABELS = {
 } as const;
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.5 } }),
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: 0.3 + i * 0.25, duration: 0.7, ease: 'easeOut' } }),
 };
 
 export default function ResultsView({ result, onSaveShare }: Props) {
@@ -61,7 +61,7 @@ export default function ResultsView({ result, onSaveShare }: Props) {
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${result.windowElapsedPercent}%` }}
-                  transition={{ duration: 1.2, delay: 0.5, ease: 'easeOut' }}
+                  transition={{ duration: 1.5, delay: 0.8, ease: 'easeOut' }}
                   className="h-full rounded-full bg-gradient-to-r from-[#4ade80] to-[#eab308]"
                 />
               </div>
@@ -87,7 +87,7 @@ export default function ResultsView({ result, onSaveShare }: Props) {
                   key={factor.id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8 + i * 0.08 }}
+                  transition={{ delay: 1.2 + i * 0.15, duration: 0.4 }}
                   className="border-b border-[#C5A869]/5 last:border-0"
                 >
                   <td className="pl-5 py-3 w-8">

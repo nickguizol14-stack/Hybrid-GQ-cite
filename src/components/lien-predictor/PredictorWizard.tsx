@@ -51,6 +51,7 @@ export default function PredictorWizard() {
     const timer = setTimeout(() => {
       setIsCalculating(false);
       setShowResults(true);
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }, 2800);
     return () => clearTimeout(timer);
   }, [isCalculating]);
