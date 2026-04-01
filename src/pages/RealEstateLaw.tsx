@@ -1,207 +1,250 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../lib/transitions';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Building2, Key, Map, FileSignature, ArrowRight, CheckCircle2, Home } from 'lucide-react';
+import {
+  FileSignature,
+  Key,
+  Map,
+  Home,
+  Gavel,
+  BookOpen,
+} from 'lucide-react';
 import SEO from '../components/SEO';
+import PracticeHero from '../components/practice/PracticeHero';
+import AuthorityStrip from '../components/practice/AuthorityStrip';
+import PracticeOverview from '../components/practice/PracticeOverview';
+import ServicesGrid from '../components/practice/ServicesGrid';
+import ProcessSteps from '../components/practice/ProcessSteps';
+import PracticeTestimonials from '../components/practice/PracticeTestimonials';
+import PracticeFAQ from '../components/practice/PracticeFAQ';
+import RelatedPractices from '../components/practice/RelatedPractices';
+import PracticeCTA from '../components/practice/PracticeCTA';
+import { Building2 } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
+const credentials = [
+  {
+    value: 34,
+    label: 'Years Focused',
+    description:
+      'Over three decades of real estate law practice serving Oklahoma owners, developers, and investors.',
+    isNumber: true,
+  },
+  {
+    value: 'LexisNexis',
+    label: 'Treatise Author',
+    description:
+      'Author of the LexisNexis treatise on Oklahoma construction and real property law.',
+    isNumber: false,
+  },
+  {
+    value: '13 Years',
+    label: 'Fortune 500 Business',
+    description:
+      'Gary spent 13 years in Fortune 500 corporate environments before practicing law, bringing real business acumen to every transaction.',
+    isNumber: false,
+  },
+  {
+    value: 100,
+    label: 'Attorneys Trained',
+    description:
+      'Trusted by the Oklahoma legal community to teach CLE courses on real estate and title issues.',
+    isNumber: true,
+    suffix: '+',
+  },
+];
 
 const services = [
-    {
-        icon: FileSignature,
-        title: "Transactions",
-        description: "Structuring complex commercial and residential acquisitions. We ensure the deal you sign is the deal you get."
-    },
-    {
-        icon: Key,
-        title: "Leasing",
-        description: "Representing both landlords and tenants in retail, office, and industrial lease negotiations."
-    },
-    {
-        icon: Map,
-        title: "Land Use & Zoning",
-        description: "Navigating municipal regulations, variances, and easements to unlock the full potential of your property."
-    },
-    {
-        icon: Home,
-        title: "Title & Curative",
-        description: "Resolving title defects, boundary disputes, and encumbrances to ensure clear ownership."
-    }
+  {
+    icon: FileSignature,
+    title: 'Purchase & Sale Agreements',
+    description:
+      'Drafting, reviewing, and negotiating purchase and sale agreements for commercial and residential properties. We ensure every contingency is addressed and your interests are protected from letter of intent through closing.',
+    statute: 'Okla. Stat. tit. 16, Conveyances',
+  },
+  {
+    icon: Key,
+    title: 'Commercial Leasing',
+    description:
+      'Representing landlords and tenants in retail, office, and industrial lease negotiations. From triple net structures to build-out allowances, we draft leases that protect your position for the full term.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Title Review & Curative Work',
+    description:
+      'Thorough title examination and curative work to identify and resolve defects, encumbrances, and clouds on title before they become deal-killers. We trace ownership chains and clear the path to closing.',
+    statute: 'Okla. Stat. tit. 16, SS 71-81',
+  },
+  {
+    icon: Map,
+    title: 'Land Use & Zoning',
+    description:
+      'Navigating municipal zoning codes, variance applications, special use permits, and comprehensive plan amendments. We work with local planning commissions to unlock the full development potential of your property.',
+  },
+  {
+    icon: Home,
+    title: 'Quiet Title Actions',
+    description:
+      'Filing and prosecuting quiet title actions to establish clear ownership and resolve competing claims. Whether the issue is a missing heir, a gap in the chain of title, or adverse possession, we clear the cloud.',
+    statute: 'Okla. Stat. tit. 12, SS 1141',
+  },
+  {
+    icon: Gavel,
+    title: 'Real Estate Dispute Resolution',
+    description:
+      'Litigating boundary disputes, easement conflicts, breach of contract claims, and specific performance actions. When a deal goes sideways, we bring the preparation and leverage to protect your investment.',
+  },
+];
+
+const overviewParagraphs = [
+  'Real estate is often the most valuable asset a person or business will ever hold. Whether you are acquiring a commercial property, negotiating a complex lease, or resolving a title dispute, the legal work must be precise. A single oversight in contract language or title examination can cost millions and create problems that take years to unwind.',
+  'Gary Quinnett brings a unique combination of legal expertise and business experience to Oklahoma real estate law. Before practicing law, Gary spent 13 years in Fortune 500 corporate environments, giving him a perspective on transactions that most attorneys simply do not have. He understands not just the legal mechanics, but the business realities that drive every deal.',
+  'Oklahoma real estate transactions are governed by Title 16 of the Oklahoma Statutes, along with a body of case law that covers everything from conveyance requirements to recording priorities. Title issues in Oklahoma can be particularly complex due to the state\'s unique history, including original land patent grants, allotment restrictions, and the interplay between state and federal law on certain properties.',
+  'Whether you are a commercial developer planning a new project, an investor building a portfolio, or a landowner dealing with a boundary dispute or title defect, Gary provides the thorough analysis and strategic counsel needed to protect your investment and move your transaction forward with confidence.',
+];
+
+const whoWeRepresent = [
+  'Commercial Developers',
+  'Property Investors',
+  'Landlords & Tenants',
+  'Homebuilders',
+  'Land Owners',
+  'HOAs & Property Managers',
+];
+
+const processSteps = [
+  {
+    title: 'Consultation',
+    description:
+      'We review your property, transaction, or dispute to understand the full picture and identify key issues.',
+  },
+  {
+    title: 'Strategy',
+    description:
+      'We develop a clear legal and business strategy aligned with your investment goals and timeline.',
+  },
+  {
+    title: 'Execution',
+    description:
+      'We draft documents, conduct due diligence, negotiate terms, or file actions with precision and urgency.',
+  },
+  {
+    title: 'Resolution',
+    description:
+      'We close the deal, clear the title, or resolve the dispute to protect your investment for the long term.',
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Gary handled a complex commercial acquisition for us that involved multiple parcels and a challenging title history. His thoroughness saved us from a six-figure problem that the seller\'s team had missed entirely.',
+    author: 'Jennifer L.',
+    location: 'Oklahoma City, OK',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is a quiet title action in Oklahoma?',
+    answer:
+      'A quiet title action is a lawsuit filed in Oklahoma district court to establish clear ownership of real property and eliminate competing claims. It is commonly used when there are gaps in the chain of title, missing heirs, old unreleased mortgages, or adverse possession claims. The action names all potential claimants as defendants and, upon judgment, gives the plaintiff a court order confirming their ownership. Quiet title actions are frequently necessary before a property can be sold or financed because title insurance companies require a clear chain of ownership.',
+    statute: 'Okla. Stat. tit. 12, SS 1141',
+  },
+  {
+    question:
+      'How long does a commercial real estate closing take in Oklahoma?',
+    answer:
+      'A typical commercial real estate closing in Oklahoma takes 30 to 90 days from executed purchase agreement to closing, though complex transactions can take longer. The timeline depends on several factors including the scope of due diligence, title examination and curative work, environmental assessments, survey requirements, financing contingencies, and tenant estoppel collection for income properties. Working with experienced counsel from the outset helps identify potential delays early and keep the transaction on schedule.',
+  },
+  {
+    question: 'What should I look for in a commercial lease review?',
+    answer:
+      'A commercial lease review should examine several critical provisions. These include the rent structure and escalation clauses, the allocation of operating expenses (especially in triple net leases), maintenance and repair obligations, permitted use restrictions, assignment and subletting rights, default and remedy provisions, and lease renewal or termination options. For tenants, understanding your build-out allowance, co-tenancy protections, and exclusive use provisions is essential. For landlords, the lease should address personal guarantees, security deposits, and insurance requirements. Every commercial lease is a negotiation, and the initial draft is rarely the final word.',
+  },
+  {
+    question:
+      'Do I need a lawyer for a real estate transaction in Oklahoma?',
+    answer:
+      'Oklahoma does not legally require an attorney for real estate transactions, but the risks of proceeding without one are significant. Real estate contracts contain complex provisions regarding contingencies, representations, warranties, and remedies that can have lasting financial consequences. Title issues unique to Oklahoma, including restrictions on certain allotment lands and complex mineral rights questions, require legal expertise that title companies and real estate agents are not equipped to provide. For commercial transactions, the stakes and complexity make legal counsel essential. Even for residential purchases, an attorney review of the contract and title commitment can identify problems that save thousands of dollars.',
+  },
+];
+
+const relatedPractices = [
+  {
+    title: 'Construction Law',
+    description:
+      'Contract drafting, mechanics liens, payment bond claims, and construction defect litigation for Oklahoma contractors and owners.',
+    href: '/construction-law',
+  },
+  {
+    title: 'Oil & Gas Law',
+    description:
+      'Lease negotiation, title opinions, OCC regulatory work, and royalty disputes for Oklahoma energy stakeholders.',
+    href: '/oil-and-gas-law',
+  },
+  {
+    title: 'Mergers & Acquisitions',
+    description:
+      'Deal structuring, due diligence, and risk allocation for business buyers, sellers, and private equity groups.',
+    href: '/mergers-and-acquisitions',
+  },
 ];
 
 const RealEstateLaw = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
+  return (
+    <motion.div
+      className="min-h-screen will-change-transform"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={pageTransition}
+    >
+      <SEO
+        title="Oklahoma Real Estate Attorney"
+        description="Comprehensive real estate legal counsel for developers, investors, and property owners. Purchase agreements, commercial leasing, title work, quiet title actions, and dispute resolution. 34 years of Oklahoma real estate law experience."
+        path="/real-estate-law"
+      />
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Hero Animations
-            gsap.fromTo('.hero-title-re',
-                { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: 'power4.out', stagger: 0.1 }
-            );
+      <PracticeHero
+        title="Oklahoma Real Estate Law"
+        titleAccent="."
+        subtitle="34 years of protecting what you've built. From complex acquisitions to title disputes, with the business acumen of 13 years in the Fortune 500."
+        backgroundImage="/hero-image.jpg"
+      />
 
-            // Service Cards Stagger
-            gsap.fromTo('.service-card-re',
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '.services-grid-re',
-                        start: 'top 80%'
-                    }
-                }
-            );
+      <AuthorityStrip credentials={credentials} />
 
-            // Parallax image
-            gsap.to('.hero-image-re', {
-                yPercent: 30,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.hero-section-re',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: true
-                }
-            });
+      <PracticeOverview
+        title="Protecting"
+        titleAccent="Your Investment."
+        paragraphs={overviewParagraphs}
+        statuteRef="Primary statutory framework: Okla. Stat. tit. 16, Conveyances and Real Property"
+        listTitle="Who We Represent"
+        listIcon={Building2}
+        listItems={whoWeRepresent}
+        ctaText="Discuss Your Real Estate Matter"
+      />
 
-        }, containerRef);
+      <ServicesGrid
+        title="Real Estate Law Services"
+        subtitle="Strategic legal counsel for every phase of the real estate lifecycle."
+        services={services}
+      />
 
-        return () => ctx.revert();
-    }, []);
+      <ProcessSteps steps={processSteps} />
 
-    return (
-        <motion.div
-            ref={containerRef}
-            className="min-h-screen bg-white text-gq-dark will-change-transform"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={pageTransition}
-        >
-            <SEO title="Oklahoma Real Estate Attorney" description="Comprehensive legal counsel for developers, investors, and property owners. Purchase agreements, leases, title work, and disputes." path="/real-estate-law" />
-            {/* HERO SECTION */}
-            <section className="hero-section-re relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
-                <div className="absolute inset-0 z-0 opacity-40">
-                    <img
-                        src="/hero-image.jpg" // Fallback - ideally a skyline or building
-                        alt="Real Estate"
-                        className="hero-image-re w-full h-[120%] object-cover object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-gq-dark via-gq-dark/90 to-transparent"></div>
-                </div>
+      <PracticeTestimonials testimonials={testimonials} />
 
-                <div className="container-gq relative z-10 pt-20 text-white">
-                    <div className="max-w-4xl">
-                        <div className="flex items-center gap-4 mb-6 hero-title-re opacity-0">
-                            <div className="w-12 h-1 bg-gq-gold"></div>
-                            <span className="font-bold tracking-widest uppercase text-gq-gold">Practice Areas</span>
-                        </div>
-                        <h1 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-8 hero-title-re opacity-0">
-                            Real Estate <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Law.</span>
-                        </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed hero-title-re opacity-0">
-                            We protect what you build. Comprehensive legal counsel for developers, investors, and property owners.
-                        </p>
-                    </div>
-                </div>
-            </section>
+      <PracticeFAQ faqs={faqs} schemaEnabled />
 
-            {/* OVERVIEW SECTION */}
-            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-white">
-                <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-                    <div>
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-8 text-gq-dark">
-                            Closing the Deal. <br />
-                            <span className="text-gq-gold">Securing the Asset.</span>
-                        </h2>
-                        <div className="space-y-6 text-lg text-gq-dark/80 leading-relaxed">
-                            <p>
-                                Real estate transactions are high-stakes. A single oversight in contract language or title work
-                                can cost millions. We bring the scrutiny and foresight needed to close with confidence.
-                            </p>
-                            <p>
-                                Whether you are developing a commercial subdivision, negotiating a complex lease, or resolving a boundary dispute,
-                                our approach is pragmatic and results-oriented. We clear hurdles so you can maximize value.
-                            </p>
-                        </div>
-                        <div className="mt-10">
-                            <a href="/contact" className="inline-flex items-center gap-2 font-bold text-gq-dark border-b-2 border-gq-gold pb-1 hover:text-gq-gold transition-colors">
-                                <span>Start Your Transaction</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="relative">
-                        <div className="absolute -inset-4 bg-gq-burgundy/5 rounded-2xl -z-10 transform -rotate-2"></div>
-                        <div className="bg-gq-dark p-6 sm:p-8 md:p-12 rounded-xl text-white shadow-2xl">
-                            <h3 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
-                                <Building2 className="text-gq-gold w-8 h-8" />
-                                <span>Our Expertise</span>
-                            </h3>
-                            <ul className="space-y-4">
-                                {['Commercial Development', 'Purchase & Sale Agreements', 'Landlord-Tenant Law', 'Quiet Title Actions', 'HOA & Covenants'].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-white/80">
-                                        <CheckCircle2 className="w-5 h-5 text-gq-gold flex-shrink-0" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <RelatedPractices practices={relatedPractices} />
 
-            {/* SERVICES GRID */}
-            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-gq-light-gradient">
-                <div className="container-gq">
-                    <div className="text-center mb-10 sm:mb-16 lg:mb-20">
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">Strategic Representation</h2>
-                        <p className="text-gq-dark/60 max-w-2xl mx-auto">From dirt work to disposition, we handle every phase of the real estate lifecycle.</p>
-                    </div>
-
-                    <div className="services-grid-re grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {services.map((service, idx) => {
-                            const Icon = service.icon;
-                            return (
-                                <div key={idx} className="service-card-re group bg-white p-6 sm:p-8 lg:p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
-                                    <div className="w-16 h-16 bg-gq-gold/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-gq-gold group-hover:text-white transition-colors duration-500">
-                                        <Icon className="w-8 h-8 text-gq-gold group-hover:text-white transition-colors duration-500" />
-                                    </div>
-                                    <h3 className="font-serif text-2xl font-bold mb-4 text-gq-dark">{service.title}</h3>
-                                    <p className="text-gq-dark/70 leading-relaxed mb-6">{service.description}</p>
-                                    <div className="w-12 h-1 bg-gq-gold/20 group-hover:w-full group-hover:bg-gq-gold transition-all duration-500 rounded-full"></div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA SECTION */}
-            <section className="py-16 sm:py-20 lg:py-24 bg-gq-dark text-white relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gq-burgundy/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-
-                <div className="container-gq text-center relative z-10">
-                    <h2 className="font-serif text-4xl md:text-6xl font-bold mb-8">Secure your investment.</h2>
-                    <p className="text-xl text-white/70 max-w-2xl mx-auto mb-10">
-                        Expert counsel for your most significant assets.
-                    </p>
-                    <a href="/contact" className="inline-flex btn-primary bg-white text-gq-dark hover:bg-gq-gold hover:text-white border-none py-4 px-8 text-xl">
-                        Contact Us
-                    </a>
-                </div>
-            </section>
-
-        </motion.div>
-    );
+      <PracticeCTA
+        title="Ready to Secure Your Investment?"
+        description="Your real estate matters deserve experienced counsel. Schedule a consultation with Gary Quinnett and get the legal clarity your transaction or dispute requires."
+      />
+    </motion.div>
+  );
 };
 
 export default RealEstateLaw;

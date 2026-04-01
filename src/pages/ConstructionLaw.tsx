@@ -1,207 +1,266 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../lib/transitions';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { HardHat, Hammer, FileText, ShieldAlert, ArrowRight, CheckCircle2 } from 'lucide-react';
+import {
+  FileText,
+  Hammer,
+  Shield,
+  HardHat,
+  Scale,
+  Gavel,
+} from 'lucide-react';
 import SEO from '../components/SEO';
+import PracticeHero from '../components/practice/PracticeHero';
+import AuthorityStrip from '../components/practice/AuthorityStrip';
+import PracticeOverview from '../components/practice/PracticeOverview';
+import ServicesGrid from '../components/practice/ServicesGrid';
+import ProcessSteps from '../components/practice/ProcessSteps';
+import PracticeTestimonials from '../components/practice/PracticeTestimonials';
+import PracticeFAQ from '../components/practice/PracticeFAQ';
+import RelatedPractices from '../components/practice/RelatedPractices';
+import PracticeCTA from '../components/practice/PracticeCTA';
 
-gsap.registerPlugin(ScrollTrigger);
+const credentials = [
+  {
+    value: 34,
+    label: 'Years Focused',
+    description:
+      'Over three decades of concentrated practice in Oklahoma construction law.',
+    isNumber: true,
+  },
+  {
+    value: 'LexisNexis',
+    label: 'Treatise Author',
+    description:
+      'Author of the LexisNexis treatise on Oklahoma construction and lien law.',
+    isNumber: false,
+  },
+  {
+    value: 'Published',
+    label: 'M&M Lien Book',
+    description:
+      'Wrote and published the definitive guide to Oklahoma Mechanics and Materialmen\'s Lien law.',
+    isNumber: false,
+  },
+  {
+    value: 100,
+    label: 'Attorneys Trained',
+    description:
+      'Trusted by the legal community to teach CLE courses on construction law and lien practice.',
+    isNumber: true,
+    suffix: '+',
+  },
+];
 
 const services = [
-    {
-        icon: FileText,
-        title: "Contract Negotiation",
-        description: "Drafting and reviewing AIA and ConsensusDocs to shift risk and protect margins before ground is broken."
-    },
-    {
-        icon: Hammer,
-        title: "Lien & Bond Claims",
-        description: "Aggressive enforcement of payment rights. We wrote the book on Oklahoma lien law—literally."
-    },
-    {
-        icon: ShieldAlert,
-        title: "Defect Litigation",
-        description: "Defending against negligence claims and prosecuting construction defect cases with technical precision."
-    },
-    {
-        icon: HardHat,
-        title: "OSHA & Compliance",
-        description: "Navigating regulatory frameworks and defending against citations to keep job sites running."
-    }
+  {
+    icon: FileText,
+    title: 'Contract Drafting & Review',
+    description:
+      'Drafting, reviewing, and negotiating AIA, ConsensusDocs, and custom construction contracts to protect your margins and allocate risk before the first shovel hits dirt.',
+    statute: 'Okla. Stat. tit. 15, Contract Law',
+  },
+  {
+    icon: Hammer,
+    title: 'Mechanics Lien Claims',
+    description:
+      'Filing, perfecting, and enforcing Mechanics and Materialmen\'s Liens under Oklahoma\'s Title 42. Gary literally wrote the book on this process.',
+    statute: 'Okla. Stat. tit. 42, SS 141-153',
+  },
+  {
+    icon: Shield,
+    title: 'Payment Bond Claims',
+    description:
+      'Pursuing payment bond claims on public projects where lien rights do not apply. Holding sureties accountable when general contractors fail to pay.',
+    statute: 'Okla. Stat. tit. 61, SS 1-2',
+  },
+  {
+    icon: Scale,
+    title: 'Construction Defect Litigation',
+    description:
+      'Prosecuting and defending construction defect claims with technical precision. From foundation issues to envelope failures, we handle the complex disputes.',
+  },
+  {
+    icon: HardHat,
+    title: 'OSHA Defense & Compliance',
+    description:
+      'Defending against OSHA citations and building compliance programs that keep your job sites running and your workers safe.',
+  },
+  {
+    icon: Gavel,
+    title: 'Dispute Resolution',
+    description:
+      'Mediation, arbitration, and litigation of construction disputes. When negotiations stall, we bring the leverage and preparation to resolve the matter.',
+  },
+];
+
+const overviewParagraphs = [
+  'Oklahoma construction law is governed by a complex framework of statutes, regulations, and case law that touches every phase of a project. From the initial bid to final closeout, legal issues can arise that threaten schedules, budgets, and business relationships. Understanding these issues before they become disputes is the foundation of effective construction law practice.',
+  'Gary Quinnett has spent over three decades in the construction law trenches. He wrote the LexisNexis treatise on Oklahoma construction law and authored the Oklahoma Mechanics and Materialmen\'s Lien Book. When other attorneys have questions about lien deadlines, bond claims, or contract risk allocation, they call Gary.',
+  'Oklahoma\'s lien statutes under Title 42 provide powerful tools for contractors, subcontractors, and suppliers to secure payment for work performed. But these rights come with strict procedural requirements. Pre-lien notices, filing deadlines, and enforcement timelines must be followed precisely, or the right to payment can be lost entirely.',
+  'Whether you are a general contractor protecting margins on a multimillion-dollar project, a subcontractor fighting for payment you have earned, or a property owner managing risk on new construction, Gary brings the depth of knowledge and courtroom experience to protect your interests at every stage.',
+];
+
+const whoWeRepresent = [
+  'General Contractors',
+  'Subcontractors',
+  'Material Suppliers',
+  'Property Owners',
+  'Architects & Engineers',
+  'Equipment Rental Companies',
+];
+
+const processSteps = [
+  {
+    title: 'Consultation',
+    description:
+      'We review your project, contracts, and situation to identify risks and opportunities.',
+  },
+  {
+    title: 'Strategy',
+    description:
+      'We develop a clear legal strategy tailored to your goals, timeline, and budget.',
+  },
+  {
+    title: 'Execution',
+    description:
+      'We implement the plan with precision, whether that means filing liens, negotiating, or litigating.',
+  },
+  {
+    title: 'Resolution',
+    description:
+      'We drive the matter to a conclusion that protects your project and your bottom line.',
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Gary saved our company over $400,000 on a lien claim that two other firms said was dead. He found the path forward when nobody else could.',
+    author: 'Mike R.',
+    location: 'Oklahoma City, OK',
+  },
+  {
+    quote:
+      'We had a payment dispute on a major commercial project and Gary\'s knowledge of lien law was unmatched. He got us paid in full.',
+    author: 'David T.',
+    location: 'Tulsa, OK',
+  },
+];
+
+const faqs = [
+  {
+    question: 'How do I file a mechanics lien in Oklahoma?',
+    answer:
+      'Filing a mechanics lien in Oklahoma requires several steps. First, you must provide a pre-lien notice within 75 days of last furnishing labor or materials. Then, the lien statement must be filed with the county clerk in the county where the property is located within 90 days of last furnishing. The lien statement must include specific information including the amount claimed, the property description, and the name of the property owner. An action to enforce the lien must be filed within one year of the last date of furnishing.',
+    statute: 'Okla. Stat. tit. 42, SS 142',
+  },
+  {
+    question: 'What is the deadline for filing a lien in Oklahoma?',
+    answer:
+      'Oklahoma requires that a mechanics lien statement be filed within 90 days after the last date on which labor was performed or materials were furnished. However, the pre-lien notice requirement has a 75-day deadline from the last date of furnishing. Missing either deadline can result in the permanent loss of your lien rights. These deadlines are strictly enforced by Oklahoma courts, so it is critical to track your dates carefully and act promptly.',
+    statute: 'Okla. Stat. tit. 42, SS 142.1',
+  },
+  {
+    question: 'Do I need a lawyer to file a mechanics lien?',
+    answer:
+      'While Oklahoma law does not require an attorney to file a mechanics lien, the process involves strict statutory requirements that, if not followed precisely, can invalidate your claim. The pre-lien notice, lien statement, and enforcement action all have specific content requirements and deadlines. A single error in the property description, the amount claimed, or the timing of the filing can eliminate your right to payment. Given the complexity and the stakes involved, working with an attorney experienced in Oklahoma lien law is strongly recommended.',
+  },
+  {
+    question: 'Can I file a lien on a public project in Oklahoma?',
+    answer:
+      'No. Under Oklahoma law, you cannot file a mechanics lien against public property. However, Oklahoma requires payment bonds on most public construction projects. If you are unpaid on a public project, your remedy is a claim against the payment bond posted by the general contractor. Payment bond claims have their own notice and timing requirements that differ from the mechanics lien process. Acting quickly is essential because bond claim deadlines can be shorter than lien filing deadlines.',
+    statute: 'Okla. Stat. tit. 61, SS 1',
+  },
+  {
+    question: 'What happens if I miss the pre-lien notice deadline?',
+    answer:
+      'If you miss the 75-day pre-lien notice deadline in Oklahoma, you lose your right to file a mechanics lien for the work or materials covered by that notice period. However, this does not necessarily mean you have no remedy. You may still have breach of contract claims, unjust enrichment claims, or bond claims depending on the project type. Additionally, if you continue to furnish labor or materials after the missed notice period, you may be able to file a new pre-lien notice covering the subsequent work. Consulting with a construction attorney immediately is critical to preserve whatever rights remain.',
+  },
+  {
+    question: 'How much does it cost to file a mechanics lien?',
+    answer:
+      'The county clerk filing fee for a mechanics lien in Oklahoma is relatively modest, typically under $50. However, the true cost involves ensuring the lien is properly prepared, properly timed, and properly enforceable. Attorney fees for preparing and filing a lien vary depending on the complexity of the claim. Many contractors find that the cost of professional lien filing is a small fraction of the amount recovered. If enforcement litigation is required, Oklahoma law allows the prevailing party to recover reasonable attorney fees in lien actions, making the investment even more worthwhile.',
+    statute: 'Okla. Stat. tit. 42, SS 176',
+  },
+];
+
+const relatedPractices = [
+  {
+    title: 'Real Estate Law',
+    description:
+      'Purchase agreements, commercial leasing, title work, and property dispute resolution for Oklahoma owners and developers.',
+    href: '/real-estate-law',
+  },
+  {
+    title: 'Oil & Gas Law',
+    description:
+      'Lease negotiation, title opinions, OCC regulatory work, and royalty disputes for Oklahoma energy stakeholders.',
+    href: '/oil-and-gas-law',
+  },
+  {
+    title: 'Mergers & Acquisitions',
+    description:
+      'Deal structuring, due diligence, and risk allocation for business buyers, sellers, and private equity groups.',
+    href: '/mergers-and-acquisitions',
+  },
 ];
 
 const ConstructionLaw = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
+  return (
+    <motion.div
+      className="min-h-screen will-change-transform"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={pageTransition}
+    >
+      <SEO
+        title="Oklahoma Construction Lawyer"
+        description="Oklahoma's authority on construction law and mechanics liens. Contract drafting, lien claims, payment bond claims, defect litigation, and OSHA defense. Author of the LexisNexis treatise and Oklahoma M&M Lien Book."
+        path="/construction-law"
+      />
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Hero Animations
-            gsap.fromTo('.hero-title',
-                { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: 'power4.out', stagger: 0.1 }
-            );
+      <PracticeHero
+        title="Oklahoma Construction Law"
+        titleAccent="."
+        subtitle="From bid to closeout, Gary Quinnett protects contractors, owners, and design professionals. He wrote the book on Oklahoma lien law. Literally."
+        backgroundImage="/hero-image.jpg"
+      />
 
-            // Service Cards Stagger
-            gsap.fromTo('.service-card',
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '.services-grid',
-                        start: 'top 80%'
-                    }
-                }
-            );
+      <AuthorityStrip credentials={credentials} />
 
-            // Parallax image
-            gsap.to('.hero-image', {
-                yPercent: 30,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.hero-section',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: true
-                }
-            });
+      <PracticeOverview
+        title="Built on"
+        titleAccent="Authority."
+        paragraphs={overviewParagraphs}
+        statuteRef="Primary statutory framework: Okla. Stat. tit. 42, Mechanics and Materialmen's Liens"
+        listTitle="Who We Represent"
+        listIcon={HardHat}
+        listItems={whoWeRepresent}
+        ctaText="Discuss Your Construction Matter"
+      />
 
-        }, containerRef);
+      <ServicesGrid
+        title="Construction Law Services"
+        subtitle="Specialized legal counsel for every phase of the construction lifecycle."
+        services={services}
+      />
 
-        return () => ctx.revert();
-    }, []);
+      <ProcessSteps steps={processSteps} />
 
-    return (
-        <motion.div
-            ref={containerRef}
-            className="min-h-screen bg-white text-gq-dark will-change-transform"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={pageTransition}
-        >
-            <SEO title="Oklahoma Construction Lawyer" description="Oklahoma's go-to counsel for contractors, subcontractors, and suppliers. Contract negotiation, lien claims, and dispute resolution." path="/construction-law" />
-            {/* HERO SECTION */}
-            <section className="hero-section relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
-                <div className="absolute inset-0 z-0 opacity-40">
-                    <img
-                        src="/hero-image.jpg" // Fallback/Placeholder - ideally a construction specific one
-                        alt="Construction Site"
-                        className="hero-image w-full h-[120%] object-cover object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-gq-dark via-gq-dark/90 to-transparent"></div>
-                </div>
+      <PracticeTestimonials testimonials={testimonials} />
 
-                <div className="container-gq relative z-10 pt-20 text-white">
-                    <div className="max-w-4xl">
-                        <div className="flex items-center gap-4 mb-6 hero-title opacity-0">
-                            <div className="w-12 h-1 bg-gq-gold"></div>
-                            <span className="font-bold tracking-widest uppercase text-gq-gold">Practice Areas</span>
-                        </div>
-                        <h1 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-8 hero-title opacity-0">
-                            Construction <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Law.</span>
-                        </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed hero-title opacity-0">
-                            We build the legal frameworks that build Oklahoma. From bid to closeout, we protect contractors, owners, and design professionals.
-                        </p>
-                    </div>
-                </div>
-            </section>
+      <PracticeFAQ faqs={faqs} schemaEnabled />
 
-            {/* OVERVIEW SECTION */}
-            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-white">
-                <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-                    <div>
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-8 text-gq-dark">
-                            The Foundation of <br />
-                            <span className="text-gq-gold">Your Project.</span>
-                        </h2>
-                        <div className="space-y-6 text-lg text-gq-dark/80 leading-relaxed">
-                            <p>
-                                Construction is complex. Disputes shouldn't be. We understand that on a job site,
-                                time is money and delays are fatal. Our practice is built on rapid, decisive intervention.
-                            </p>
-                            <p>
-                                Whether you are fighting for payment on a completed job, defending against a defect claim,
-                                or navigating a complex public works bid, we bring 34 years of industry-specific experience to the table.
-                            </p>
-                        </div>
-                        <div className="mt-10">
-                            <a href="/contact" className="inline-flex items-center gap-2 font-bold text-gq-dark border-b-2 border-gq-gold pb-1 hover:text-gq-gold transition-colors">
-                                <span>Discuss Your Project</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="relative">
-                        <div className="absolute -inset-4 bg-gq-gold/5 rounded-2xl -z-10 transform rotate-3"></div>
-                        <div className="bg-gq-dark p-6 sm:p-8 md:p-12 rounded-xl text-white shadow-2xl">
-                            <h3 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
-                                <HardHat className="text-gq-gold w-8 h-8" />
-                                <span>Who We Represent</span>
-                            </h3>
-                            <ul className="space-y-4">
-                                {['General Contractors', 'Subcontractors', 'Material Suppliers', 'Property Owners', 'Architects & Engineers'].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-white/80">
-                                        <CheckCircle2 className="w-5 h-5 text-gq-gold flex-shrink-0" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <RelatedPractices practices={relatedPractices} />
 
-            {/* SERVICES GRID */}
-            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-gq-light-gradient">
-                <div className="container-gq">
-                    <div className="text-center mb-10 sm:mb-16 lg:mb-20">
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">Core Competencies</h2>
-                        <p className="text-gq-dark/60 max-w-2xl mx-auto">Specialized legal services tailored to the construction lifecycle.</p>
-                    </div>
-
-                    <div className="services-grid grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {services.map((service, idx) => {
-                            const Icon = service.icon;
-                            return (
-                                <div key={idx} className="service-card group bg-white p-6 sm:p-8 lg:p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
-                                    <div className="w-16 h-16 bg-gq-gold/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-gq-gold group-hover:text-white transition-colors duration-500">
-                                        <Icon className="w-8 h-8 text-gq-gold group-hover:text-white transition-colors duration-500" />
-                                    </div>
-                                    <h3 className="font-serif text-2xl font-bold mb-4 text-gq-dark">{service.title}</h3>
-                                    <p className="text-gq-dark/70 leading-relaxed mb-6">{service.description}</p>
-                                    <div className="w-12 h-1 bg-gq-gold/20 group-hover:w-full group-hover:bg-gq-gold transition-all duration-500 rounded-full"></div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA SECTION */}
-            <section className="py-16 sm:py-20 lg:py-24 bg-gq-dark text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gq-gold/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
-
-                <div className="container-gq text-center relative z-10">
-                    <h2 className="font-serif text-4xl md:text-6xl font-bold mb-8">Ready to break ground?</h2>
-                    <p className="text-xl text-white/70 max-w-2xl mx-auto mb-10">
-                        Don't let legal hurdles delay your project. Schedule a strategic consultation today.
-                    </p>
-                    <a href="/contact" className="inline-flex btn-primary bg-white text-gq-dark hover:bg-gq-gold hover:text-white border-none py-4 px-8 text-xl">
-                        Contact Us
-                    </a>
-                </div>
-            </section>
-
-        </motion.div>
-    );
+      <PracticeCTA
+        title="Ready to Protect Your Project?"
+        description="Do not let legal issues derail your construction project. Schedule a strategic consultation with Gary Quinnett and get the clarity you need to move forward."
+      />
+    </motion.div>
+  );
 };
 
 export default ConstructionLaw;
