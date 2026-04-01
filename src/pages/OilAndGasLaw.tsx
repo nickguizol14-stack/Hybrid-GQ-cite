@@ -1,214 +1,259 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../lib/transitions';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FileCheck, Scale, History, ArrowRight, CheckCircle2, Droplet, Cog } from 'lucide-react';
+import {
+  FileCheck,
+  Scale,
+  History,
+  Cog,
+  Handshake,
+  DollarSign,
+  Droplet,
+} from 'lucide-react';
 import SEO from '../components/SEO';
 
-gsap.registerPlugin(ScrollTrigger);
+import PracticeHero from '../components/practice/PracticeHero';
+import AuthorityStrip from '../components/practice/AuthorityStrip';
+import PracticeOverview from '../components/practice/PracticeOverview';
+import ServicesGrid from '../components/practice/ServicesGrid';
+import ProcessSteps from '../components/practice/ProcessSteps';
+import PracticeTestimonials from '../components/practice/PracticeTestimonials';
+import PracticeFAQ from '../components/practice/PracticeFAQ';
+import RelatedPractices from '../components/practice/RelatedPractices';
+import PracticeCTA from '../components/practice/PracticeCTA';
+
+/* ------------------------------------------------------------------ */
+/*  Oil & Gas Law Page                                                */
+/* ------------------------------------------------------------------ */
+
+const credentials = [
+  {
+    value: 34,
+    label: 'Years Focused',
+    description:
+      'More than three decades dedicated to Oklahoma business and energy law.',
+    isNumber: true as const,
+  },
+  {
+    value: 'Treatise',
+    label: 'LexisNexis Author',
+    description:
+      'Author of the LexisNexis treatise on Oklahoma construction and business law.',
+    isNumber: false as const,
+  },
+  {
+    value: 'Since 1982',
+    label: 'Industry Landman',
+    description:
+      'Gary began his career in the energy industry as a landman before earning his law degree.',
+    isNumber: false as const,
+  },
+  {
+    value: 100,
+    label: 'Attorneys Trained',
+    description:
+      'Exposed more than 100 attorneys to advanced CLE on Oklahoma energy and business law topics.',
+    isNumber: true as const,
+    suffix: '+',
+  },
+];
+
+const overviewParagraphs = [
+  'Oklahoma sits at the center of American energy. Mineral rights, surface rights, royalty interests, and regulatory obligations intersect in ways that are unique to this state. Gary Quinnett has navigated that intersection since 1982, first as a landman walking title in the county courthouses, then as the attorney operators and mineral owners trust when millions of dollars are on the line.',
+  'The Oklahoma Corporation Commission (OCC) regulates spacing, pooling, and unitization in ways that directly affect the value of your mineral and working interests. Whether you are an operator seeking a location exception or a mineral owner responding to a forced pooling application, you need counsel who has appeared before the OCC and understands how those proceedings translate into real-world outcomes.',
+  'Royalty disputes, surface damage claims, and division order title opinions each carry their own statutory framework. Title 52 of the Oklahoma Statutes governs most oil and gas operations, while the Production Revenue Standards Act (52 O.S. 570.1 et seq.) sets strict timelines for royalty payments. Failure to comply can trigger statutory interest, penalties, and litigation.',
+  'Our practice covers the full lifecycle of an energy asset, from the initial lease negotiation through drilling, production, and eventual transfer. We represent operators, mineral owners, surface owners, royalty interest holders, service companies, and working interest partners across Oklahoma.',
+];
 
 const services = [
-    {
-        icon: FileCheck,
-        title: "Lease Negotiation",
-        description: "Maximizing value for mineral owners and securing favorable terms for operators. We know what the market will bear."
-    },
-    {
-        icon: Scale,
-        title: "Surface Damages",
-        description: "Negotiating fair compensation for surface use and resolving disputes between landowners and operators."
-    },
-    {
-        icon: History,
-        title: "Title Examination",
-        description: "Drilling and Division Order Title Opinions that stand up to scrutiny. We trace ownership back to sovereignty."
-    },
-    {
-        icon: Cog,
-        title: "OCC Regulatory",
-        description: "Navigating the Oklahoma Corporation Commission spacing, pooling, and location exception applications."
-    }
+  {
+    icon: Handshake,
+    title: 'Lease Negotiation',
+    description:
+      'Maximizing value for mineral owners and securing favorable terms for operators. We negotiate royalty rates, Pugh clauses, surface use provisions, and shut-in royalty terms that reflect current market conditions.',
+    statute: 'Okla. Stat. tit. 52',
+  },
+  {
+    icon: Scale,
+    title: 'Surface Damage Claims',
+    description:
+      'Negotiating fair compensation for surface use and resolving disputes between landowners and operators under the Oklahoma Surface Damages Act.',
+    statute: '52 O.S. 318.2 et seq.',
+  },
+  {
+    icon: History,
+    title: 'Drilling & Division Order Title Opinions',
+    description:
+      'Full-chain title examination from sovereignty to present. We render drilling and division order title opinions that stand up to scrutiny and satisfy the requirements of the Oklahoma Title Examination Standards.',
+  },
+  {
+    icon: Cog,
+    title: 'OCC Regulatory (Spacing, Pooling, Location Exceptions)',
+    description:
+      'Navigating Oklahoma Corporation Commission applications for well spacing, forced pooling, increased density, location exceptions, and unitization.',
+    statute: '52 O.S. 87.1',
+  },
+  {
+    icon: FileCheck,
+    title: 'Joint Operating Agreements',
+    description:
+      'Drafting and negotiating JOAs based on the AAPL Model Form with Oklahoma-specific modifications for operator authority, non-consent penalties, and accounting procedures.',
+  },
+  {
+    icon: DollarSign,
+    title: 'Royalty Disputes',
+    description:
+      'Enforcing royalty payment obligations under the Production Revenue Standards Act. We handle underpayment claims, deduction disputes, and statutory interest recovery.',
+    statute: '52 O.S. 570.1 et seq.',
+  },
+];
+
+const processSteps = [
+  {
+    title: 'Consultation',
+    description:
+      'We review your mineral interests, leases, and regulatory posture to identify risks and opportunities.',
+  },
+  {
+    title: 'Strategy',
+    description:
+      'A clear legal strategy tailored to your position, whether you are the operator, mineral owner, or surface owner.',
+  },
+  {
+    title: 'Execution',
+    description:
+      'Filing applications, negotiating agreements, rendering title opinions, and appearing before the OCC.',
+  },
+  {
+    title: 'Resolution',
+    description:
+      'Closing the transaction, securing the order, or resolving the dispute with measurable results.',
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Gary understood our business before we even had to explain it. He has been in the oil patch his entire career and it shows in the quality of his counsel.',
+    author: 'Oklahoma Operator',
+    location: 'Oklahoma City, OK',
+  },
+  {
+    quote:
+      'We needed someone who could handle the legal side and understand the business side. Gary delivered on both. His title opinions are thorough and his negotiation skills are exceptional.',
+    author: 'Independent Producer',
+    location: 'Tulsa, OK',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is an OCC spacing and pooling application?',
+    answer:
+      'The Oklahoma Corporation Commission requires operators to obtain spacing orders before drilling. A spacing order establishes the size and shape of the drilling and spacing unit. If the operator cannot obtain voluntary leases from all mineral owners within the unit, the operator may file a pooling application under 52 O.S. 87.1(e) to force-pool the unleased interests. Mineral owners who are pooled receive statutory options including the right to participate as a working interest owner, accept a bonus and royalty, or elect cash consideration. Understanding the economic implications of each option is critical.',
+    statute: '52 O.S. 87.1(e)',
+  },
+  {
+    question: 'How are surface damages calculated in Oklahoma?',
+    answer:
+      'Under the Oklahoma Surface Damages Act (52 O.S. 318.2 et seq.), an operator must negotiate with the surface owner before entering the property. If the parties cannot agree, the operator must file a surface damage action with the district court. Damages are calculated based on the fair market value of the surface land actually taken, the loss of use of the surface, and any damage to improvements, crops, or timber. The court appoints appraisers to establish the amount, and the operator must post a bond before entry.',
+    statute: '52 O.S. 318.2 - 318.9',
+  },
+  {
+    question: 'What is a division order title opinion?',
+    answer:
+      'A division order title opinion is a legal document rendered by a licensed Oklahoma attorney that examines the chain of title for a specific well or unit and determines the ownership of all mineral, royalty, and overriding royalty interests. Operators rely on this opinion to distribute production revenue to the correct parties. The opinion traces ownership from the original patent or land grant through all subsequent conveyances, probates, and court orders. In Oklahoma, these opinions must comply with the Oklahoma Title Examination Standards adopted by the Oklahoma Bar Association.',
+  },
+  {
+    question: 'Do I need a lawyer for an oil and gas lease in Oklahoma?',
+    answer:
+      'While there is no statutory requirement to have an attorney review your oil and gas lease, it is strongly recommended. A standard lease form may contain provisions that are unfavorable to the mineral owner, such as low royalty rates, broad deduction clauses, inadequate shut-in royalty provisions, or the absence of a Pugh clause. A Pugh clause limits the lease to the depths or units actually being produced, which prevents the operator from holding your entire mineral estate by production from a single well. An experienced attorney can negotiate these terms before you sign and protect your interests for the life of the lease.',
+  },
+];
+
+const relatedPractices = [
+  {
+    title: 'Construction Law',
+    description:
+      'Contract drafting, mechanics lien claims, and construction dispute resolution across Oklahoma.',
+    href: '/construction-law',
+  },
+  {
+    title: 'Real Estate Law',
+    description:
+      'Commercial acquisitions, title review, leasing, and quiet title actions for Oklahoma properties.',
+    href: '/real-estate-law',
+  },
+  {
+    title: 'Mergers & Acquisitions',
+    description:
+      'Deal structuring, due diligence, and risk allocation for business transactions.',
+    href: '/mergers-and-acquisitions',
+  },
 ];
 
 const OilAndGasLaw = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
+  return (
+    <motion.div
+      className="min-h-screen will-change-transform"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={pageTransition}
+    >
+      <SEO
+        title="Oklahoma Oil and Gas Lawyer"
+        description="Representing operators, mineral owners, and surface owners in lease negotiation, title examination, OCC regulatory, and royalty disputes across Oklahoma. 34 years of energy law experience."
+        path="/oil-and-gas-law"
+      />
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Hero Animations
-            gsap.fromTo('.hero-title-og',
-                { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: 'power4.out', stagger: 0.1 }
-            );
+      <PracticeHero
+        title="Oklahoma Oil & Gas Law"
+        titleAccent="."
+        subtitle="Gary has worked in Oklahoma's energy industry since 1982, first as a landman, then as the attorney operators and mineral owners trust with their most complex matters."
+        backgroundImage="/hero-image.jpg"
+      />
 
-            // Service Cards Stagger
-            gsap.fromTo('.service-card-og',
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '.services-grid-og',
-                        start: 'top 80%'
-                    }
-                }
-            );
+      <AuthorityStrip credentials={credentials} />
 
-            // Parallax image
-            gsap.to('.hero-image-og', {
-                yPercent: 30,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.hero-section-og',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: true
-                }
-            });
+      <PracticeOverview
+        title="Energy Law With"
+        titleAccent="Real-World Experience"
+        paragraphs={overviewParagraphs}
+        statuteRef="Okla. Stat. tit. 52; Production Revenue Standards Act, 52 O.S. 570.1 et seq."
+        listTitle="Who We Represent"
+        listIcon={Droplet}
+        listItems={[
+          'Operators',
+          'Mineral Owners',
+          'Surface Owners',
+          'Royalty Interest Holders',
+          'Service Companies',
+          'Working Interest Partners',
+        ]}
+        ctaText="Discuss Your Energy Matter"
+      />
 
-        }, containerRef);
+      <ServicesGrid
+        title="Comprehensive Energy Counsel"
+        subtitle="From the courthouse to the Corporation Commission, we cover the full lifecycle of Oklahoma oil and gas operations."
+        services={services}
+      />
 
-        return () => ctx.revert();
-    }, []);
+      <ProcessSteps steps={processSteps} />
 
-    return (
-        <motion.div
-            ref={containerRef}
-            className="min-h-screen bg-gq-dark text-white will-change-transform"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={pageTransition}
-        >
-            <SEO title="Oklahoma Oil and Gas Lawyer" description="Representing operators, mineral owners, and service companies in lease negotiation, title examination, and regulatory matters." path="/oil-and-gas-law" />
-            {/* HERO SECTION */}
-            <section className="hero-section-og relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-black flex items-center">
-                <div className="absolute inset-0 z-0 opacity-50">
-                    <img
-                        src="/hero-image.jpg" // Fallback
-                        alt="Oil Rig at Sunset"
-                        className="hero-image-og w-full h-[120%] object-cover object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
-                </div>
+      <PracticeTestimonials testimonials={testimonials} />
 
-                <div className="container-gq relative z-10 pt-20 text-white">
-                    <div className="max-w-4xl">
-                        <div className="flex items-center gap-4 mb-6 hero-title-og opacity-0">
-                            <div className="w-12 h-1 bg-gq-gold"></div>
-                            <span className="font-bold tracking-widest uppercase text-gq-gold">Practice Areas</span>
-                        </div>
-                        <h1 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-8 hero-title-og opacity-0">
-                            Oil & Gas <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gq-gold to-white">Energy.</span>
-                        </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed hero-title-og opacity-0">
-                            Legal power for the industry that powers Oklahoma. Representing operators, mineral owners, and service companies.
-                        </p>
-                    </div>
-                </div>
-            </section>
+      <PracticeFAQ faqs={faqs} />
 
-            {/* OVERVIEW SECTION */}
-            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-gq-dark-warm">
-                <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-                    <div>
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-8 text-white">
-                            High Stakes. <br />
-                            <span className="text-gq-gold">Deep Expertise.</span>
-                        </h2>
-                        <div className="space-y-6 text-lg text-white/80 leading-relaxed">
-                            <p>
-                                The energy sector operates in a boom-or-bust environment where timing and precision are everything.
-                                We provide stability and strategic foresight in a volatile market.
-                            </p>
-                            <p>
-                                Whether you are securing drilling rights, negotiating a joint operating agreement, or resolving a royalty dispute,
-                                we understand both the legal landscape and the geology of the deal.
-                            </p>
-                        </div>
-                        <div className="mt-10">
-                            <a href="/contact" className="inline-flex items-center gap-2 font-bold text-white border-b-2 border-gq-gold pb-1 hover:text-gq-gold transition-colors">
-                                <span>Protect Your Rights</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="relative">
-                        <div className="absolute -inset-4 bg-gq-gold/5 rounded-2xl -z-10 transform rotate-2"></div>
-                        <div className="bg-black/40 backdrop-blur-md p-6 sm:p-8 md:p-12 rounded-xl text-white shadow-2xl border border-white/10">
-                            <h3 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
-                                <Droplet className="text-gq-gold w-8 h-8" />
-                                <span>Industry Focus</span>
-                            </h3>
-                            <ul className="space-y-4">
-                                {['Independent Operators', 'Mineral & Royalty Owners', 'Drilling Contractors', 'Service Providers', 'Investors'].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-white/80">
-                                        <CheckCircle2 className="w-5 h-5 text-gq-gold flex-shrink-0" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <RelatedPractices practices={relatedPractices} />
 
-            {/* SERVICES GRID */}
-            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-gq-dark relative overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-                    <div className="absolute top-0 left-0 w-full h-full"
-                        style={{ backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`, backgroundSize: '40px 40px' }}>
-                    </div>
-                </div>
-
-                <div className="container-gq relative z-10">
-                    <div className="text-center mb-10 sm:mb-16 lg:mb-20">
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4 text-white">Comprehensive Counsel</h2>
-                        <p className="text-white/60 max-w-2xl mx-auto">From the courthouse to the corporation commission, we cover the field.</p>
-                    </div>
-
-                    <div className="services-grid-og grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {services.map((service, idx) => {
-                            const Icon = service.icon;
-                            return (
-                                <div key={idx} className="service-card-og group bg-white/5 backdrop-blur-sm p-6 sm:p-8 lg:p-10 rounded-2xl shadow-lg border border-white/10 hover:border-gq-gold/30 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2">
-                                    <div className="w-16 h-16 bg-gq-gold/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-gq-gold group-hover:text-white transition-colors duration-500">
-                                        <Icon className="w-8 h-8 text-gq-gold group-hover:text-white transition-colors duration-500" />
-                                    </div>
-                                    <h3 className="font-serif text-2xl font-bold mb-4 text-white">{service.title}</h3>
-                                    <p className="text-white/70 leading-relaxed mb-6">{service.description}</p>
-                                    <div className="w-12 h-1 bg-gq-gold/20 group-hover:w-full group-hover:bg-gq-gold transition-all duration-500 rounded-full"></div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA SECTION */}
-            <section className="py-16 sm:py-20 lg:py-24 bg-black text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gq-gold/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
-
-                <div className="container-gq text-center relative z-10">
-                    <h2 className="font-serif text-4xl md:text-6xl font-bold mb-8">Fueling your success.</h2>
-                    <p className="text-xl text-white/70 max-w-2xl mx-auto mb-10">
-                        Decades of experience in the energy sector.
-                    </p>
-                    <a href="/contact" className="inline-flex btn-primary bg-white text-gq-dark hover:bg-gq-gold hover:text-white border-none py-4 px-8 text-xl">
-                        Contact Us
-                    </a>
-                </div>
-            </section>
-
-        </motion.div>
-    );
+      <PracticeCTA
+        title="Ready to Protect Your Interests?"
+        description="Whether you are an operator, mineral owner, or surface owner, Gary Quinnett brings four decades of energy industry experience to every matter."
+      />
+    </motion.div>
+  );
 };
 
 export default OilAndGasLaw;

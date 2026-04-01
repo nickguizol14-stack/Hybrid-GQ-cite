@@ -1,207 +1,257 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../lib/transitions';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Briefcase, TrendingUp, ShieldCheck, FileSearch, ArrowRight, CheckCircle2 } from 'lucide-react';
+import {
+  Briefcase,
+  FileSearch,
+  ShieldCheck,
+  Users,
+  Scale,
+  Cog,
+} from 'lucide-react';
 import SEO from '../components/SEO';
 
-gsap.registerPlugin(ScrollTrigger);
+import PracticeHero from '../components/practice/PracticeHero';
+import AuthorityStrip from '../components/practice/AuthorityStrip';
+import PracticeOverview from '../components/practice/PracticeOverview';
+import ServicesGrid from '../components/practice/ServicesGrid';
+import ProcessSteps from '../components/practice/ProcessSteps';
+import PracticeTestimonials from '../components/practice/PracticeTestimonials';
+import PracticeFAQ from '../components/practice/PracticeFAQ';
+import RelatedPractices from '../components/practice/RelatedPractices';
+import PracticeCTA from '../components/practice/PracticeCTA';
+
+/* ------------------------------------------------------------------ */
+/*  Mergers & Acquisitions Page                                       */
+/* ------------------------------------------------------------------ */
+
+const credentials = [
+  {
+    value: 34,
+    label: 'Years Focused',
+    description:
+      'More than three decades of legal practice dedicated to Oklahoma business and commercial law.',
+    isNumber: true as const,
+  },
+  {
+    value: 'Treatise',
+    label: 'LexisNexis Author',
+    description:
+      'Author of the LexisNexis treatise on Oklahoma construction and business law.',
+    isNumber: false as const,
+  },
+  {
+    value: '13 Years',
+    label: 'Fortune 500 Business',
+    description:
+      'Gary spent 13 years in the Fortune 500 corporate world before practicing law, giving him firsthand business acumen.',
+    isNumber: false as const,
+  },
+  {
+    value: 100,
+    label: 'Attorneys Trained',
+    description:
+      'Exposed more than 100 attorneys to advanced CLE on Oklahoma business law, transactions, and deal structuring.',
+    isNumber: true as const,
+    suffix: '+',
+  },
+];
+
+const overviewParagraphs = [
+  'Buying or selling a business is one of the most consequential decisions you will ever make. The transaction touches every part of the enterprise: contracts, employees, intellectual property, real estate, tax obligations, and regulatory compliance. Getting any one of those wrong can erode the value of the deal or create liability that persists long after closing.',
+  'Gary Quinnett brings a perspective that most transaction attorneys lack. Before practicing law, he spent 13 years in the Fortune 500 corporate world. He understands the financial statements, the operational pressures, and the strategic objectives that drive a deal. That background means he negotiates purchase agreements, employment contracts, and non-competes with an understanding of how businesses actually work, not just how they look on paper.',
+  'Oklahoma law governs many aspects of business acquisitions, from the Oklahoma General Corporation Act (18 O.S. 1001 et seq.) to the Oklahoma Uniform Commercial Code for asset transfers. Whether you are structuring an asset purchase, a stock purchase, or a merger, the statutory framework determines your tax treatment, successor liability exposure, and regulatory obligations.',
+  'We represent business sellers, buyers, private equity groups, family-owned businesses, management teams, and corporate boards across Oklahoma. Our practice covers the full deal lifecycle from the letter of intent through post-closing integration and dispute resolution.',
+];
 
 const services = [
-    {
-        icon: Briefcase,
-        title: "Deal Structuring",
-        description: "Asset vs. Stock purchases. Mergers. Reorganizations. We architect the transaction to maximize tax efficiency and liability protection."
-    },
-    {
-        icon: FileSearch,
-        title: "Due Diligence",
-        description: "Deep dive investigation into targets. We uncover the risks lurking in the contracts, employment files, and balance sheets."
-    },
-    {
-        icon: ShieldCheck,
-        title: "Risk Allocation",
-        description: "Drafting definitive agreements that clearly define representations, warranties, and indemnification caps."
-    },
-    {
-        icon: TrendingUp,
-        title: "Post-Closing Identity",
-        description: "Handling non-competes, employment agreements, and transition services to ensure the value you bought stays in the building."
-    }
+  {
+    icon: Briefcase,
+    title: 'Deal Structuring (Asset vs. Stock)',
+    description:
+      'Architecting the transaction to maximize tax efficiency, limit successor liability, and align with your strategic objectives. We analyze the trade-offs between asset purchases and stock purchases for every deal.',
+    statute: '18 O.S. 1001 et seq.',
+  },
+  {
+    icon: FileSearch,
+    title: 'Due Diligence Review',
+    description:
+      'A thorough investigation into the target company. We review contracts, employment files, litigation history, regulatory compliance, real estate, intellectual property, and financial records to uncover hidden risks before you commit.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Risk Allocation & Indemnification',
+    description:
+      'Drafting definitive purchase agreements that clearly define representations, warranties, indemnification caps, baskets, and survival periods. We structure escrow and holdback provisions that protect your downside.',
+  },
+  {
+    icon: Users,
+    title: 'Non-Compete & Employment Agreements',
+    description:
+      'Drafting enforceable non-competition, non-solicitation, and employment agreements under Oklahoma law. We ensure key personnel stay with the business and critical relationships are protected after closing.',
+    statute: '15 O.S. 219A-219B',
+  },
+  {
+    icon: Scale,
+    title: 'Corporate Governance',
+    description:
+      'Advising boards and shareholders on fiduciary duties, shareholder approval requirements, dissenter rights, and corporate formalities required for mergers and acquisitions under the Oklahoma General Corporation Act.',
+    statute: '18 O.S. 1081-1091',
+  },
+  {
+    icon: Cog,
+    title: 'Post-Closing Integration',
+    description:
+      'Handling transition services agreements, assignment and assumption of contracts, regulatory notifications, and employee onboarding to ensure the value you purchased stays intact after the closing table.',
+  },
+];
+
+const processSteps = [
+  {
+    title: 'Consultation',
+    description:
+      'We evaluate the transaction, your objectives, and the regulatory landscape to determine the optimal deal structure.',
+  },
+  {
+    title: 'Strategy',
+    description:
+      'A detailed roadmap covering due diligence scope, deal terms, timeline, and key negotiation points.',
+  },
+  {
+    title: 'Execution',
+    description:
+      'Drafting and negotiating the LOI, purchase agreement, employment contracts, and ancillary documents through closing.',
+  },
+  {
+    title: 'Resolution',
+    description:
+      'Post-closing integration support, earnout monitoring, and dispute resolution if issues arise after the deal closes.',
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Gary understood the business side of our acquisition as well as the legal side. His Fortune 500 background meant he could speak the language of our board and our bankers. That made the entire process faster and smoother.',
+    author: 'Business Owner',
+    location: 'Oklahoma City, OK',
+  },
+  {
+    quote:
+      'We had been through two other law firms before finding Gary. He identified risks in the purchase agreement that nobody else caught and restructured the deal to save us significant tax liability. Worth every penny.',
+    author: 'Private Equity Partner',
+    location: 'Tulsa, OK',
+  },
+];
+
+const faqs = [
+  {
+    question:
+      'What is the difference between an asset purchase and a stock purchase?',
+    answer:
+      'In an asset purchase, the buyer acquires specific assets and assumes only the liabilities it agrees to take on. This gives the buyer more control over what it is purchasing and generally limits successor liability. In a stock purchase, the buyer acquires the ownership interests (stock or membership interests) of the entity, which means it takes on all assets and all liabilities, including unknown liabilities. Asset purchases are more common in small to mid-market transactions because they offer greater flexibility and tax benefits for the buyer, while stock purchases are often preferred by sellers because the gain is typically taxed at capital gains rates.',
+  },
+  {
+    question: 'How long does the M&A due diligence process take?',
+    answer:
+      'The due diligence process typically takes 30 to 90 days, depending on the size and complexity of the target company. For a straightforward small business acquisition, a focused 30-day review may be sufficient. For larger transactions involving multiple locations, extensive contracts, regulatory compliance issues, or pending litigation, 60 to 90 days is more common. The scope of due diligence should be defined in the letter of intent and should cover financial records, contracts, employment matters, litigation, intellectual property, real estate, tax compliance, and regulatory status.',
+  },
+  {
+    question:
+      'What is a representation and warranty in an acquisition?',
+    answer:
+      'Representations and warranties are statements of fact made by the seller (and sometimes the buyer) in the purchase agreement. The seller represents that certain things are true about the business, such as the accuracy of financial statements, the absence of undisclosed liabilities, compliance with laws, and the enforceability of material contracts. If a representation turns out to be false, the buyer may have a claim for indemnification. The survival period, basket, cap, and escrow provisions determine how long these claims last and how much the buyer can recover. These provisions are among the most heavily negotiated terms in any acquisition.',
+  },
+  {
+    question: 'Do I need a lawyer to sell my business in Oklahoma?',
+    answer:
+      'While there is no legal requirement to retain an attorney, selling a business without legal counsel is extremely risky. The purchase agreement alone typically runs 40 to 80 pages and contains representations, warranties, indemnification obligations, non-compete covenants, and closing conditions that will bind you for years after the sale. Tax structuring decisions made at the outset can mean the difference between capital gains treatment and ordinary income rates. An experienced M&A attorney will also coordinate with your accountant, financial advisor, and business broker to ensure all aspects of the transaction are handled properly and your interests are protected through closing and beyond.',
+  },
+];
+
+const relatedPractices = [
+  {
+    title: 'Construction Law',
+    description:
+      'Contract drafting, mechanics lien claims, and construction dispute resolution across Oklahoma.',
+    href: '/construction-law',
+  },
+  {
+    title: 'Real Estate Law',
+    description:
+      'Commercial acquisitions, title review, leasing, and quiet title actions for Oklahoma properties.',
+    href: '/real-estate-law',
+  },
+  {
+    title: 'Oil & Gas Law',
+    description:
+      'Lease negotiation, title opinions, OCC regulatory matters, and royalty disputes for Oklahoma energy interests.',
+    href: '/oil-and-gas-law',
+  },
 ];
 
 const MergersAndAcquisitions = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
+  return (
+    <motion.div
+      className="min-h-screen will-change-transform"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={pageTransition}
+    >
+      <SEO
+        title="Oklahoma Mergers and Acquisitions Attorney"
+        description="Deal structuring, due diligence, risk allocation, and post-closing integration for Oklahoma business transactions. 34 years of legal experience with 13 years of Fortune 500 business acumen."
+        path="/mergers-and-acquisitions"
+      />
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Hero Animations
-            gsap.fromTo('.hero-title-ma',
-                { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: 'power4.out', stagger: 0.1 }
-            );
+      <PracticeHero
+        title="Mergers & Acquisitions"
+        titleAccent="."
+        subtitle="Buying or selling a business is one of the most consequential decisions you'll make. Gary brings 13 years of Fortune 500 business experience and 34 years of legal precision to every deal."
+        backgroundImage="/hero-image.jpg"
+      />
 
-            // Service Cards Stagger
-            gsap.fromTo('.service-card-ma',
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: '.services-grid-ma',
-                        start: 'top 80%'
-                    }
-                }
-            );
+      <AuthorityStrip credentials={credentials} />
 
-            // Parallax image
-            gsap.to('.hero-image-ma', {
-                yPercent: 30,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.hero-section-ma',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: true
-                }
-            });
+      <PracticeOverview
+        title="Business Transactions With"
+        titleAccent="Business Acumen"
+        paragraphs={overviewParagraphs}
+        statuteRef="Oklahoma General Corporation Act, 18 O.S. 1001 et seq."
+        listTitle="Who We Represent"
+        listIcon={Briefcase}
+        listItems={[
+          'Business Sellers',
+          'Business Buyers',
+          'Private Equity Groups',
+          'Family-Owned Businesses',
+          'Management Teams',
+          'Corporate Boards',
+        ]}
+        ctaText="Discuss Your Transaction"
+      />
 
-        }, containerRef);
+      <ServicesGrid
+        title="Full-Lifecycle Deal Support"
+        subtitle="From the letter of intent through post-closing integration, we handle every phase of your transaction."
+        services={services}
+      />
 
-        return () => ctx.revert();
-    }, []);
+      <ProcessSteps steps={processSteps} />
 
-    return (
-        <motion.div
-            ref={containerRef}
-            className="min-h-screen bg-white text-gq-dark will-change-transform"
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={pageTransition}
-        >
-            <SEO title="Oklahoma Mergers and Acquisitions Attorney" description="Legal precision and business acumen for deal structuring, due diligence, risk allocation, and post-closing integration." path="/mergers-and-acquisitions" />
-            {/* HERO SECTION */}
-            <section className="hero-section-ma relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
-                <div className="absolute inset-0 z-0 opacity-40">
-                    <img
-                        src="/hero-image.jpg" // Fallback - ideally a boardroom or handshake high rise custom
-                        alt="Mergers and Acquisitions"
-                        className="hero-image-ma w-full h-[120%] object-cover object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-gq-dark via-gq-dark/90 to-transparent"></div>
-                </div>
+      <PracticeTestimonials testimonials={testimonials} />
 
-                <div className="container-gq relative z-10 pt-20 text-white">
-                    <div className="max-w-4xl">
-                        <div className="flex items-center gap-4 mb-6 hero-title-ma opacity-0">
-                            <div className="w-12 h-1 bg-gq-gold"></div>
-                            <span className="font-bold tracking-widest uppercase text-gq-gold">Practice Areas</span>
-                        </div>
-                        <h1 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-8 hero-title-ma opacity-0">
-                            Mergers & <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Acquisitions.</span>
-                        </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed hero-title-ma opacity-0">
-                            Strategic counsel for the most critical moment in a company's lifecycle. We get the deal done.
-                        </p>
-                    </div>
-                </div>
-            </section>
+      <PracticeFAQ faqs={faqs} />
 
-            {/* OVERVIEW SECTION */}
-            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-white">
-                <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-                    <div>
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-8 text-gq-dark">
-                            Precision in <br />
-                            <span className="text-gq-gold">Every Detail.</span>
-                        </h2>
-                        <div className="space-y-6 text-lg text-gq-dark/80 leading-relaxed">
-                            <p>
-                                Buying or selling a business is not just a legal transaction; it is a transformative event.
-                                It requires an attorney who understands the numbers as well as the law.
-                            </p>
-                            <p>
-                                We approach M&A with a focus on value preservation and risk mitigation. From the Letter of Intent
-                                to the closing table, we ensure your interests are protected and your objectives are met.
-                            </p>
-                        </div>
-                        <div className="mt-10">
-                            <a href="/contact" className="inline-flex items-center gap-2 font-bold text-gq-dark border-b-2 border-gq-gold pb-1 hover:text-gq-gold transition-colors">
-                                <span>Discuss Your Transaction</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="relative">
-                        <div className="absolute -inset-4 bg-gq-dark/5 rounded-2xl -z-10 transform -rotate-1"></div>
-                        <div className="bg-gq-dark p-6 sm:p-8 md:p-12 rounded-xl text-white shadow-2xl">
-                            <h3 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
-                                <Briefcase className="text-gq-gold w-8 h-8" />
-                                <span>Representative Matters</span>
-                            </h3>
-                            <ul className="space-y-4">
-                                {['Family Business Successions', 'Private Equity Exits', 'Asset Purchase Agreements', 'Strategic Acquisitions', 'Corporate Restructuring'].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-white/80">
-                                        <CheckCircle2 className="w-5 h-5 text-gq-gold flex-shrink-0" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <RelatedPractices practices={relatedPractices} />
 
-            {/* SERVICES GRID */}
-            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-gq-light-gradient">
-                <div className="container-gq">
-                    <div className="text-center mb-10 sm:mb-16 lg:mb-20">
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">The Art of the Deal</h2>
-                        <p className="text-gq-dark/60 max-w-2xl mx-auto">Comprehensive support for buyers, sellers, and investors.</p>
-                    </div>
-
-                    <div className="services-grid-ma grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {services.map((service, idx) => {
-                            const Icon = service.icon;
-                            return (
-                                <div key={idx} className="service-card-ma group bg-white p-6 sm:p-8 lg:p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
-                                    <div className="w-16 h-16 bg-gq-gold/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-gq-gold group-hover:text-white transition-colors duration-500">
-                                        <Icon className="w-8 h-8 text-gq-gold group-hover:text-white transition-colors duration-500" />
-                                    </div>
-                                    <h3 className="font-serif text-2xl font-bold mb-4 text-gq-dark">{service.title}</h3>
-                                    <p className="text-gq-dark/70 leading-relaxed mb-6">{service.description}</p>
-                                    <div className="w-12 h-1 bg-gq-gold/20 group-hover:w-full group-hover:bg-gq-gold transition-all duration-500 rounded-full"></div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA SECTION */}
-            <section className="py-16 sm:py-20 lg:py-24 bg-gq-dark text-white relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-
-                <div className="container-gq text-center relative z-10">
-                    <h2 className="font-serif text-4xl md:text-6xl font-bold mb-8">Execute with confidence.</h2>
-                    <p className="text-xl text-white/70 max-w-2xl mx-auto mb-10">
-                        Business moves fast. We move faster.
-                    </p>
-                    <a href="/contact" className="inline-flex btn-primary bg-white text-gq-dark hover:bg-gq-gold hover:text-white border-none py-4 px-8 text-xl">
-                        Contact Us
-                    </a>
-                </div>
-            </section>
-
-        </motion.div>
-    );
+      <PracticeCTA
+        title="Ready to Close Your Deal?"
+        description="Gary Quinnett brings 13 years of Fortune 500 business experience and 34 years of legal precision to every transaction. Let's discuss your deal."
+      />
+    </motion.div>
+  );
 };
 
 export default MergersAndAcquisitions;
