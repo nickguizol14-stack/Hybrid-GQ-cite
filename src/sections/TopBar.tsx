@@ -62,7 +62,7 @@ const TopBar = ({ isScrolled = false }: TopBarProps) => {
         {/* Address */}
         <div
           ref={addressRef}
-          className="flex items-center gap-2 text-sm opacity-90"
+          className="hidden sm:flex items-center gap-2 text-sm opacity-90"
         >
           <MapPin className="w-4 h-4 text-gq-gold" />
           <span className="hidden sm:inline">
@@ -76,7 +76,7 @@ const TopBar = ({ isScrolled = false }: TopBarProps) => {
           <a
             ref={phoneRef}
             href="tel:405-607-2266"
-            className="flex items-center gap-2 text-sm font-medium text-white/90 hover:text-gq-gold transition-colors duration-300 hover:scale-105 transform"
+            className="flex items-center gap-2 text-sm font-medium text-white/90 hover:text-gq-gold transition-colors duration-300 hover:scale-105 transform py-2"
           >
             <Phone className="w-4 h-4 text-gq-gold" />
             <span>(405) 607-2266</span>
@@ -88,7 +88,7 @@ const TopBar = ({ isScrolled = false }: TopBarProps) => {
           <a
             ref={emailRef}
             href="mailto:gary@gq-law.com"
-            className="hidden sm:flex items-center gap-2 text-sm font-medium text-white/90 hover:text-gq-gold transition-colors duration-300 underline-animate"
+            className="hidden sm:flex items-center gap-2 text-sm font-medium text-white/90 hover:text-gq-gold transition-colors duration-300 underline-animate py-2"
           >
             <Mail className="w-4 h-4 text-gq-gold" />
             <span>gary@gq-law.com</span>

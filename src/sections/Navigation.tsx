@@ -245,7 +245,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden text-gq-light p-2"
+          className="lg:hidden text-gq-light p-3 min-w-[44px] min-h-[44px] flex items-center justify-center"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
@@ -266,7 +266,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="lg:hidden absolute top-full left-0 right-0 bg-[#2d2418] shadow-2xl overflow-hidden pointer-events-auto border-b border-[#C5A869]/20"
           >
-            <div className="container-gq py-6 flex flex-col gap-5 max-h-[80vh] overflow-y-auto">
+            <div className="container-gq py-4 flex flex-col gap-3 max-h-[75vh] overflow-y-auto">
               {navLinks.map((link) => (
                 <div key={link.label} className="flex flex-col">
                   {link.children ? (
@@ -293,7 +293,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
                                   key={child.label}
                                   href={child.href}
                                   onClick={(e) => handleNavClick(e, child.href)}
-                                  className={`text-base py-2 px-2 rounded hover:bg-white/5 ${location.pathname === child.href ? 'text-gq-gold' : 'text-gq-light/70'}`}
+                                  className={`text-base py-2.5 px-4 rounded hover:bg-white/5 ${location.pathname === child.href ? 'text-gq-gold' : 'text-gq-light/70'}`}
                                 >
                                   {child.label}
                                 </a>
@@ -307,7 +307,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
                     <a
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className={`text-gq-light/90 hover:text-gq-gold transition-colors duration-300 text-lg font-medium py-2 cursor-pointer border-b border-transparent ${location.pathname === link.href ? 'text-gq-gold border-gq-gold/30' : ''
+                      className={`text-gq-light/90 hover:text-gq-gold transition-colors duration-300 text-base font-medium py-3 cursor-pointer border-b border-transparent ${location.pathname === link.href ? 'text-gq-gold border-gq-gold/30' : ''
                         }`}
                     >
                       {link.label}

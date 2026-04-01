@@ -124,7 +124,7 @@ const Hero = () => {
           {/* Tagline */}
           <h1
             ref={taglineRef}
-            className="font-serif font-medium text-gq-light text-[3.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] mb-6 sm:mb-8 drop-shadow-lg"
+            className="font-serif font-medium text-gq-light text-[2.75rem] leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] mb-6 sm:mb-8 drop-shadow-lg"
           >
             We play to win.
           </h1>
@@ -148,7 +148,7 @@ const Hero = () => {
                 e.preventDefault();
                 document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-flex btn-primary text-base sm:text-lg tracking-wide group py-4 px-10 border border-[#B03A4A]/30 backdrop-blur-sm"
+              className="inline-flex btn-primary text-sm sm:text-lg tracking-wide group py-3 sm:py-4 px-6 sm:px-10 border border-[#B03A4A]/30 backdrop-blur-sm"
             >
               <span>Schedule Your Consultation</span>
               <svg
