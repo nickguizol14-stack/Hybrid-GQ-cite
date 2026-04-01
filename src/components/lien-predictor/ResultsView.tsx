@@ -17,7 +17,7 @@ const RATING_LABELS = {
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: 0.3 + i * 0.25, duration: 0.7, ease: 'easeOut' } }),
+  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: 0.3 + i * 0.25, duration: 0.7, ease: [0.4, 0, 0.2, 1] as const } }),
 };
 
 export default function ResultsView({ result, onSaveShare }: Props) {
