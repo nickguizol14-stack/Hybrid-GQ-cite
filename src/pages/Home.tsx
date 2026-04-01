@@ -1,9 +1,10 @@
 import Hero from '../sections/Hero';
 import Credentials from '../sections/Credentials';
+import WhyGary from '../sections/WhyGary';
 import PracticeAreas from '../sections/PracticeAreas';
 import LienPredictor from '../sections/LienPredictor';
-// import About from '../sections/About'; // Removed unused import
 import Testimonials from '../sections/Testimonials';
+import ResourcesPreview from '../sections/ResourcesPreview';
 import Contact from '../sections/Contact';
 
 import { motion } from 'framer-motion';
@@ -42,12 +43,11 @@ const Home = () => {
 }} />
             <Hero />
             <Credentials />
+            <WhyGary />
             <PracticeAreas />
             <LienPredictor />
-
-            {/* About section removed in favor of dedicated page */}
-
             <Testimonials />
+            <ResourcesPreview />
             <Contact />
         </motion.div>
     );
