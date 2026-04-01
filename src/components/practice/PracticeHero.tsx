@@ -104,7 +104,7 @@ const PracticeHero = ({
       <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
 
       {/* Content */}
-      <div className="container-gq relative z-10 flex h-full flex-col justify-center">
+      <div className="container-gq relative z-10 flex h-full flex-col justify-center pt-28 sm:pt-32">
         <div className="max-w-3xl">
           {/* Breadcrumb */}
           <div ref={breadcrumbRef} className="mb-6 sm:mb-8">
