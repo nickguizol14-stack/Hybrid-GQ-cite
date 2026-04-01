@@ -152,24 +152,24 @@ function AppContent() {
 
         {/* Main Content */}
         <main className="flex-grow">
-          <AnimatePresence
-            mode="wait"
-            onExitComplete={() => setIsTransitioning(false)}
-          >
-            <Suspense fallback={null}>
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/construction-law" element={<ConstructionLaw />} />
-              <Route path="/real-estate-law" element={<RealEstateLaw />} />
-              <Route path="/oil-and-gas-law" element={<OilAndGasLaw />} />
-              <Route path="/mergers-and-acquisitions" element={<MergersAndAcquisitions />} />
-              <Route path="/lien-book" element={<LienBook />} />
-              <Route path="/lien-predictor" element={<LienPredictorPage />} />
-            </Routes>
-            </Suspense>
-          </AnimatePresence>
+          <Suspense fallback={null}>
+            <AnimatePresence
+              mode="wait"
+              onExitComplete={() => setIsTransitioning(false)}
+            >
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/construction-law" element={<ConstructionLaw />} />
+                <Route path="/real-estate-law" element={<RealEstateLaw />} />
+                <Route path="/oil-and-gas-law" element={<OilAndGasLaw />} />
+                <Route path="/mergers-and-acquisitions" element={<MergersAndAcquisitions />} />
+                <Route path="/lien-book" element={<LienBook />} />
+                <Route path="/lien-predictor" element={<LienPredictorPage />} />
+              </Routes>
+            </AnimatePresence>
+          </Suspense>
         </main>
 
         <Footer />
