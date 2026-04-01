@@ -225,7 +225,7 @@ const ConstructionLaw = () => {
         title="Oklahoma Construction Law"
         titleAccent="."
         subtitle="From bid to closeout, Gary Quinnett protects contractors, owners, and design professionals. He wrote the book on Oklahoma lien law. Literally."
-        backgroundImage="/hero-image.jpg"
+        backgroundImage="/hero-construction.jpg"
       />
 
       <AuthorityStrip credentials={credentials} />

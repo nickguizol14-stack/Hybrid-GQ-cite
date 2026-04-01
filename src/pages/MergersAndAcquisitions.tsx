@@ -209,7 +209,7 @@ const MergersAndAcquisitions = () => {
         title="Mergers & Acquisitions"
         titleAccent="."
         subtitle="Buying or selling a business is one of the most consequential decisions you'll make. Gary brings 13 years of Fortune 500 business experience and 34 years of legal precision to every deal."
-        backgroundImage="/hero-image.jpg"
+        backgroundImage="/hero-ma.jpg"
       />
 
       <AuthorityStrip credentials={credentials} />

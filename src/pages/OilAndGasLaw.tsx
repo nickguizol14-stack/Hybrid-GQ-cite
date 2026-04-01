@@ -211,7 +211,7 @@ const OilAndGasLaw = () => {
         title="Oklahoma Oil & Gas Law"
         titleAccent="."
         subtitle="Gary has worked in Oklahoma's energy industry since 1982, first as a landman, then as the attorney operators and mineral owners trust with their most complex matters."
-        backgroundImage="/hero-image.jpg"
+        backgroundImage="/hero-oilgas.jpg"
       />
 
       <AuthorityStrip credentials={credentials} />

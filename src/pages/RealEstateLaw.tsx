@@ -209,7 +209,7 @@ const RealEstateLaw = () => {
         title="Oklahoma Real Estate Law"
         titleAccent="."
         subtitle="34 years of protecting what you've built. From complex acquisitions to title disputes, with the business acumen of 13 years in the Fortune 500."
-        backgroundImage="/hero-image.jpg"
+        backgroundImage="/hero-realestate.jpg"
       />
 
       <AuthorityStrip credentials={credentials} />
