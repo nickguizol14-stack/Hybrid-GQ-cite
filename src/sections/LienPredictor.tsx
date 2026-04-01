@@ -97,14 +97,14 @@ const LienPredictor = () => {
 
           {/* Elegant CTA Button */}
           <a
-            href="#contact"
+            href="/lien-predictor"
             onClick={(e) => {
               e.preventDefault();
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+              window.location.href = '/lien-predictor';
             }}
             className="reveal-text inline-flex items-center justify-center gap-4 bg-[#1A1510] hover:bg-[#2A2219] text-[#FDFBF7] px-6 sm:px-10 py-4 sm:py-5 transition-all duration-300 font-sans tracking-widest text-sm uppercase group shadow-xl hover:shadow-2xl"
           >
-            <span className="font-medium">Evaluate Your Claim Strategy</span>
+            <span className="font-medium">Assess Your Claim</span>
             <div className="w-8 h-[1px] bg-[#C5A869]/50 group-hover:w-12 transition-all duration-300 relative">
               <ArrowRight className="w-4 h-4 text-[#C5A869] absolute -right-1 top-1/2 -translate-y-1/2 group-hover:translate-x-1 transition-transform duration-300" strokeWidth={2} />
             </div>

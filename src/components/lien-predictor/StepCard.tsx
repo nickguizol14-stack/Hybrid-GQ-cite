@@ -1,5 +1,5 @@
 // src/components/lien-predictor/StepCard.tsx
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface StepCardProps {
   title: string;
