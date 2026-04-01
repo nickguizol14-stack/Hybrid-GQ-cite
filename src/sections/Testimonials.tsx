@@ -173,7 +173,7 @@ const Testimonials = () => {
         {/* Testimonials Embla Carousel */}
         <div
           ref={carouselContainerRef}
-          className="relative max-w-6xl mx-auto mb-16 px-4 sm:px-12"
+          className="relative max-w-6xl mx-auto mb-12 sm:mb-16 px-2 sm:px-8 lg:px-12"
         >
           <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
             <div className="flex touch-pan-y pt-4 pb-12">
@@ -182,7 +182,7 @@ const Testimonials = () => {
                   key={index}
                   className="flex-[0_0_100%] min-w-0 md:flex-[0_0_80%] lg:flex-[0_0_60%] px-4"
                 >
-                  <div className="relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#C5A869]/20 group transition-transform duration-500 hover:-translate-y-2">
+                  <div className="relative h-full bg-white/70 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-[#C5A869]/20 group transition-transform duration-500 hover:-translate-y-2">
 
                     {/* Premium Top Accent border */}
                     <div className="absolute top-0 left-0 w-full h-1 bg-gq-gold-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-2xl" />
@@ -220,7 +220,7 @@ const Testimonials = () => {
           {/* Carousel Navigation Buttons */}
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -ml-2 sm:-ml-4 w-12 h-12 flex items-center justify-center rounded-full bg-white border border-[#C5A869]/30 text-[#C5A869] hover:bg-[#C5A869] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgb(0,0,0,0.05)] z-20 group"
+            className="absolute left-0 top-1/2 -translate-y-1/2 ml-0 sm:-ml-2 w-12 h-12 flex items-center justify-center rounded-full bg-white border border-[#C5A869]/30 text-[#C5A869] hover:bg-[#C5A869] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgb(0,0,0,0.05)] z-20 group"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
@@ -228,7 +228,7 @@ const Testimonials = () => {
 
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 -mr-2 sm:-mr-4 w-12 h-12 flex items-center justify-center rounded-full bg-white border border-[#C5A869]/30 text-[#C5A869] hover:bg-[#C5A869] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgb(0,0,0,0.05)] z-20 group"
+            className="absolute right-0 top-1/2 -translate-y-1/2 mr-0 sm:-mr-2 w-12 h-12 flex items-center justify-center rounded-full bg-white border border-[#C5A869]/30 text-[#C5A869] hover:bg-[#C5A869] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgb(0,0,0,0.05)] z-20 group"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />

@@ -74,7 +74,7 @@ const Footer = () => {
 
       <div className="container-gq py-16 lg:py-24">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -96,19 +96,19 @@ const Footer = () => {
             <div className="flex items-center gap-4">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full border border-gq-light/10 flex items-center justify-center text-gq-light/60 hover:text-gq-gold hover:border-gq-gold/50 transition-all duration-300"
+                className="w-11 h-11 rounded-full border border-gq-light/10 flex items-center justify-center text-gq-light/60 hover:text-gq-gold hover:border-gq-gold/50 transition-all duration-300"
               >
                 <Facebook className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full border border-gq-light/10 flex items-center justify-center text-gq-light/60 hover:text-gq-gold hover:border-gq-gold/50 transition-all duration-300"
+                className="w-11 h-11 rounded-full border border-gq-light/10 flex items-center justify-center text-gq-light/60 hover:text-gq-gold hover:border-gq-gold/50 transition-all duration-300"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="mailto:gary@gq-law.com"
-                className="w-10 h-10 rounded-full border border-gq-light/10 flex items-center justify-center text-gq-light/60 hover:text-gq-gold hover:border-gq-gold/50 transition-all duration-300"
+                className="w-11 h-11 rounded-full border border-gq-light/10 flex items-center justify-center text-gq-light/60 hover:text-gq-gold hover:border-gq-gold/50 transition-all duration-300"
               >
                 <Mail className="w-4 h-4" />
               </a>

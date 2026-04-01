@@ -195,7 +195,7 @@ const Contact = () => {
               <span className="text-[#C5A869] text-xs uppercase tracking-widest mb-1 block font-medium">
                 Call Now
               </span>
-              <span className="font-serif font-medium tracking-tight text-4xl sm:text-5xl md:text-6xl text-gq-light group-hover:text-[#C5A869] transition-colors duration-500 block">
+              <span className="font-serif font-medium tracking-tight text-2xl sm:text-4xl md:text-5xl text-gq-light group-hover:text-[#C5A869] transition-colors duration-500 block">
                 (405) 607-2266
               </span>
             </a>
@@ -370,7 +370,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full btn-primary h-11 text-sm"
+                    className="w-full btn-primary h-12 text-base sm:text-sm"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">

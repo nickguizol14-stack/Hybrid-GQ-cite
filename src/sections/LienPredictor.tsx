@@ -102,7 +102,7 @@ const LienPredictor = () => {
               e.preventDefault();
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="reveal-text inline-flex items-center justify-center gap-4 bg-[#1A1510] hover:bg-[#2A2219] text-[#FDFBF7] px-10 py-5 transition-all duration-300 font-sans tracking-widest text-sm uppercase group shadow-xl hover:shadow-2xl"
+            className="reveal-text inline-flex items-center justify-center gap-4 bg-[#1A1510] hover:bg-[#2A2219] text-[#FDFBF7] px-6 sm:px-10 py-4 sm:py-5 transition-all duration-300 font-sans tracking-widest text-sm uppercase group shadow-xl hover:shadow-2xl"
           >
             <span className="font-medium">Evaluate Your Claim Strategy</span>
             <div className="w-8 h-[1px] bg-[#C5A869]/50 group-hover:w-12 transition-all duration-300 relative">

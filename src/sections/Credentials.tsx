@@ -118,7 +118,7 @@ const Credentials = () => {
     <section
       ref={sectionRef}
       id="credentials"
-      className="w-full bg-gq-dark-gradient py-16 lg:py-20 relative overflow-hidden"
+      className="w-full bg-gq-dark-gradient py-10 sm:py-12 lg:py-16 xl:py-20 relative overflow-hidden"
     >
       {/* Subtle Noise */}
       <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
@@ -156,13 +156,13 @@ const Credentials = () => {
                   {/* Value/Metric display */}
                   <div className="my-2">
                     {cred.isNumber ? (
-                      <div className="flex items-baseline font-serif font-medium tracking-tight text-4xl lg:text-5xl text-gq-light group-hover:text-[#E6D3A3] transition-colors duration-500">
+                      <div className="flex items-baseline font-serif font-medium tracking-tight text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-gq-light group-hover:text-[#E6D3A3] transition-colors duration-500">
                         {cred.prefix && <span>{cred.prefix}</span>}
                         <span className="number-display">0</span>
                         {cred.suffix && <span>{cred.suffix}</span>}
                       </div>
                     ) : (
-                      <div className="font-serif font-medium tracking-tight text-3xl lg:text-4xl text-gq-light group-hover:text-[#E6D3A3] transition-colors duration-500">
+                      <div className="font-serif font-medium tracking-tight text-2xl sm:text-3xl lg:text-4xl text-gq-light group-hover:text-[#E6D3A3] transition-colors duration-500">
                         {cred.display}
                       </div>
                     )}
