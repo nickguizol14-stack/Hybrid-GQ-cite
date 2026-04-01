@@ -8,6 +8,8 @@ import {
   Gavel,
   BookOpen,
   Briefcase,
+  FileCheck,
+  Users,
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import PracticeHero from '../components/practice/PracticeHero';
@@ -23,110 +25,112 @@ import PracticeCTA from '../components/practice/PracticeCTA';
 const credentials = [
   {
     value: 34,
-    label: 'Years Focused',
+    label: 'Years in Practice',
     description:
-      'Three decades of drafting and litigating commercial contracts across Oklahoma.',
+      'Drafting, negotiating, and litigating commercial contracts across every Oklahoma industry.',
     isNumber: true,
-  },
-  {
-    value: 'Author',
-    label: 'LexisNexis Treatise',
-    description:
-      'Authored the definitive bar treatise on Oklahoma construction law.',
-    isNumber: false,
   },
   {
     value: '13 Years',
     label: 'Fortune 500 Business',
     description:
-      'Business experience that informs practical, commercial-minded contract drafting.',
+      'Corporate operations experience that shapes how Gary reads, writes, and fights over contracts.',
     isNumber: false,
   },
   {
-    value: 100,
-    label: 'Attorneys Trained',
+    value: 'Author',
+    label: 'LexisNexis Treatise',
     description:
-      'Teaching contract best practices through CLE courses across Oklahoma.',
-    isNumber: true,
-    suffix: '+',
+      'Wrote the authoritative bar reference on Oklahoma construction contracts and lien law.',
+    isNumber: false,
+  },
+  {
+    value: 'UCC',
+    label: 'Expert, Articles 1-9',
+    description:
+      'Deep command of Oklahoma\'s Uniform Commercial Code from sales to secured transactions.',
+    isNumber: false,
   },
 ];
 
 const services = [
   {
     icon: FileText,
-    title: 'Contract Drafting',
+    title: 'Contract Drafting & Negotiation',
     description:
-      'Custom agreements tailored to your specific transaction, industry, and risk profile. Never template-based.',
+      'Custom agreements built from litigation experience. Gary has seen how contracts fail in court hundreds of times. That shapes every clause, every definition, every risk allocation he writes.',
+    statute: 'Oklahoma plain meaning rule',
   },
   {
     icon: Search,
-    title: 'Contract Review',
+    title: 'Contract Review & Risk Analysis',
     description:
-      'Detailed analysis of proposed agreements identifying hidden risks, missing protections, and unfavorable terms before you sign.',
-  },
-  {
-    icon: Scale,
-    title: 'Contract Negotiation',
-    description:
-      'Strategic negotiation of terms, representations, warranties, and indemnification provisions that protect your position.',
+      'Line-by-line analysis of proposed agreements before you sign. Identifying ambiguities, missing protections, unfavorable indemnification, and terms that Oklahoma courts have struck down.',
   },
   {
     icon: Shield,
-    title: 'Breach of Contract',
+    title: 'Breach of Contract Litigation',
     description:
-      'Aggressive pursuit of damages when the other side fails to perform, or defense when claims are brought against you.',
-  },
-  {
-    icon: Gavel,
-    title: 'Dispute Resolution',
-    description:
-      'Mediation, arbitration, and litigation strategy tailored to the most efficient path to resolution.',
+      'Aggressive pursuit when the other side fails to perform, or strategic defense when claims are brought against you. Material breach, anticipatory repudiation, and specific performance actions.',
+    statute: '12 O.S. Section 95',
   },
   {
     icon: BookOpen,
-    title: 'Non-Compete & Employment',
+    title: 'UCC & Commercial Transactions',
     description:
-      'Drafting and enforcing restrictive covenants, non-competes, and employment agreements that Oklahoma courts will uphold.',
+      'Sales (Article 2), leases (Article 2A), secured transactions (Article 9), negotiable instruments (Article 3), and letters of credit (Article 5). Full command of Oklahoma\'s commercial code.',
+    statute: '12A O.S.',
+  },
+  {
+    icon: Users,
+    title: 'Non-Compete & Employment Agreements',
+    description:
+      'Restrictive covenants, non-solicitation, confidentiality, and employment agreements drafted to the limits Oklahoma courts will enforce. Overly broad restrictions get struck down. Gary knows the line.',
+  },
+  {
+    icon: FileCheck,
+    title: 'Business Formation & Governance',
+    description:
+      'Operating agreements, partnership agreements, shareholder agreements, and corporate bylaws. Structuring business relationships so the contract works before the dispute starts.',
   },
 ];
 
 const overviewParagraphs = [
-  'A contract is only as strong as the language it contains. Too many Oklahoma businesses rely on generic templates or handshake agreements that leave critical terms undefined. When a dispute arises, ambiguous language becomes your opponent\'s best weapon.',
-  'Gary Quinnett approaches every contract with the perspective of someone who has spent 13 years in Fortune 500 business operations and 34 years in litigation. He knows how contracts fail because he has litigated the consequences hundreds of times. That perspective shapes every clause, every definition, every risk allocation.',
-  'Whether you need a complex construction contract reviewed before signing, a commercial lease negotiated to protect your interests, or a non-compete agreement that will hold up in Oklahoma courts, the approach is always the same: precise language, clear risk allocation, and enforceable terms.',
-  'Oklahoma follows the plain meaning rule for contract interpretation (Oklahoma Uniform Commercial Code, 12A O.S. Section 2-202). If your contract says what it means, courts will enforce it. If it does not, you are at the mercy of interpretation. Gary makes sure your contracts say exactly what they mean.',
+  'Every contract dispute comes down to one question: what did the parties mean? Oklahoma courts follow 14 specific rules to answer that question, from the plain meaning doctrine to the parol evidence rule to the principle that ambiguous language is construed against the drafter. Gary Quinnett knows these rules because he has litigated them for 34 years.',
+  'That litigation experience is what separates Gary\'s contract drafting from template-based lawyering. He does not draft contracts to look good on paper. He drafts them to survive a courtroom challenge. Every defined term, every performance obligation, every remedy provision is written with the knowledge of how Oklahoma judges and juries interpret contract language.',
+  'Before becoming an attorney, Gary spent 13 years in Fortune 500 corporate operations. He reads contracts the way a business operator reads them: what does this cost me, what happens if they do not perform, and how fast can I get out if things go wrong. That commercial instinct, combined with his command of Oklahoma\'s Uniform Commercial Code (12A O.S.), produces contracts that work in the real world.',
+  'Oklahoma requires certain contracts to be in writing under the Statute of Frauds (15 O.S. Section 136), including real estate transactions, agreements exceeding one year, and sales of goods over $500. For all other agreements, courts recognize both written and oral contracts. But proving the terms of an oral deal in court is a fight Gary has won and lost. He recommends putting it in writing. Every time.',
 ];
 
 const whoWeRepresent = [
-  'Business Owners',
-  'Contractors & Subcontractors',
+  'Business Owners & Operators',
+  'General Contractors & Subcontractors',
   'Commercial Landlords & Tenants',
-  'Buyers & Sellers',
-  'Partners & Joint Ventures',
-  'Corporate Officers & Boards',
+  'Buyers & Sellers of Businesses',
+  'Partners & Joint Venture Participants',
+  'Corporate Officers & Board Members',
 ];
 
 const processSteps = [
   {
     title: 'Consultation',
     description:
-      'Initial assessment of your contract needs and timeline.',
+      'Gary reviews your contract situation, identifies the core issue, and evaluates your position under Oklahoma law.',
   },
   {
-    title: 'Strategy',
+    title: 'Analysis',
     description:
-      'Clear plan for drafting, review, or dispute resolution.',
+      'Detailed review of the agreement, relevant statutes, and comparable case outcomes to build your strategy.',
   },
   {
-    title: 'Execution',
+    title: 'Action',
     description:
-      'Precise drafting and aggressive advocacy with Gary\'s direct involvement.',
+      'Precise drafting, aggressive negotiation, or litigation with Gary\'s direct and personal involvement.',
   },
   {
     title: 'Resolution',
     description:
-      'Enforceable agreements or favorable outcomes backed by 34 years of experience.',
+      'An enforceable agreement, a favorable settlement, or a courtroom verdict. 34 years of results behind every move.',
   },
 ];
 
@@ -143,33 +147,50 @@ const testimonials = [
     author: 'President, Manufacturing Corp',
     location: 'Broken Arrow',
   },
+  {
+    quote:
+      'I can\'t count how many times Gary has saved me a fortune in legal disputes. Would never use a different lawyer.',
+    author: 'Contractor',
+    location: 'Oklahoma City',
+  },
 ];
 
 const faqs = [
   {
-    question: 'What should I look for before signing a commercial contract in Oklahoma?',
+    question: 'What are Oklahoma\'s rules for interpreting a written contract?',
     answer:
-      'Every commercial contract should clearly define the scope of work, payment terms, timeline, liability limitations, dispute resolution mechanisms, and termination provisions. In Oklahoma, courts enforce the plain meaning of contract language (12A O.S. Section 2-202), so ambiguous terms work against you. Have an attorney review the agreement before signing.',
+      'Oklahoma courts follow 14 specific rules when interpreting contracts. The most critical: contracts must be read as a whole, not clause by clause. Plain language is given its ordinary meaning unless technical terms are used. If the language is unambiguous, courts apply the "four corners" doctrine and will not consider outside evidence. If it is ambiguous, courts may consider the parties\' conduct, custom, and past dealings to determine intent. Ambiguous language is construed against the party that drafted the contract.',
+    statute: 'Oklahoma contract interpretation doctrine',
   },
   {
-    question: 'What constitutes a breach of contract in Oklahoma?',
+    question: 'What is the statute of limitations for breach of contract in Oklahoma?',
     answer:
-      'A breach occurs when one party fails to perform a material obligation under the agreement without legal excuse. Oklahoma recognizes both material breach (which excuses the other party\'s performance) and minor breach (which entitles the non-breaching party to damages but does not discharge the contract). The distinction matters significantly for your legal options.',
+      'For written contracts, you have 5 years from the date of breach to file suit (12 O.S. Section 95). For oral contracts, the limitation is 3 years. These deadlines are strict. If you miss them, your claim is permanently barred regardless of its merit. If you suspect a breach, consult an attorney before the clock runs out.',
+    statute: '12 O.S. Section 95',
   },
   {
-    question: 'Are verbal contracts enforceable in Oklahoma?',
+    question: 'Does Oklahoma require certain contracts to be in writing?',
     answer:
-      'Yes, with limitations. Oklahoma\'s Statute of Frauds (15 O.S. Section 136) requires certain contracts to be in writing, including real estate transactions, agreements that cannot be performed within one year, and contracts for goods over $500. All other verbal agreements are technically enforceable, though proving their terms in court is significantly more difficult.',
+      'Yes. Oklahoma\'s Statute of Frauds (15 O.S. Section 136) requires a writing for: real estate transactions, agreements that cannot be performed within one year, promises to pay the debt of another, and contracts for the sale of goods over $500 (under the UCC). Verbal agreements outside these categories are enforceable, but proving their terms in court is significantly harder.',
+    statute: '15 O.S. Section 136',
   },
   {
-    question: 'How long do I have to sue for breach of contract in Oklahoma?',
+    question: 'What damages can I recover for breach of contract in Oklahoma?',
     answer:
-      'Oklahoma\'s statute of limitations for written contracts is 5 years from the date of breach (12 O.S. Section 95). For oral contracts, the limitation is 3 years. Missing these deadlines permanently bars your claim, regardless of its merit.',
+      'Oklahoma allows recovery of compensatory damages (the benefit you would have received had the contract been performed), consequential damages (foreseeable losses caused by the breach), and in some cases, attorney fees if the contract includes a fee-shifting provision. Punitive damages are generally not available for breach of contract unless the breach also constitutes an independent tort such as fraud.',
+    statute: '23 O.S. Section 21',
   },
   {
-    question: 'Can I include a non-compete clause in an employment contract in Oklahoma?',
+    question: 'What is the UCC and how does it affect my business contracts in Oklahoma?',
     answer:
-      'Yes, but Oklahoma courts scrutinize non-compete agreements carefully. To be enforceable, the restriction must be reasonable in geographic scope, duration, and the activities restricted. Overly broad non-competes are routinely struck down. Gary drafts non-competes that balance protection with enforceability.',
+      'The Uniform Commercial Code (12A O.S.) governs commercial transactions in Oklahoma, including the sale of goods (Article 2), leases (Article 2A), negotiable instruments (Article 3), bank deposits (Article 4), secured transactions (Article 9), and more. The UCC fills in gaps that your contract does not address, and some UCC provisions apply even if your contract tries to override them. Understanding how the UCC interacts with your agreements is essential.',
+    statute: '12A O.S.',
+  },
+  {
+    question: 'Are non-compete agreements enforceable in Oklahoma?',
+    answer:
+      'Oklahoma allows non-competes but scrutinizes them carefully. The restriction must be reasonable in geographic scope, duration (typically 1-2 years), and the activities restricted. Courts will not rewrite an overbroad non-compete to make it enforceable. If your agreement is struck down, you lose the protection entirely. Gary drafts non-competes calibrated to what Oklahoma courts will actually uphold.',
+    statute: '15 O.S. Section 219A',
   },
 ];
 
@@ -177,19 +198,19 @@ const relatedPractices = [
   {
     title: 'Construction Law',
     description:
-      'Contract drafting and disputes for the construction industry.',
+      'AIA contracts, ConsensusDocs, payment disputes, and lien claims in the construction industry.',
     href: '/construction-law',
   },
   {
     title: 'Mergers & Acquisitions',
     description:
-      'Deal structuring, due diligence, and transaction agreements.',
+      'Purchase agreements, asset deals, stock transactions, and post-closing disputes.',
     href: '/mergers-and-acquisitions',
   },
   {
     title: 'Real Estate Law',
     description:
-      'Purchase agreements, leases, and commercial transactions.',
+      'Commercial leases, purchase agreements, title work, and property disputes.',
     href: '/real-estate-law',
   },
 ];
@@ -205,25 +226,25 @@ const ContractLaw = () => {
       transition={pageTransition}
     >
       <SEO
-        title="Oklahoma Contract Law Attorney"
-        description="Experienced contract drafting, review, negotiation, and dispute resolution for Oklahoma businesses. 34 years of protecting commercial interests."
+        title="Oklahoma Contract Attorney"
+        description="34 years of contract drafting, UCC litigation, and breach of contract disputes. Gary Quinnett brings Fortune 500 business experience to every Oklahoma contract matter."
         path="/contract-law"
       />
 
       <PracticeHero
         title="Contract Law"
         titleAccent="."
-        subtitle="Every business relationship starts with a contract. Gary Quinnett brings 34 years of legal precision and 13 years of Fortune 500 business experience to ensure your agreements protect what matters most."
+        subtitle="Every contract dispute comes down to one question: what did the parties mean? Gary has spent 34 years answering that question in Oklahoma courtrooms, and 13 years in the Fortune 500 learning how contracts work in the real world."
         backgroundImage="/hero-image.jpg"
       />
 
       <AuthorityStrip credentials={credentials} />
 
       <PracticeOverview
-        title="Contracts That"
-        titleAccent="Protect You."
+        title="What Did the"
+        titleAccent="Parties Mean?"
         paragraphs={overviewParagraphs}
-        statuteRef="12A O.S. Section 2-202"
+        statuteRef="15 O.S. Section 136 / 12A O.S."
         listTitle="Who We Represent"
         listIcon={Briefcase}
         listItems={whoWeRepresent}
@@ -232,7 +253,7 @@ const ContractLaw = () => {
 
       <ServicesGrid
         title="Contract Law Services"
-        subtitle="Precise legal counsel for drafting, negotiation, and enforcement of business agreements."
+        subtitle="From initial drafting through courtroom enforcement. Every service informed by 34 years of knowing how contracts succeed and fail under Oklahoma law."
         services={services}
       />
 
@@ -246,7 +267,7 @@ const ContractLaw = () => {
 
       <PracticeCTA
         title="Ready to Protect Your Business?"
-        description="Schedule a consultation with Gary Quinnett. 34 years of Oklahoma contract law. Precise, aggressive, effective."
+        description="Schedule a consultation with Gary Quinnett. 34 years of Oklahoma contract law, 13 years of Fortune 500 business experience, and a UCC command that covers Articles 1 through 9."
       />
     </motion.div>
   );
