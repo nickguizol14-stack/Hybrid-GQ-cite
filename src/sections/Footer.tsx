@@ -3,11 +3,12 @@ import { Facebook, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { motion, type Variants, type Easing } from 'framer-motion';
 
 const quickLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Practice Areas', href: '#practice-areas' },
-  { label: 'Lien Predictor', href: '#lien-predictor' },
-  { label: 'Resources', href: '#resources' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/about' },
+  { label: 'Construction Law', href: '/construction-law' },
+  { label: 'Real Estate Law', href: '/real-estate-law' },
+  { label: 'Lien Predictor', href: '/lien-predictor' },
+  { label: 'Resources', href: '/lien-book' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const containerVariants: Variants = {
@@ -36,25 +37,8 @@ const Footer = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    if (location.pathname !== '/') {
-      // If we are on an internal page, route to home first
-      navigate(`/${href}`);
-      // Add a slight delay to allow rendering before scrolling
-      setTimeout(() => {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      // If we are already on home, just scroll smoothly
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      } else if (href === '#hero') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return (
@@ -82,10 +66,10 @@ const Footer = () => {
         >
           {/* Logo & Description */}
           <motion.div variants={itemVariants} className="lg:col-span-2 pr-4">
-            <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="flex items-center gap-3 mb-6 group inline-block">
+            <a href="/" onClick={(e) => handleNavClick(e, '/')} className="flex items-center gap-3 mb-6 group inline-block">
               <img
                 src="/logo-gwinnett.png"
-                alt="Quinnett Attorney & Counselor at Law"
+                alt="GQ Law - Gary David Quinnett, Attorney and Counselor at Law"
                 className="h-12 sm:h-14 w-auto object-contain group-hover:opacity-90 transition-opacity duration-300"
               />
             </a>
