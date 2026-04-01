@@ -36,6 +36,7 @@ function ScrollToTop() {
 
 function AppContent() {
   const [showPreloader, setShowPreloader] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -100,18 +101,16 @@ function AppContent() {
     };
   }, []); // Run only once on mount
 
-  // Refresh ScrollTrigger and fix layout jumps on route change
+  // Clean ScrollTrigger on route change — pages re-create their own triggers on mount
   useEffect(() => {
-    // Slight delay to allow new page to mount and DOM to calculate heights
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 150);
-    return () => clearTimeout(timer);
+    setIsTransitioning(true);
+    ScrollTrigger.getAll().forEach(t => t.kill());
+    ScrollTrigger.refresh();
   }, [location.pathname]);
 
-  // Lock body scroll while preloading
+  // Lock body scroll while preloading or transitioning between pages
   useEffect(() => {
-    if (showPreloader) {
+    if (showPreloader || isTransitioning) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -119,7 +118,7 @@ function AppContent() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [showPreloader]);
+  }, [showPreloader, isTransitioning]);
 
   return (
     <>
@@ -142,7 +141,10 @@ function AppContent() {
 
         {/* Main Content */}
         <main className="flex-grow">
-          <AnimatePresence mode="wait">
+          <AnimatePresence
+            mode="wait"
+            onExitComplete={() => setIsTransitioning(false)}
+          >
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutPage />} />
