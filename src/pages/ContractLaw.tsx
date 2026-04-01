@@ -190,6 +190,18 @@ const faqs = [
       'Oklahoma allows non-competes but scrutinizes them carefully. The restriction must be reasonable in geographic scope, duration (typically 1-2 years), and the activities restricted. Courts will not rewrite an overbroad non-compete to make it enforceable. If your agreement is struck down, you lose the protection entirely. Gary drafts non-competes calibrated to what Oklahoma courts will actually uphold.',
     statute: '15 O.S. Section 219A',
   },
+  {
+    question: 'How can I get out of a contract in Oklahoma?',
+    answer:
+      'Oklahoma law provides several grounds to void or exit a contract: mutual mistake of a material fact, fraud or misrepresentation, duress or undue influence, unconscionability, impossibility of performance, or a material breach by the other party. Some contracts also include termination clauses that allow exit under specific conditions. The available options depend entirely on the facts of your situation and the language of the agreement.',
+    statute: '15 O.S. Sections 51-75',
+  },
+  {
+    question: 'Can I recover attorney fees in an Oklahoma contract dispute?',
+    answer:
+      'Oklahoma follows the American Rule, meaning each side generally pays its own attorney fees. However, if your contract contains a fee-shifting provision (and many commercial contracts do), the prevailing party can recover reasonable attorney fees. Additionally, 12 O.S. Section 936 allows recovery of attorney fees in certain commercial actions. Gary reviews every contract for fee-shifting language because it fundamentally changes the economics of litigation.',
+    statute: '12 O.S. Section 936',
+  },
 ];
 
 const relatedPractices = [
