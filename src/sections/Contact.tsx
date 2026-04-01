@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { submitContactForm, contactSchema } from '@/lib/contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +33,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -139,19 +141,25 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const parsed = contactSchema.safeParse(formData);
+    if (!parsed.success) {
+      setSubmitError(parsed.error.issues[0]?.message ?? 'Please check your input');
+      setIsSubmitting(false);
+      return;
+    }
+
+    const result = await submitContactForm(formData);
 
     setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      matterType: '',
-      description: '',
-    });
+
+    if (result.success) {
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', matterType: '', description: '' });
+    } else {
+      setSubmitError(result.error);
+    }
   };
 
   return (
@@ -352,6 +360,12 @@ const Contact = () => {
                       className="bg-gq-dark-warm/50 border-gq-gold/20 text-gq-light placeholder:text-gq-light/40 form-focus resize-none text-sm"
                     />
                   </div>
+
+                  {submitError && (
+                    <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-3 text-red-300 text-sm">
+                      {submitError}
+                    </div>
+                  )}
 
                   <Button
                     type="submit"
