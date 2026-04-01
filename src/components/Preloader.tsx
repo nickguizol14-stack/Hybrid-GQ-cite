@@ -2,11 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 
-const MAX_WAIT_MS = 1500;
+const MIN_DISPLAY_MS = 2000;
+const MAX_WAIT_MS = 3000;
 
 export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
-  const [isReady, setIsReady] = useState(false);
+  const [assetsReady, setAssetsReady] = useState(false);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Minimum display time so the logo + shine animation is always visible
+  useEffect(() => {
+    const timer = setTimeout(() => setMinTimeElapsed(true), MIN_DISPLAY_MS);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Wait for hero video readiness OR max timeout
   useEffect(() => {
@@ -14,7 +22,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     const settle = () => {
       if (settled) return;
       settled = true;
-      setIsReady(true);
+      setAssetsReady(true);
     };
 
     const video = document.querySelector<HTMLVideoElement>('#hero video');
@@ -34,17 +42,17 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     };
   }, []);
 
-  // Fade out when ready
+  // Fade out when BOTH minimum time has passed AND assets are ready
   useEffect(() => {
-    if (!isReady || !containerRef.current) return;
+    if (!assetsReady || !minTimeElapsed || !containerRef.current) return;
 
     gsap.to(containerRef.current, {
       opacity: 0,
-      duration: 0.4,
+      duration: 0.8,
       ease: 'power2.inOut',
       onComplete,
     });
-  }, [isReady, onComplete]);
+  }, [assetsReady, minTimeElapsed, onComplete]);
 
   return (
     <div

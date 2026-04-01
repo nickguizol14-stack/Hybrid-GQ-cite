@@ -39,6 +39,7 @@ function AppContent() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -101,8 +102,12 @@ function AppContent() {
     };
   }, []); // Run only once on mount
 
-  // Clean ScrollTrigger on route change — pages re-create their own triggers on mount
+  // Clean ScrollTrigger on route change — skip initial mount so first page animations work
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     setIsTransitioning(true);
     ScrollTrigger.getAll().forEach(t => t.kill());
     ScrollTrigger.refresh();

@@ -2,7 +2,7 @@
 import type { Variants, Transition } from 'framer-motion';
 
 export const pageTransition: Transition = {
-  duration: 0.3,
+  duration: 0.5,
   ease: [0.4, 0, 0.2, 1], // ease-smooth
 };
 
