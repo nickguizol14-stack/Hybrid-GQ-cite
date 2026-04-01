@@ -16,6 +16,7 @@ const ConstructionLaw = lazy(() => import('./pages/ConstructionLaw'));
 const RealEstateLaw = lazy(() => import('./pages/RealEstateLaw'));
 const OilAndGasLaw = lazy(() => import('./pages/OilAndGasLaw'));
 const MergersAndAcquisitions = lazy(() => import('./pages/MergersAndAcquisitions'));
+const ContractLaw = lazy(() => import('./pages/ContractLaw'));
 const LienBook = lazy(() => import('./pages/LienBook'));
 const LienPredictorPage = lazy(() => import('./pages/LienPredictor'));
 const ArticlesPage = lazy(() => import('./pages/Articles'));
@@ -166,6 +167,7 @@ function AppContent() {
                 <Route path="/real-estate-law" element={<RealEstateLaw />} />
                 <Route path="/oil-and-gas-law" element={<OilAndGasLaw />} />
                 <Route path="/mergers-and-acquisitions" element={<MergersAndAcquisitions />} />
+                <Route path="/contract-law" element={<ContractLaw />} />
                 <Route path="/lien-book" element={<LienBook />} />
                 <Route path="/lien-predictor" element={<LienPredictorPage />} />
                 <Route path="/articles" element={<ArticlesPage />} />

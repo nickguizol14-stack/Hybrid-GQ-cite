@@ -17,6 +17,7 @@ const navLinks = [
       { label: 'Real Estate Law', href: '/real-estate-law' },
       { label: 'Oil & Gas Law', href: '/oil-and-gas-law' },
       { label: 'Mergers & Acquisitions', href: '/mergers-and-acquisitions' },
+      { label: 'Contract Law', href: '/contract-law' },
     ]
   },
   { label: 'Lien Predictor', href: '/lien-predictor' },
