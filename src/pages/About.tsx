@@ -129,9 +129,9 @@ const AboutPage = () => {
                     <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gq-burgundy rounded-full blur-[100px] animate-pulse"></div>
                 </div>
 
-                <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
                     <div className="z-10 relative will-change-transform">
-                        <h1 className="font-serif text-6xl md:text-8xl font-bold leading-tight mb-6 perspective-500 flex flex-wrap gap-x-6">
+                        <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-tight mb-6 perspective-500 flex flex-wrap gap-x-6">
                             {"About Gary Quinnett".split(" ").map((word, i) => (
                                 <span key={i} className="inline-block whitespace-nowrap">
                                     {word.split("").map((char, j) => (
@@ -184,7 +184,7 @@ const AboutPage = () => {
             {/* --- ABOUT GARY --- */}
             <section className="bg-gray-50 py-24 relative overflow-hidden">
                 <div className="container-gq relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
                         {/* Left Col */}
                         <div className="lg:col-span-8 content-reveal">
                             <div className="flex items-center gap-4 mb-8">

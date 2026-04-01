@@ -85,7 +85,7 @@ const RealEstateLaw = () => {
             transition={pageTransition}
         >
             {/* HERO SECTION */}
-            <section className="hero-section-re relative h-[70vh] min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
+            <section className="hero-section-re relative h-[60vh] min-h-[500px] sm:h-[70vh] sm:min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
                 <div className="absolute inset-0 z-0 opacity-40">
                     <img
                         src="/hero-image.jpg" // Fallback - ideally a skyline or building
@@ -101,11 +101,11 @@ const RealEstateLaw = () => {
                             <div className="w-12 h-1 bg-gq-gold"></div>
                             <span className="font-bold tracking-widest uppercase text-gq-gold">Practice Areas</span>
                         </div>
-                        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-8 hero-title-re opacity-0">
+                        <h1 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-none mb-8 hero-title-re opacity-0">
                             Real Estate <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Law.</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed hero-title-re opacity-0">
+                        <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed hero-title-re opacity-0">
                             We protect what you build. Comprehensive legal counsel for developers, investors, and property owners.
                         </p>
                     </div>
@@ -113,8 +113,8 @@ const RealEstateLaw = () => {
             </section>
 
             {/* OVERVIEW SECTION */}
-            <section className="py-20 lg:py-32 bg-white">
-                <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-white">
+                <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
                     <div>
                         <h2 className="font-serif text-4xl md:text-5xl font-bold mb-8 text-gq-dark">
                             Closing the Deal. <br />
@@ -139,7 +139,7 @@ const RealEstateLaw = () => {
                     </div>
                     <div className="relative">
                         <div className="absolute -inset-4 bg-gq-burgundy/5 rounded-2xl -z-10 transform -rotate-2"></div>
-                        <div className="bg-gq-dark p-8 md:p-12 rounded-xl text-white shadow-2xl">
+                        <div className="bg-gq-dark p-6 sm:p-8 md:p-12 rounded-xl text-white shadow-2xl">
                             <h3 className="text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                                 <Building2 className="text-gq-gold w-8 h-8" />
                                 <span>Our Expertise</span>
@@ -158,9 +158,9 @@ const RealEstateLaw = () => {
             </section>
 
             {/* SERVICES GRID */}
-            <section className="py-20 lg:py-32 bg-gq-light-gradient">
+            <section className="py-12 sm:py-16 lg:py-24 xl:py-32 bg-gq-light-gradient">
                 <div className="container-gq">
-                    <div className="text-center mb-20">
+                    <div className="text-center mb-10 sm:mb-16 lg:mb-20">
                         <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">Strategic Representation</h2>
                         <p className="text-gq-dark/60 max-w-2xl mx-auto">From dirt work to disposition, we handle every phase of the real estate lifecycle.</p>
                     </div>
@@ -169,7 +169,7 @@ const RealEstateLaw = () => {
                         {services.map((service, idx) => {
                             const Icon = service.icon;
                             return (
-                                <div key={idx} className="service-card-re group bg-white p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                                <div key={idx} className="service-card-re group bg-white p-6 sm:p-8 lg:p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
                                     <div className="w-16 h-16 bg-gq-gold/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-gq-gold group-hover:text-white transition-colors duration-500">
                                         <Icon className="w-8 h-8 text-gq-gold group-hover:text-white transition-colors duration-500" />
                                     </div>
@@ -184,7 +184,7 @@ const RealEstateLaw = () => {
             </section>
 
             {/* CTA SECTION */}
-            <section className="py-24 bg-gq-dark text-white relative overflow-hidden">
+            <section className="py-16 sm:py-20 lg:py-24 bg-gq-dark text-white relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gq-burgundy/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
 
                 <div className="container-gq text-center relative z-10">
