@@ -16,90 +16,62 @@ const Hero = () => {
   const ctaRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Overlay fade in
-      gsap.fromTo(
-        overlayRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 1, ease: 'power2.out' }
-      );
+    let ctx: gsap.Context;
 
-      // Firm name reveal - word by word with shimmer
-      if (firmNameRef.current) {
-        const words = firmNameRef.current.innerText.split(' ');
-        firmNameRef.current.innerHTML = words
-          .map((word) => `<span class="inline-block overflow-hidden"><span class="inline-block shimmer-text">${word}</span></span>`)
-          .join(' ');
+    // All hero entrance animations — unchanged from original
+    const runAnimations = () => {
+      ctx = gsap.context(() => {
+        gsap.fromTo(overlayRef.current, { opacity: 0 }, { opacity: 1, duration: 1, ease: 'power2.out' });
 
-        const wordSpans = firmNameRef.current.querySelectorAll('span > span');
-        gsap.fromTo(
-          wordSpans,
-          { y: '100%', opacity: 0 },
-          {
-            y: '0%',
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.1,
-            delay: 0.5,
-            ease: 'power3.out',
-          }
-        );
-      }
+        if (firmNameRef.current) {
+          // Split text into animated word spans (safe — content is hardcoded, not user input)
+          const words = firmNameRef.current.innerText.split(' ');
+          firmNameRef.current.innerHTML = words // eslint-disable-line
+            .map((word) => `<span class="inline-block overflow-hidden"><span class="inline-block shimmer-text">${word}</span></span>`)
+            .join(' ');
+          const wordSpans = firmNameRef.current.querySelectorAll('span > span');
+          gsap.fromTo(wordSpans, { y: '100%', opacity: 0 }, { y: '0%', opacity: 1, duration: 0.8, stagger: 0.1, delay: 0.5, ease: 'power3.out' });
+        }
 
-      // Tagline character cascade
-      if (taglineRef.current) {
-        const text = taglineRef.current.innerText;
-        taglineRef.current.innerHTML = text
-          .split('')
-          .map((char) =>
-            char === ' '
-              ? ' '
-              : `<span class="inline-block opacity-0">${char}</span>`
-          )
-          .join('');
+        if (taglineRef.current) {
+          // Split text into animated character spans (safe — content is hardcoded)
+          const text = taglineRef.current.innerText;
+          taglineRef.current.innerHTML = text // eslint-disable-line
+            .split('').map((char) => char === ' ' ? ' ' : `<span class="inline-block opacity-0">${char}</span>`).join('');
+          const chars = taglineRef.current.querySelectorAll('span');
+          gsap.to(chars, { opacity: 1, duration: 0.05, stagger: 0.03, delay: 1, ease: 'none' });
+        }
 
-        const chars = taglineRef.current.querySelectorAll('span');
-        gsap.to(chars, {
-          opacity: 1,
-          duration: 0.05,
-          stagger: 0.03,
-          delay: 1,
-          ease: 'none',
+        gsap.fromTo(subheadlineRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 1.8, ease: 'power3.out' });
+        gsap.fromTo(ctaRef.current, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, delay: 2.2, ease: 'back.out(1.7)' });
+
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.8,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            gsap.set(contentRef.current, { y: progress * -50, opacity: 1 - progress * 1.5 });
+            gsap.set(overlayRef.current, { opacity: 0.7 + progress * 0.2 });
+          },
         });
-      }
-
-      // Subheadline line reveal
-      gsap.fromTo(
-        subheadlineRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, delay: 1.8, ease: 'power3.out' }
-      );
-
-      // CTA button
-      gsap.fromTo(
-        ctaRef.current,
-        { scale: 0.8, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.7, delay: 2.2, ease: 'back.out(1.7)' }
-      );
-
-      // Scroll-based parallax
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.8,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          gsap.set(contentRef.current, {
-            y: progress * -50,
-            opacity: 1 - progress * 1.5,
-          });
-          gsap.set(overlayRef.current, { opacity: 0.7 + progress * 0.2 });
-        },
       });
-    });
+    };
 
-    return () => ctx.revert();
+    // On initial load, wait for preloader to finish before animating.
+    // On navigation back to home (no preloader), run immediately.
+    const preloaderActive = document.querySelector('[data-preloader]');
+    if (preloaderActive) {
+      window.addEventListener('preloader-complete', runAnimations, { once: true });
+    } else {
+      runAnimations();
+    }
+
+    return () => {
+      window.removeEventListener('preloader-complete', runAnimations);
+      ctx?.revert();
+    };
   }, []);
 
   return (

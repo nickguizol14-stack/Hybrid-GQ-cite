@@ -127,7 +127,10 @@ function AppContent() {
 
   return (
     <>
-      {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+      {showPreloader && <Preloader onComplete={() => {
+          setShowPreloader(false);
+          window.dispatchEvent(new Event('preloader-complete'));
+        }} />}
       <div className="min-h-screen bg-gq-dark flex flex-col">
         {/* Sticky Header - TopBar + Navigation - transparent over hero */}
         <div

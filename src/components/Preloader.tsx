@@ -57,6 +57,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <div
       ref={containerRef}
+      data-preloader
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#1A1510] overflow-hidden"
     >
       {/* Subtle background glow */}
