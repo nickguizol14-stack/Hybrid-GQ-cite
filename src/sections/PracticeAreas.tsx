@@ -67,6 +67,21 @@ const practiceAreas = [
       'Regulatory compliance',
     ],
   },
+  {
+    id: 'contracts',
+    number: '05',
+    title: 'Contract Law',
+    link: '/contract-law',
+    shortDesc: 'Precision drafting. Aggressive enforcement.',
+    description:
+      'Every business relationship starts with a contract. Gary brings 34 years of litigation experience and Fortune 500 business acumen to drafting, review, and breach of contract disputes.',
+    services: [
+      'Contract drafting & negotiation',
+      'UCC & commercial transactions',
+      'Breach of contract litigation',
+      'Non-compete agreements',
+    ],
+  },
 ];
 
 const PracticeAreas = () => {
