@@ -26,7 +26,7 @@ const navLinks = [
     href: '#',
     children: [
       { label: 'Lien Book', href: '/lien-book' },
-      { label: 'Articles', href: '/articles' },
+      { label: 'Insights', href: '/resources' },
     ]
   },
 ];

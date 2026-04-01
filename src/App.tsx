@@ -19,7 +19,8 @@ const MergersAndAcquisitions = lazy(() => import('./pages/MergersAndAcquisitions
 const ContractLaw = lazy(() => import('./pages/ContractLaw'));
 const LienBook = lazy(() => import('./pages/LienBook'));
 const LienPredictorPage = lazy(() => import('./pages/LienPredictor'));
-const ArticlesPage = lazy(() => import('./pages/Articles'));
+const ResourcesPage = lazy(() => import('./pages/Articles'));
+const ResourceArticle = lazy(() => import('./pages/ResourceArticle'));
 
 import Preloader from './components/Preloader';
 
@@ -170,7 +171,8 @@ function AppContent() {
                 <Route path="/contract-law" element={<ContractLaw />} />
                 <Route path="/lien-book" element={<LienBook />} />
                 <Route path="/lien-predictor" element={<LienPredictorPage />} />
-                <Route path="/articles" element={<ArticlesPage />} />
+                <Route path="/resources" element={<ResourcesPage />} />
+                <Route path="/resources/:slug" element={<ResourceArticle />} />
               </Routes>
             </AnimatePresence>
           </Suspense>
