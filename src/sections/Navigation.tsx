@@ -19,7 +19,7 @@ const navLinks = [
       { label: 'Mergers & Acquisitions', href: '/mergers-and-acquisitions' },
     ]
   },
-  { label: 'Lien Predictor', href: '/#lien-predictor' },
+  { label: 'Lien Predictor', href: '/lien-predictor' },
   { label: 'Resources', href: '/lien-book' },
 ];
 
