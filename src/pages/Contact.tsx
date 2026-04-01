@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { pageVariants, pageTransition } from '../lib/transitions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
@@ -38,10 +39,11 @@ const ContactPage = () => {
         <motion.div
             ref={containerRef}
             className="min-h-screen bg-gq-dark text-white pt-32 pb-20 overflow-hidden will-change-transform"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={pageTransition}
         >
             <div className="container-gq grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 relative z-10">
 

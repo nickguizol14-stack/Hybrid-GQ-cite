@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
+import { pageVariants, pageTransition } from '../lib/transitions';
 import { Award, BookOpen, Shield, Briefcase, MapPin, Mail, Phone, CheckCircle2, Star, TrendingUp } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -113,10 +114,11 @@ const AboutPage = () => {
         <motion.div
             ref={containerRef}
             className="min-h-screen bg-white overflow-hidden text-gq-dark font-sans will-change-transform"
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.4 }}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={pageTransition}
         >
 
             {/* --- HERO SECTION --- */}

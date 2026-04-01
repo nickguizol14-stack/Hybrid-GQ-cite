@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
+import { pageVariants, pageTransition } from '../lib/transitions';
 import { BookOpen, CheckCircle, ShieldCheck, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,10 +74,11 @@ const LienBook = () => {
     return (
         <motion.div
             ref={pageRef}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={pageTransition}
             className="min-h-screen bg-[#FDFBF7] relative w-full"
         >
             {/* Dedicated Dark Hero Header */}

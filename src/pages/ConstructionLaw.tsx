@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { pageVariants, pageTransition } from '../lib/transitions';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HardHat, Hammer, FileText, ShieldAlert, ArrowRight, CheckCircle2 } from 'lucide-react';
@@ -77,10 +78,11 @@ const ConstructionLaw = () => {
         <motion.div
             ref={containerRef}
             className="min-h-screen bg-white text-gq-dark will-change-transform"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={pageTransition}
         >
             {/* HERO SECTION */}
             <section className="hero-section relative h-[70vh] min-h-[600px] overflow-hidden bg-gq-dark flex items-center">
