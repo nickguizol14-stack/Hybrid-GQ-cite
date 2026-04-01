@@ -16,6 +16,7 @@ import RealEstateLaw from './pages/RealEstateLaw';
 import OilAndGasLaw from './pages/OilAndGasLaw';
 import MergersAndAcquisitions from './pages/MergersAndAcquisitions';
 import LienBook from './pages/LienBook';
+import LienPredictorPage from './pages/LienPredictor';
 
 import Preloader from './components/Preloader';
 
@@ -162,6 +163,7 @@ function AppContent() {
               <Route path="/oil-and-gas-law" element={<OilAndGasLaw />} />
               <Route path="/mergers-and-acquisitions" element={<MergersAndAcquisitions />} />
               <Route path="/lien-book" element={<LienBook />} />
+              <Route path="/lien-predictor" element={<LienPredictorPage />} />
             </Routes>
           </AnimatePresence>
         </main>
