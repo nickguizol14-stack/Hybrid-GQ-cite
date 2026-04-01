@@ -1,5 +1,5 @@
 // src/components/lien-predictor/PredictorWizard.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { WizardData } from '@/lib/lien-types';
 import { calculateAssessment, getInitialWizardData } from '@/lib/lien-scoring';
@@ -16,6 +16,7 @@ export default function PredictorWizard() {
   const [step, setStep] = useState(0);
   const [data, setData] = useState<WizardData>(getInitialWizardData);
   const [showResults, setShowResults] = useState(false);
+  const [isCalculating, setIsCalculating] = useState(false);
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [publicProjectRedirect, setPublicProjectRedirect] = useState(false);
 
@@ -33,7 +34,7 @@ export default function PredictorWizard() {
     if (step < 3) {
       setStep(step + 1);
     } else {
-      setShowResults(true);
+      setIsCalculating(true);
     }
   };
 
@@ -41,7 +42,84 @@ export default function PredictorWizard() {
     if (step > 0) setStep(step - 1);
   };
 
+  // Calculating animation timer
+  useEffect(() => {
+    if (!isCalculating) return;
+    const timer = setTimeout(() => {
+      setIsCalculating(false);
+      setShowResults(true);
+    }, 2800);
+    return () => clearTimeout(timer);
+  }, [isCalculating]);
+
   const result = showResults ? calculateAssessment(data) : null;
+
+  // Calculating screen
+  if (isCalculating) {
+    return (
+      <div className="max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="bg-[#2a2219] border border-[#C5A869]/15 rounded-2xl p-10 sm:p-14 text-center"
+        >
+          {/* Animated rings */}
+          <div className="relative w-24 h-24 mx-auto mb-8">
+            <motion.div
+              className="absolute inset-0 border-2 border-[#C5A869]/20 rounded-full"
+              animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+            />
+            <motion.div
+              className="absolute inset-2 border-2 border-[#C5A869]/30 rounded-full"
+              animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeOut', delay: 0.3 }}
+            />
+            <motion.div
+              className="absolute inset-4 border-2 border-[#C5A869] rounded-full flex items-center justify-center"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            >
+              <div className="w-2 h-2 bg-[#C5A869] rounded-full absolute -top-1" />
+            </motion.div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                className="w-3 h-3 bg-[#C5A869] rounded-full"
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+            </div>
+          </div>
+
+          <h2 className="font-serif text-2xl text-gq-light font-medium mb-2">Analyzing Your Claim</h2>
+          <p className="text-gq-light/40 text-sm mb-6">Evaluating against Oklahoma Title 42 requirements...</p>
+
+          {/* Animated checklist */}
+          <div className="flex flex-col gap-2 max-w-xs mx-auto text-left">
+            {['Filing deadlines', 'Notice compliance', 'Contract status', 'Waiver review', 'Project eligibility'].map((item, i) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.4 }}
+                className="flex items-center gap-3"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: i * 0.4 + 0.3, type: 'spring', stiffness: 300 }}
+                  className="w-5 h-5 rounded-full bg-[#4ade80]/15 flex items-center justify-center flex-shrink-0"
+                >
+                  <span className="text-[#4ade80] text-xs">&#10003;</span>
+                </motion.div>
+                <span className="text-gq-light/60 text-sm">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   // Public project redirect screen
   if (publicProjectRedirect) {
@@ -94,8 +172,8 @@ export default function PredictorWizard() {
   return (
     <div className="max-w-2xl mx-auto">
       {/* Progress Bar */}
-      <div className="mb-8">
-        <div className="flex items-center gap-2 mb-3">
+      <div className="mb-5">
+        <div className="flex items-center gap-2">
           <span className="text-[#C5A869] text-[10px] tracking-[3px] uppercase font-semibold">
             Step {step + 1} of {STEP_LABELS.length}
           </span>
@@ -124,12 +202,6 @@ export default function PredictorWizard() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Peek of next step */}
-      {step < 3 && (
-        <div className="mt-3 bg-[#2a2219] border border-[#C5A869]/8 rounded-2xl p-4 opacity-25">
-          <p className="font-serif text-lg text-gq-light">{STEP_LABELS[step + 1]}</p>
-        </div>
-      )}
     </div>
   );
 }

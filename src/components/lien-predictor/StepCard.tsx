@@ -12,11 +12,11 @@ interface StepCardProps {
 
 export default function StepCard({ title, subtitle, children, onNext, canProceed, onBack }: StepCardProps) {
   return (
-    <div className="bg-[#2a2219] border border-[#C5A869]/15 rounded-2xl p-6 sm:p-8 lg:p-10">
-      <h2 className="font-serif text-2xl sm:text-3xl text-gq-light font-medium mb-1">{title}</h2>
-      <p className="text-gq-light/40 text-sm mb-8">{subtitle}</p>
+    <div className="bg-[#2a2219] border border-[#C5A869]/15 rounded-2xl p-5 sm:p-6 lg:p-8">
+      <h2 className="font-serif text-xl sm:text-2xl text-gq-light font-medium mb-0.5">{title}</h2>
+      <p className="text-gq-light/40 text-xs sm:text-sm mb-5">{subtitle}</p>
       {children}
-      <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#C5A869]/10">
+      <div className="flex items-center justify-between mt-5 pt-4 border-t border-[#C5A869]/10">
         {onBack ? (
           <button onClick={onBack} className="text-gq-light/50 hover:text-gq-light text-sm transition-colors">
             Back
