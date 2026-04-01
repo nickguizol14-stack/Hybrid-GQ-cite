@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { submitContactForm, contactSchema } from '@/lib/contact';
+import { trackEvent } from '@/lib/analytics';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -155,6 +156,7 @@ const Contact = () => {
     setIsSubmitting(false);
 
     if (result.success) {
+      trackEvent('form_submit', { form: 'contact' });
       setIsSubmitted(true);
       setFormData({ name: '', email: '', phone: '', matterType: '', description: '' });
     } else {

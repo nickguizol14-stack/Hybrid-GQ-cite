@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { WizardData } from '@/lib/lien-types';
 import { calculateAssessment, getInitialWizardData } from '@/lib/lien-scoring';
+import { trackEvent } from '@/lib/analytics';
 import RoleStep from './steps/RoleStep';
 import ProjectStep from './steps/ProjectStep';
 import PaymentStep from './steps/PaymentStep';
@@ -32,8 +33,10 @@ export default function PredictorWizard() {
     }
 
     if (step < 3) {
+      trackEvent('lien_assessment_step', { step: String(step + 1) });
       setStep(step + 1);
     } else {
+      trackEvent('lien_assessment_complete');
       setIsCalculating(true);
     }
   };

@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 
+import { trackPageView } from './lib/analytics';
 import TopBar from './sections/TopBar';
 import Navigation from './sections/Navigation';
 import Footer from './sections/Footer';
@@ -112,6 +113,7 @@ function AppContent() {
     setIsTransitioning(true);
     ScrollTrigger.getAll().forEach(t => t.kill());
     ScrollTrigger.refresh();
+    trackPageView(location.pathname);
   }, [location.pathname]);
 
   // Lock body scroll while preloading or transitioning between pages
