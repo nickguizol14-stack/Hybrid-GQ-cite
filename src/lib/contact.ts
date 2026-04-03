@@ -25,6 +25,10 @@ export async function submitContactForm(
     return { success: false, error: firstError };
   }
 
+  if (!supabase) {
+    return { success: false, error: 'Contact form is not configured yet. Please call us directly.' };
+  }
+
   const { error } = await supabase.from('contact_submissions').insert({
     name: parsed.data.name,
     email: parsed.data.email,

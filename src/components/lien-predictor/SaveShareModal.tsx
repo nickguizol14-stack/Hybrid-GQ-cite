@@ -38,6 +38,12 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
 
     setIsSubmitting(true);
 
+    if (!supabase) {
+      setError('This feature is not configured yet. Please contact us directly.');
+      setIsSubmitting(false);
+      return;
+    }
+
     const { error: dbError } = await supabase.from('lien_assessments').insert({
       name: parsed.data.name,
       email: parsed.data.email,
