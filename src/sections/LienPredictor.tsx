@@ -110,7 +110,7 @@ const LienPredictor = () => {
             <div className="rounded-2xl p-6 sm:p-8 w-full max-w-[380px] shadow-2xl backdrop-blur-xl" style={{ background: 'var(--theme-card-bg)', border: '1px solid var(--theme-card-border)' }}>
               {/* Card label */}
               <div className="flex items-center gap-2 mb-5">
-                <div className="w-6 h-px bg-gq-gold/60" />
+                <div className="w-6 h-px bg-gq-gold/80" />
                 <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-gq-gold font-medium">
                   Sample Assessment
                 </span>
@@ -156,7 +156,7 @@ const LienPredictor = () => {
             {/* Gold label */}
             <div className="reveal-item">
               <span className="inline-flex items-center gap-2">
-                <div className="w-8 h-px bg-gq-gold/60" />
+                <div className="w-8 h-px bg-gq-gold/80" />
                 <span className="font-sans text-xs uppercase tracking-[0.2em] text-gq-gold font-medium">
                   Free Assessment Tool
                 </span>
@@ -178,7 +178,7 @@ const LienPredictor = () => {
                       {index + 1}
                     </span>
                   </div>
-                  <p className="text-gq-light/75 text-sm sm:text-base leading-relaxed font-light pt-1">
+                  <p className="text-gq-light/85 text-sm sm:text-base leading-relaxed font-light pt-1">
                     {step}
                   </p>
                 </div>

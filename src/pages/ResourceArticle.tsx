@@ -155,7 +155,7 @@ const ResourceArticle = () => {
               {resource.categoryLabel}
             </span>
             <span className="w-1 h-1 rounded-full bg-gq-light/30" />
-            <span className="text-gq-light/40 text-[10px] tracking-[2px] uppercase font-medium">
+            <span className="text-gq-light/65 text-[10px] tracking-[2px] uppercase font-medium">
               {typeLabel}
             </span>
           </div>
@@ -166,7 +166,7 @@ const ResourceArticle = () => {
           </h1>
 
           {/* Meta */}
-          <div className="reveal flex items-center gap-4 text-gq-light/40 text-sm">
+          <div className="reveal flex items-center gap-4 text-gq-light/65 text-sm">
             <span className="flex items-center gap-1.5">
               <Clock className="w-4 h-4" />
               {resource.readTime}
@@ -199,7 +199,7 @@ const ResourceArticle = () => {
                   <h3 className="font-serif text-xl text-gq-light font-medium group-hover:text-gq-gold transition-colors duration-300">
                     {resource.relatedPractice}
                   </h3>
-                  <p className="text-gq-light/50 text-sm mt-1">
+                  <p className="text-gq-light/70 text-sm mt-1">
                     Learn more about how we help clients in this area.
                   </p>
                 </div>
@@ -214,7 +214,7 @@ const ResourceArticle = () => {
                 <h2 className="font-serif text-2xl sm:text-3xl text-gq-light font-medium mb-3">
                   Have a Question About This Topic?
                 </h2>
-                <p className="text-gq-light/50 text-sm sm:text-base mb-6 max-w-lg mx-auto">
+                <p className="text-gq-light/70 text-sm sm:text-base mb-6 max-w-lg mx-auto">
                   Schedule a consultation to discuss how this applies to your specific situation.
                 </p>
                 <Link

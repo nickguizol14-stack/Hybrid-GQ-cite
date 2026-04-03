@@ -98,7 +98,7 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
             onClick={(e) => e.stopPropagation()}
             className="bg-gq-dark-warm border border-gq-gold/20 rounded-2xl p-6 sm:p-8 w-full max-w-md relative"
           >
-            <button onClick={onClose} className="absolute top-4 right-4 text-gq-light/30 hover:text-gq-light transition-colors">
+            <button onClick={onClose} className="absolute top-4 right-4 text-gq-light/60 hover:text-gq-light transition-colors">
               <X className="w-5 h-5" />
             </button>
 
@@ -108,13 +108,13 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
                   <Send className="w-6 h-6 text-[#4ade80]" />
                 </div>
                 <h3 className="font-serif text-xl text-gq-light font-medium mb-2">Assessment Shared</h3>
-                <p className="text-gq-light/50 text-sm">Gary's team will review your situation and reach out within 24 hours.</p>
+                <p className="text-gq-light/70 text-sm">Gary's team will review your situation and reach out within 24 hours.</p>
                 <button onClick={onClose} className="mt-6 text-gq-gold text-sm hover:text-gq-gold transition-colors">Close</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 <h3 className="font-serif text-xl text-gq-light font-medium mb-1">Share With Gary's Team</h3>
-                <p className="text-gq-light/40 text-sm mb-6">Your assessment details will be included automatically.</p>
+                <p className="text-gq-light/65 text-sm mb-6">Your assessment details will be included automatically.</p>
 
                 <div className="space-y-4">
                   <div>

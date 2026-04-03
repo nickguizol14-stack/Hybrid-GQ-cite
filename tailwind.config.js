@@ -67,7 +67,7 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        'gold': '0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1)',
+        'gold': '0 0 20px rgba(var(--theme-gold-rgb, 212, 175, 55), 0.3), 0 0 40px rgba(var(--theme-gold-rgb, 212, 175, 55), 0.1)',
         'glass': '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
         'glass-hover': '0 16px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
         'card': '0 10px 30px -10px rgba(0, 0, 0, 0.4)',
@@ -100,8 +100,8 @@ module.exports = {
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(212, 175, 55, 0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(212, 175, 55, 0.5)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(var(--theme-gold-rgb, 212, 175, 55), 0.3)" },
+          "50%": { boxShadow: "0 0 40px rgba(var(--theme-gold-rgb, 212, 175, 55), 0.5)" },
         },
       },
       animation: {

@@ -148,7 +148,7 @@ const Testimonials = () => {
     <section
       ref={sectionRef}
       id="testimonials"
-      className="w-full bg-gq-light-gradient py-16 lg:py-20 relative overflow-hidden"
+      className="w-full bg-gq-dark-gradient py-16 lg:py-20 relative overflow-hidden"
     >
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-px" style={{ background: `linear-gradient(to right, transparent, rgba(var(--theme-gold-rgb), 0.4), transparent)` }} />

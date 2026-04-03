@@ -271,7 +271,7 @@ const Contact = () => {
                           setFormData({ ...formData, name: e.target.value })
                         }
                         required
-                        className="border text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        className="border text-gq-light placeholder:text-gq-light/65 form-focus h-10 text-sm"
                         style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}
                       />
                     </div>
@@ -289,7 +289,7 @@ const Contact = () => {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         required
-                        className="border text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        className="border text-gq-light placeholder:text-gq-light/65 form-focus h-10 text-sm"
                         style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}
                       />
                     </div>
@@ -308,7 +308,7 @@ const Contact = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="border text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        className="border text-gq-light placeholder:text-gq-light/65 form-focus h-10 text-sm"
                         style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}
                       />
                     </div>
@@ -362,7 +362,7 @@ const Contact = () => {
                         setFormData({ ...formData, description: e.target.value })
                       }
                       rows={3}
-                      className="border text-gq-light placeholder:text-gq-light/40 form-focus resize-none text-sm"
+                      className="border text-gq-light placeholder:text-gq-light/65 form-focus resize-none text-sm"
                       style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}
                     />
                   </div>

@@ -68,7 +68,7 @@ export default function ProjectStep({ data, onUpdate, onNext, onBack }: Props) {
         <div>
           <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">Contract / PO Value</label>
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gq-light/40 text-sm">$</span>
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gq-light/65 text-sm">$</span>
             <input
               type="number"
               value={data.contractValue ?? ''}

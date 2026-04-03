@@ -175,7 +175,7 @@ const ContractLaw = () => {
               <h2 className="reveal-item font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-gq-light mb-8">
                 What Did the <span className="text-gq-gold">Parties Mean?</span>
               </h2>
-              <div className="space-y-5 text-base sm:text-lg text-gq-light/75 leading-relaxed">
+              <div className="space-y-5 text-base sm:text-lg text-gq-light/85 leading-relaxed">
                 <p className="reveal-item">
                   Every contract dispute comes down to one question: what did the parties mean? Oklahoma courts follow <strong className="text-gq-light">14 specific rules</strong> to answer that question, from the plain meaning doctrine to the parol evidence rule to the principle that ambiguous language is construed against the drafter. Gary Quinnett knows these rules because he has litigated them for 34 years.
                 </p>
@@ -185,7 +185,7 @@ const ContractLaw = () => {
                 <p className="reveal-item">
                   Before becoming an attorney, Gary spent 13 years in Fortune 500 corporate operations. He reads contracts the way a business operator reads them: what does this cost me, what happens if they do not perform, and how fast can I get out if things go wrong. That commercial instinct, combined with his command of Oklahoma's Uniform Commercial Code (12A O.S.), produces contracts that work in the real world.
                 </p>
-                <p className="reveal-item text-sm text-gq-light/40 italic">
+                <p className="reveal-item text-sm text-gq-light/65 italic">
                   15 O.S. Section 136 / 12A O.S.
                 </p>
               </div>
@@ -239,7 +239,7 @@ const ContractLaw = () => {
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gq-light font-medium mb-4">
               The 14 Rules Oklahoma Courts <span className="text-gq-gold italic">Use to Interpret Your Contract</span>
             </h2>
-            <p className="text-gq-light/50 text-sm sm:text-base max-w-2xl mx-auto">
+            <p className="text-gq-light/70 text-sm sm:text-base max-w-2xl mx-auto">
               When a dispute reaches the courtroom, these are the principles that determine whether your contract protects you. Gary has litigated every one of them.
             </p>
           </div>

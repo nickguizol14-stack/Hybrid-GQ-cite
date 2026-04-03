@@ -262,7 +262,7 @@ const LienBook = () => {
                                 </div>
 
                                 <div className="mt-6 flex items-center justify-center gap-4 border-t border-gray-100 pt-6">
-                                    <span className="text-[10px] text-gq-light/40 font-sans tracking-widest uppercase">Secured by PayPal</span>
+                                    <span className="text-[10px] text-gq-light/65 font-sans tracking-widest uppercase">Secured by PayPal</span>
                                 </div>
                             </div>
                         </div>

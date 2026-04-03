@@ -68,7 +68,7 @@ const PracticeCTA = ({ title, description }: PracticeCTAProps) => {
           </Link>
 
           {/* Phone number */}
-          <p className="font-sans text-gq-light/50 text-sm sm:text-base mt-6 tracking-wide">
+          <p className="font-sans text-gq-light/70 text-sm sm:text-base mt-6 tracking-wide">
             Or call us at{' '}
             <a
               href="tel:+14056072266"

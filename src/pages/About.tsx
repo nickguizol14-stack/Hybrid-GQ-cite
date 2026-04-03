@@ -170,11 +170,11 @@ const AboutPage = () => {
               <div className="space-y-6">
                 <div className="border-l-2 border-gq-gold/30 pl-4">
                   <div className="font-serif text-lg text-gq-light font-medium">Juris Doctor, 1992</div>
-                  <div className="text-gq-light/50 text-sm">University of Oklahoma, College of Law</div>
+                  <div className="text-gq-light/70 text-sm">University of Oklahoma, College of Law</div>
                 </div>
                 <div className="border-l-2 border-gq-gold/30 pl-4">
                   <div className="font-serif text-lg text-gq-light font-medium">B.B.A., 1985</div>
-                  <div className="text-gq-light/50 text-sm">University of Oklahoma</div>
+                  <div className="text-gq-light/70 text-sm">University of Oklahoma</div>
                 </div>
               </div>
             </div>
@@ -293,7 +293,7 @@ const AboutPage = () => {
                     </div>
                     <div>
                       <div className="text-gq-light font-medium group-hover:text-gq-gold transition-colors">(405) 607-2266</div>
-                      <div className="text-gq-light/30 text-xs">Call directly</div>
+                      <div className="text-gq-light/60 text-xs">Call directly</div>
                     </div>
                   </a>
                   <a href="mailto:gary@gq-law.com" className="flex items-center gap-4 group">
@@ -302,7 +302,7 @@ const AboutPage = () => {
                     </div>
                     <div>
                       <div className="text-gq-light font-medium group-hover:text-gq-gold transition-colors">gary@gq-law.com</div>
-                      <div className="text-gq-light/30 text-xs">Email Gary</div>
+                      <div className="text-gq-light/60 text-xs">Email Gary</div>
                     </div>
                   </a>
                 </div>
@@ -312,13 +312,13 @@ const AboutPage = () => {
                     <MapPin className="w-4 h-4 text-gq-gold mt-1 flex-shrink-0" />
                     <div>
                       <div className="text-gq-light/80 text-sm">10005 N May Ave, Suite 120</div>
-                      <div className="text-gq-light/50 text-sm">Oklahoma City, OK 73120</div>
+                      <div className="text-gq-light/70 text-sm">Oklahoma City, OK 73120</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <MapPin className="w-4 h-4 text-gq-gold/50 mt-1 flex-shrink-0" />
                     <div>
-                      <div className="text-gq-light/50 text-sm">Dillard Group Building</div>
+                      <div className="text-gq-light/70 text-sm">Dillard Group Building</div>
                       <div className="text-gq-light/35 text-sm">1800 N Interstate Dr, Suite 230, Norman, OK 73072</div>
                     </div>
                   </div>

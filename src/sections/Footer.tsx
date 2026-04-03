@@ -191,7 +191,7 @@ const Footer = () => {
       >
         <div className="container-gq py-8 lg:py-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            <p className="text-gq-light/40 text-[11px] text-center lg:text-left max-w-3xl leading-relaxed font-light tracking-wide">
+            <p className="text-gq-light/65 text-[11px] text-center lg:text-left max-w-3xl leading-relaxed font-light tracking-wide">
               <span className="font-semibold text-gq-light/60">Attorney Advertising.</span> This
               website is designed for general information only. The information
               presented should not be construed to be formal legal advice nor the

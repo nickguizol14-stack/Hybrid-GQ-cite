@@ -46,7 +46,7 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
             {data.preLienNoticeSent === 'yes' && (
               <div className="mt-4 space-y-4 pl-4 border-l-2 border-gq-gold/20">
                 <div>
-                  <label className="text-gq-light/50 text-xs block mb-2">When was it sent?</label>
+                  <label className="text-gq-light/70 text-xs block mb-2">When was it sent?</label>
                   <input
                     type="date"
                     value={data.noticeDate}
@@ -55,7 +55,7 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
                   />
                 </div>
                 <div>
-                  <label className="text-gq-light/50 text-xs block mb-2">Who did you send it to?</label>
+                  <label className="text-gq-light/70 text-xs block mb-2">Who did you send it to?</label>
                   <div className="flex flex-col gap-2">
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input

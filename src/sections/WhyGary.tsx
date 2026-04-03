@@ -66,7 +66,7 @@ const WhyGary = () => {
     <section
       ref={sectionRef}
       id="why-gary"
-      className="w-full bg-gq-dark-gradient py-12 sm:py-16 lg:py-24 relative overflow-hidden"
+      className="w-full bg-gq-light-gradient py-12 sm:py-16 lg:py-24 relative overflow-hidden"
     >
       {/* Noise overlay */}
       <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />

@@ -25,7 +25,7 @@ export default function PaymentStep({ data, onUpdate, onNext, onBack }: Props) {
           <div>
             <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">Total Contract Amount</label>
             <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gq-light/40 text-sm">$</span>
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gq-light/65 text-sm">$</span>
               <input
                 type="number"
                 value={data.totalAmount ?? ''}
@@ -38,7 +38,7 @@ export default function PaymentStep({ data, onUpdate, onNext, onBack }: Props) {
           <div>
             <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">Amount Paid to Date</label>
             <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gq-light/40 text-sm">$</span>
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gq-light/65 text-sm">$</span>
               <input
                 type="number"
                 value={data.amountPaid ?? ''}
@@ -62,7 +62,7 @@ export default function PaymentStep({ data, onUpdate, onNext, onBack }: Props) {
 
         {data.totalAmount !== null && data.amountPaid !== null && (
           <div className="bg-gq-dark border border-gq-gold/10 rounded-lg p-4 flex items-center justify-between">
-            <span className="text-gq-light/50 text-sm">Outstanding Balance</span>
+            <span className="text-gq-light/70 text-sm">Outstanding Balance</span>
             <span className="text-gq-light font-serif text-xl font-medium">
               ${(Math.max(0, (data.totalAmount ?? 0) - (data.amountPaid ?? 0))).toLocaleString()}
             </span>

@@ -98,7 +98,7 @@ const Articles = () => {
           <h1 className="reveal font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gq-light font-medium mb-6">
             Resources & Insights
           </h1>
-          <p className="reveal text-gq-light/50 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="reveal text-gq-light/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Practical guides, checklists, and statutory references drawn from 34 years
             of Oklahoma legal practice. Written for business owners, not other lawyers.
           </p>
@@ -124,7 +124,7 @@ const Articles = () => {
                 {btn.label}
               </button>
             ))}
-            <span className="text-gq-light/30 text-sm ml-2">
+            <span className="text-gq-light/60 text-sm ml-2">
               {filteredResources.length} {filteredResources.length === 1 ? 'resource' : 'resources'}
             </span>
           </div>
@@ -149,7 +149,7 @@ const Articles = () => {
                     <span className="text-[10px] tracking-[2px] uppercase font-bold text-gq-gold">
                       {resource.categoryLabel}
                     </span>
-                    <span className="ml-auto flex items-center gap-1 text-gq-light/30 text-[10px]">
+                    <span className="ml-auto flex items-center gap-1 text-gq-light/60 text-[10px]">
                       <Clock className="w-3 h-3" />
                       {resource.readTime}
                     </span>
@@ -178,7 +178,7 @@ const Articles = () => {
           {/* Empty State */}
           {filteredResources.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-gq-light/40 text-base">No resources found for this filter.</p>
+              <p className="text-gq-light/65 text-base">No resources found for this filter.</p>
             </div>
           )}
         </div>
@@ -189,7 +189,7 @@ const Articles = () => {
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gq-gold/30 to-transparent" />
         <div className="container-gq text-center relative z-10">
           <h2 className="font-serif text-3xl sm:text-4xl text-gq-light font-medium mb-4">Have a Legal Question?</h2>
-          <p className="text-gq-light/50 text-sm sm:text-base mb-8 max-w-xl mx-auto">
+          <p className="text-gq-light/70 text-sm sm:text-base mb-8 max-w-xl mx-auto">
             Schedule a consultation with Gary Quinnett to discuss your specific situation.
           </p>
           <Link

@@ -70,7 +70,7 @@ const ResourcesPreview = () => {
     <section
       ref={sectionRef}
       id="resources-preview"
-      className="w-full bg-gq-dark-gradient py-12 sm:py-16 lg:py-24 relative overflow-hidden"
+      className="w-full bg-gq-light-gradient py-12 sm:py-16 lg:py-24 relative overflow-hidden"
     >
       {/* Noise overlay */}
       <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
@@ -79,11 +79,11 @@ const ResourcesPreview = () => {
         {/* Section Header */}
         <div ref={titleRef} className="text-center mb-12 lg:mb-16">
           <span className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-px bg-gq-gold/60" />
+            <div className="w-8 h-px bg-gq-gold/80" />
             <span className="font-sans text-xs uppercase tracking-[0.2em] text-gq-gold font-medium">
               From the Practice
             </span>
-            <div className="w-8 h-px bg-gq-gold/60" />
+            <div className="w-8 h-px bg-gq-gold/80" />
           </span>
           <h2 className="font-serif font-medium text-gq-light text-3xl sm:text-4xl lg:text-5xl mb-4">
             Resources &amp; <span className="text-gq-gold-gradient italic">Insights</span>
@@ -115,7 +115,7 @@ const ResourcesPreview = () => {
                 </span>
 
                 {/* Category label */}
-                <span className="font-sans text-xs text-gq-light/40 uppercase tracking-widest mb-4">
+                <span className="font-sans text-xs text-gq-light/65 uppercase tracking-widest mb-4">
                   {resource.categoryLabel}
                 </span>
 

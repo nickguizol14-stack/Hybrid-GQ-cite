@@ -96,7 +96,7 @@ export default function PredictorWizard() {
           </div>
 
           <h2 className="font-serif text-2xl text-gq-light font-medium mb-2">Analyzing Your Claim</h2>
-          <p className="text-gq-light/40 text-sm mb-6">Evaluating against Oklahoma Title 42 requirements...</p>
+          <p className="text-gq-light/65 text-sm mb-6">Evaluating against Oklahoma Title 42 requirements...</p>
 
           {/* Animated checklist */}
           <div className="flex flex-col gap-2 max-w-xs mx-auto text-left">
@@ -137,11 +137,11 @@ export default function PredictorWizard() {
           <p className="text-gq-light/60 text-sm leading-relaxed mb-6 max-w-md mx-auto">
             Mechanics and materialmen's liens are not available on public property under Oklahoma law. However, payment bond claims may be available under the Public Competitive Bidding Act.
           </p>
-          <p className="text-gq-light/40 text-xs mb-8">61 O.S. Section 1</p>
+          <p className="text-gq-light/65 text-xs mb-8">61 O.S. Section 1</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={() => { setPublicProjectRedirect(false); update({ projectType: null }); }}
-              className="text-gq-light/50 hover:text-gq-light text-sm transition-colors px-6 py-3"
+              className="text-gq-light/70 hover:text-gq-light text-sm transition-colors px-6 py-3"
             >
               Go Back
             </button>

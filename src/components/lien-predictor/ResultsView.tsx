@@ -35,25 +35,25 @@ export default function ResultsView({ result, onSaveShare }: Props) {
           <div className="flex flex-col items-center justify-center p-5 sm:p-6">
             <GaugeChart rating={result.overallRating} />
             <div className={`font-serif text-2xl font-semibold mt-1 ${rating.color}`}>{rating.text}</div>
-            <p className="text-gq-light/30 text-[10px] tracking-wide mt-0.5">{result.factorsPassed} of {result.factors.length} factors met</p>
+            <p className="text-gq-light/60 text-[10px] tracking-wide mt-0.5">{result.factorsPassed} of {result.factors.length} factors met</p>
           </div>
 
           {/* Metrics side */}
           <div className="p-5 sm:p-6 grid grid-cols-2 gap-x-6 gap-y-4">
             <div>
-              <p className="text-gq-light/40 text-[10px] tracking-wider uppercase mb-1">Filing Deadline</p>
+              <p className="text-gq-light/65 text-[10px] tracking-wider uppercase mb-1">Filing Deadline</p>
               <p className="text-gq-light font-serif text-lg font-medium">{deadlineDate}</p>
               <p className={`text-xs font-medium mt-0.5 ${result.daysRemaining <= 14 ? 'text-[#ef4444]' : result.daysRemaining <= 29 ? 'text-[#eab308]' : 'text-[#4ade80]'}`}>
                 {result.daysRemaining > 0 ? `${result.daysRemaining} days remaining` : 'Deadline passed'}
               </p>
             </div>
             <div>
-              <p className="text-gq-light/40 text-[10px] tracking-wider uppercase mb-1">Outstanding Amount</p>
+              <p className="text-gq-light/65 text-[10px] tracking-wider uppercase mb-1">Outstanding Amount</p>
               <p className="text-gq-light font-serif text-lg font-medium">${result.outstandingAmount.toLocaleString()}</p>
-              <p className="text-gq-light/30 text-xs mt-0.5">Owed to claimant</p>
+              <p className="text-gq-light/60 text-xs mt-0.5">Owed to claimant</p>
             </div>
             <div className="col-span-2">
-              <div className="flex items-center justify-between text-[10px] text-gq-light/40 mb-1.5">
+              <div className="flex items-center justify-between text-[10px] text-gq-light/65 mb-1.5">
                 <span>Filing window: {result.windowElapsedPercent}% elapsed</span>
                 <span>{deadlineDate}</span>
               </div>
@@ -115,12 +115,12 @@ export default function ResultsView({ result, onSaveShare }: Props) {
         {/* Expandable detail — show descriptions below table */}
         <div className="px-5 py-3 border-t border-gq-gold/8 space-y-2">
           {result.factors.filter(f => f.score !== 'pass').map((factor) => (
-            <p key={factor.id} className="text-gq-light/40 text-xs leading-relaxed">
+            <p key={factor.id} className="text-gq-light/65 text-xs leading-relaxed">
               <span className="text-gq-light/60 font-medium">{factor.name}:</span> {factor.description}
             </p>
           ))}
           {result.factors.every(f => f.score === 'pass') && (
-            <p className="text-gq-light/40 text-xs">All statutory requirements appear to be met. A consultation can confirm the specifics of your claim.</p>
+            <p className="text-gq-light/65 text-xs">All statutory requirements appear to be met. A consultation can confirm the specifics of your claim.</p>
           )}
         </div>
       </motion.div>
@@ -130,7 +130,7 @@ export default function ResultsView({ result, onSaveShare }: Props) {
         <div className="flex flex-col sm:flex-row items-center gap-5">
           <div className="flex-1 text-center sm:text-left">
             <h3 className="font-serif text-xl text-gq-light font-medium mb-1">Ready to Protect Your Rights?</h3>
-            <p className="text-gq-light/40 text-sm leading-relaxed">Share this assessment with Gary Quinnett's team. He'll review your specific situation and advise on the strongest path to recovery.</p>
+            <p className="text-gq-light/65 text-sm leading-relaxed">Share this assessment with Gary Quinnett's team. He'll review your specific situation and advise on the strongest path to recovery.</p>
           </div>
           <div className="flex flex-col items-center gap-2 flex-shrink-0">
             <button
@@ -139,7 +139,7 @@ export default function ResultsView({ result, onSaveShare }: Props) {
             >
               Share With Gary
             </button>
-            <a href="tel:405-607-2266" className="text-gq-light/30 text-xs hover:text-gq-gold transition-colors">(405) 607-2266</a>
+            <a href="tel:405-607-2266" className="text-gq-light/60 text-xs hover:text-gq-gold transition-colors">(405) 607-2266</a>
           </div>
         </div>
       </motion.div>

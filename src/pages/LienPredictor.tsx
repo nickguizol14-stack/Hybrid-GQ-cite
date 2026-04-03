@@ -25,7 +25,7 @@ const LienPredictorPage = () => {
         <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-gq-light font-medium mb-4">
           Lien Claim <span className="text-gq-gold italic">Predictor</span>
         </h1>
-        <p className="text-gq-light/50 text-base sm:text-lg max-w-2xl mx-auto">
+        <p className="text-gq-light/70 text-base sm:text-lg max-w-2xl mx-auto">
           Evaluate the strength of your Oklahoma mechanics lien claim based on statutory requirements.
         </p>
       </div>

@@ -7,22 +7,22 @@
 @layer base {
   :root {
     /* Theme-driven properties (defaults to Onyx, overridden by ThemeContext) */
-    --theme-primary: #0a0a0a;
+    --theme-primary: #080808;
     --theme-accent: #D4AF37;
     --theme-accent-rgb: 212, 175, 55;
-    --theme-text: #f5f5f5;
-    --theme-text-muted: #a0a0a0;
-    --theme-card-bg: rgba(18, 18, 18, 0.6);
-    --theme-card-border: rgba(212, 175, 55, 0.2);
+    --theme-text: #f5f5f0;
+    --theme-text-muted: #b5b0a5;
+    --theme-card-bg: rgba(24, 24, 22, 0.75);
+    --theme-card-border: rgba(212, 175, 55, 0.22);
     --theme-gold: #D4AF37;
     --theme-gold-rgb: 212, 175, 55;
-    --theme-overlay: rgba(10, 10, 10, 0.85);
-    --theme-section-bg: rgba(10, 10, 10, 0.95);
-    --theme-section-alt: rgba(18, 18, 18, 0.95);
-    --theme-input-bg: rgba(25, 25, 25, 0.5);
+    --theme-overlay: rgba(8, 8, 8, 0.88);
+    --theme-section-bg: #0c0c0b;
+    --theme-section-alt: #161614;
+    --theme-input-bg: rgba(30, 30, 28, 0.6);
     --theme-gradient-from: #D4AF37;
-    --theme-gradient-via: #C5A869;
-    --theme-gradient-to: #E6D3A3;
+    --theme-gradient-via: #C5A052;
+    --theme-gradient-to: #E8D5A0;
 
     /* Shadcn base overrides - dark theme */
     --background: 0 0% 4%;
@@ -382,7 +382,7 @@
     background: linear-gradient(90deg,
         var(--theme-gradient-from) 0%,
         var(--theme-gradient-to) 20%,
-        #fff 40%,
+        var(--theme-text) 40%,
         var(--theme-gradient-to) 60%,
         var(--theme-gradient-from) 80%,
         var(--theme-gradient-from) 100%);

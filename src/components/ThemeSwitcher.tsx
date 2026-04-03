@@ -3,10 +3,10 @@ import { useTheme, type ThemeType } from '@/context/ThemeContext';
 import { Crown, Shield, Leaf, Gem, Palette } from 'lucide-react';
 
 const themes: { id: ThemeType; label: string; icon: React.ElementType; swatch: string }[] = [
-  { id: 'royal', label: 'Royal', icon: Crown, swatch: '#D4AF37' },
-  { id: 'platinum', label: 'Platinum', icon: Shield, swatch: '#C0C0C0' },
-  { id: 'harvest', label: 'Harvest', icon: Leaf, swatch: '#B8860B' },
-  { id: 'onyx', label: 'Onyx', icon: Gem, swatch: '#D4AF37' },
+  { id: 'onyx', label: 'Onyx & Gold', icon: Gem, swatch: '#D4AF37' },
+  { id: 'royal', label: 'Royal Crimson', icon: Crown, swatch: '#9B2335' },
+  { id: 'platinum', label: 'Platinum', icon: Shield, swatch: '#CBD5E1' },
+  { id: 'harvest', label: 'Harvest', icon: Leaf, swatch: '#C4A028' },
 ];
 
 export default function ThemeSwitcher() {
