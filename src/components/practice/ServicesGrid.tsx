@@ -75,10 +75,10 @@ const ServicesGrid = ({ title, subtitle, services }: ServicesGridProps) => {
       <div className="container-gq">
         {/* Section heading */}
         <div ref={headingRef} className="text-center mb-12 lg:mb-16">
-          <h2 className="font-serif font-medium text-gq-dark text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-6xl mb-4">
+          <h2 className="font-serif font-medium text-gq-light text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-6xl mb-4">
             {title}
           </h2>
-          <p className="font-sans text-[#2d2418]/70 text-lg sm:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="font-sans text-gq-light/70 text-lg sm:text-xl max-w-2xl mx-auto font-light leading-relaxed">
             {subtitle}
           </p>
         </div>
@@ -94,32 +94,32 @@ const ServicesGrid = ({ title, subtitle, services }: ServicesGridProps) => {
             return (
               <div
                 key={index}
-                className="service-card group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                className="service-card group relative bg-gq-dark-warm rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
               >
                 {/* Gold bottom line that expands on hover */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-12 bg-gradient-to-r from-[#8E733E] via-[#C5A869] to-[#E6D3A3] group-hover:w-full transition-all duration-500 ease-out" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-12 bg-gradient-to-r from-gq-gold via-gq-gold to-gq-gold group-hover:w-full transition-all duration-500 ease-out" />
 
                 {/* Icon circle */}
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#C5A869]/10 border border-[#C5A869]/20 group-hover:bg-[#C5A869]/20 group-hover:border-[#C5A869]/40 transition-all duration-500">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gq-gold/10 border border-gq-gold/20 group-hover:bg-gq-gold/20 group-hover:border-gq-gold/40 transition-all duration-500">
                   <Icon
-                    className="h-6 w-6 text-[#8E733E] group-hover:text-[#C5A869] transition-colors duration-500"
+                    className="h-6 w-6 text-gq-gold group-hover:text-gq-gold transition-colors duration-500"
                     strokeWidth={1.5}
                   />
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif font-medium text-xl sm:text-2xl text-[#2d2418] mb-3 leading-tight">
+                <h3 className="font-serif font-medium text-xl sm:text-2xl text-gq-light mb-3 leading-tight">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="font-sans text-[#2d2418]/70 text-sm sm:text-base leading-relaxed font-light">
+                <p className="font-sans text-gq-light/70 text-sm sm:text-base leading-relaxed font-light">
                   {service.description}
                 </p>
 
                 {/* Optional statute reference */}
                 {service.statute && (
-                  <p className="mt-4 font-sans text-xs italic text-[#8E733E]/80">
+                  <p className="mt-4 font-sans text-xs italic text-gq-gold/80">
                     {service.statute}
                   </p>
                 )}

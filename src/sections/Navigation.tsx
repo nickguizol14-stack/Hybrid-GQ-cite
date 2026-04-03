@@ -159,7 +159,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
                 <a
                   href={link.href}
                   onClick={(e) => hasChildren ? e.preventDefault() : handleNavClick(e, link.href)}
-                  className={`flex items-center gap-1 transition-colors duration-300 text-[15px] font-medium tracking-wide relative py-2 ${isActive ? 'text-[#C5A869]' : 'text-gq-light/80 hover:text-[#C5A869]'
+                  className={`flex items-center gap-1 transition-colors duration-300 text-[15px] font-medium tracking-wide relative py-2 ${isActive ? 'text-gq-gold' : 'text-gq-light/80 hover:text-gq-gold'
                     } ${hasChildren ? 'cursor-default' : 'cursor-pointer'}`}
                 >
                   {link.label}
@@ -203,7 +203,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
                       className="absolute top-full -left-4 pt-6 w-72 z-50 perspective-1000"
                     >
                       {/* Glassmorphism Card */}
-                      <div className="bg-[#1a1510]/95 backdrop-blur-3xl border border-[#C5A869]/20 rounded-xl shadow-2xl overflow-hidden ring-1 ring-black/5">
+                      <div className="backdrop-blur-3xl rounded-xl shadow-2xl overflow-hidden ring-1 ring-black/5" style={{ background: 'var(--theme-overlay)', border: '1px solid rgba(var(--theme-gold-rgb), 0.2)' }}>
                         <div className="p-2 flex flex-col gap-1">
                           {link.children?.map((child, i) => (
                             <motion.a
@@ -214,7 +214,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
                               onClick={(e) => handleNavClick(e, child.href)}
                               className={`group relative flex items-center justify-between px-4 py-3 rounded-lg text-sm transition-all duration-300 overflow-hidden ${location.pathname === child.href
                                 ? 'bg-gq-gold/10 text-gq-gold'
-                                : 'text-gq-light/80 hover:text-white hover:bg-white/5'
+                                : 'text-gq-light/80 hover:text-white hover:bg-gq-dark-warm/5'
                                 }`}
                             >
                               <span className="relative z-10 font-medium tracking-wide">{child.label}</span>
@@ -246,7 +246,8 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
           ref={ctaRef}
           href="/contact"
           onClick={(e) => handleNavClick(e, '/contact')}
-          className="hidden sm:inline-flex btn-primary text-sm py-2 px-6 rounded-md tracking-wide border border-[#B03A4A]/30 cursor-pointer"
+          className="hidden sm:inline-flex btn-primary text-sm py-2 px-6 rounded-md tracking-wide cursor-pointer"
+          style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(var(--theme-accent-rgb), 0.3)' }}
         >
           Contact Us
         </a>
@@ -272,7 +273,8 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-[#2d2418] shadow-2xl overflow-hidden pointer-events-auto border-b border-[#C5A869]/20"
+            className="lg:hidden absolute top-full left-0 right-0 shadow-2xl overflow-hidden pointer-events-auto backdrop-blur-xl"
+            style={{ background: 'var(--theme-section-bg)', borderBottom: '1px solid rgba(var(--theme-gold-rgb), 0.2)' }}
           >
             <div className="container-gq py-4 flex flex-col gap-3 max-h-[75vh] overflow-y-auto">
               {navLinks.map((link) => (
@@ -301,7 +303,7 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
                                   key={child.label}
                                   href={child.href}
                                   onClick={(e) => handleNavClick(e, child.href)}
-                                  className={`text-base py-2.5 px-4 rounded hover:bg-white/5 ${location.pathname === child.href ? 'text-gq-gold' : 'text-gq-light/70'}`}
+                                  className={`text-base py-2.5 px-4 rounded hover:bg-gq-dark-warm/5 ${location.pathname === child.href ? 'text-gq-gold' : 'text-gq-light/70'}`}
                                 >
                                   {child.label}
                                 </a>

@@ -171,7 +171,7 @@ const About = () => {
       className="w-full bg-gq-dark-gradient section-padding relative overflow-hidden"
     >
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gq-gold/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" style={{ background: 'rgba(var(--theme-gold-rgb), 0.05)' }} />
 
       <div className="container-gq relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
@@ -195,7 +195,8 @@ const About = () => {
               {/* Gary's Photo - Professional reveal animation */}
               <div
                 ref={photoRef}
-                className="relative mb-8 rounded-xl overflow-hidden shadow-2xl border-2 border-gq-gold/30"
+                className="relative mb-8 rounded-xl overflow-hidden shadow-2xl border-2"
+                style={{ borderColor: 'rgba(var(--theme-gold-rgb), 0.3)' }}
               >
                 <img
                   src="/gary-photo.png"
@@ -240,7 +241,8 @@ const About = () => {
             {/* Pull Quote */}
             <blockquote
               ref={quoteRef}
-              className="relative bg-gq-dark-warm/50 rounded-xl p-8 lg:p-10 mb-10 border border-gq-gold/20"
+              className="relative rounded-xl p-8 lg:p-10 mb-10 border backdrop-blur-md"
+              style={{ background: 'rgba(var(--theme-gold-rgb), 0.03)', borderColor: 'rgba(var(--theme-gold-rgb), 0.15)', boxShadow: '0 4px 30px rgba(0,0,0,0.1)' }}
             >
               {/* Opening quote mark */}
               <span className="quote-mark absolute -top-4 -left-2 font-serif text-7xl text-gq-gold leading-none">
@@ -266,7 +268,8 @@ const About = () => {
             {/* Closing */}
             <p
               ref={closingRef}
-              className="font-serif font-medium tracking-wide text-xl text-[#C5A869] text-center shimmer-text"
+              className="font-serif font-medium tracking-wide text-xl text-center shimmer-text"
+              style={{ color: 'var(--theme-gold)' }}
             >
               That&apos;s the difference 34 years makes.
             </p>

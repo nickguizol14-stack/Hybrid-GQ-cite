@@ -83,7 +83,7 @@ const TopBar = ({ isScrolled = false }: TopBarProps) => {
           </a>
 
           {/* Separator */}
-          <div className="hidden sm:block w-[1px] h-4 bg-white/20" />
+          <div className="hidden sm:block w-[1px] h-4 bg-gq-dark-warm/20" />
 
           <a
             ref={emailRef}
@@ -102,7 +102,7 @@ const TopBar = ({ isScrolled = false }: TopBarProps) => {
         className={`absolute bottom-0 left-0 right-0 h-[1px] gold-shimmer origin-left transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'
           }`}
         style={{
-          background: 'linear-gradient(90deg, #8E733E 0%, #C5A869 50%, #E6D3A3 100%)',
+          background: `linear-gradient(90deg, rgba(var(--theme-gold-rgb), 0.6) 0%, var(--theme-gold) 50%, rgba(var(--theme-gold-rgb), 0.8) 100%)`,
         }}
       />
     </div>

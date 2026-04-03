@@ -1,10 +1,10 @@
 export default function RoyaltyPaymentAuditChecklist() {
   return (
     <div className="prose-content">
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Why Audit Your Royalty Payments
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         Royalty underpayment is common in Oklahoma. It is not always
         intentional. Accounting errors, incorrect decimal interest calculations,
         improper post-production deductions, and volume discrepancies between
@@ -17,10 +17,10 @@ export default function RoyaltyPaymentAuditChecklist() {
         your royalty payments.
       </p>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Step 1: Confirm Your Ownership Percentage
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         Pull your division order from the operator. The division order states
         your decimal interest in the well or spacing unit. Compare this number
         against your deed or mineral conveyance. If your lease provides for a
@@ -30,14 +30,14 @@ export default function RoyaltyPaymentAuditChecklist() {
         month. Check the OCC's pooling order for the spacing unit to confirm
         the total acreage and your proportionate share.
       </p>
-      <span className="text-[#8E733E] text-sm italic">
+      <span className="text-gq-gold text-sm italic">
         See OCC Form 1002-A (Division Order)
       </span>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Step 2: Get the OCC Operator's Report
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         Every operator in Oklahoma must file production reports with the
         Oklahoma Corporation Commission. These Form 1012 reports show monthly
         oil and gas production volumes for each well. You can access these
@@ -47,10 +47,10 @@ export default function RoyaltyPaymentAuditChecklist() {
         volumes (in MCF) reported to the OCC.
       </p>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Step 3: Get the Tax Commission Purchaser's Report
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         Oklahoma requires purchasers of oil and gas production to file reports
         with the Oklahoma Tax Commission showing volumes purchased and prices
         paid. Under 68 O.S. Section 1001 et seq., the gross production tax is
@@ -59,14 +59,14 @@ export default function RoyaltyPaymentAuditChecklist() {
         price per barrel or per MCF. Request these records from the Tax
         Commission or ask your operator for copies of the purchaser statements.
       </p>
-      <span className="text-[#8E733E] text-sm italic">
+      <span className="text-gq-gold text-sm italic">
         68 O.S. Section 1001 et seq. (Gross Production Tax)
       </span>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Step 4: Compare Volumes and Pricing
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         Line up three sets of numbers side by side: the OCC production report,
         the purchaser's report, and your royalty check stub. The volumes should
         be consistent across all three. Small differences of 1 to 2 percent can
@@ -79,10 +79,10 @@ export default function RoyaltyPaymentAuditChecklist() {
         taking undisclosed deductions.
       </p>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Step 5: Check for Improper Deductions
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         Oklahoma law restricts the deductions an operator can take from royalty
         payments. Under the Oklahoma Production Revenue Standards Act (52 O.S.
         Section 570.10), an operator may not deduct costs incurred to market gas
@@ -94,21 +94,21 @@ export default function RoyaltyPaymentAuditChecklist() {
         lease does not contain a post-production cost provision authorizing
         these deductions, they may be improper.
       </p>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         The Oklahoma Supreme Court addressed this issue in Mittelstaedt v.
         Santa Fe Minerals, Inc., confirming that the default rule in Oklahoma is
         that royalty is calculated on the value of production at the wellhead,
         free of production costs. If your lease is silent on deductions, the
         operator bears the cost of making the gas marketable.
       </p>
-      <span className="text-[#8E733E] text-sm italic">
+      <span className="text-gq-gold text-sm italic">
         52 O.S. Section 570.10
       </span>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Step 6: Verify Surface Payment Obligations
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         If you are both a mineral owner and a surface owner, confirm that any
         surface damage payments owed under the Surface Damages Act (52 O.S.
         Section 318.2 et seq.) are being paid separately from your royalty. Some
@@ -119,10 +119,10 @@ export default function RoyaltyPaymentAuditChecklist() {
         other.
       </p>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Step 7: Monitor OCC Actions Affecting Your Spacing Unit
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         The Corporation Commission regularly issues orders that affect your
         mineral interest. Increased density orders allow additional wells in
         your spacing unit. Multiunit horizontal well orders can combine multiple
@@ -132,14 +132,14 @@ export default function RoyaltyPaymentAuditChecklist() {
         your section, township, and range. You can subscribe to notifications
         through the OCC's online filing system.
       </p>
-      <span className="text-[#8E733E] text-sm italic">
+      <span className="text-gq-gold text-sm italic">
         See OCC Rules, OAC 165:10 (Oil and Gas Conservation)
       </span>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         Red Flags That Indicate Underpayment
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         Watch for these warning signs. Your royalty check amount drops
         significantly without any corresponding decline in the commodity price.
         The operator changes purchasers and your per-unit price drops. Line item
@@ -150,10 +150,10 @@ export default function RoyaltyPaymentAuditChecklist() {
         are consistently lower than the OCC production reports.
       </p>
 
-      <h2 className="font-serif text-2xl text-[#1A1510] font-medium mt-10 mb-4">
+      <h2 className="font-serif text-2xl text-gq-light font-medium mt-10 mb-4">
         What to Do If You Find Discrepancies
       </h2>
-      <p className="text-[#1A1510]/70 text-base leading-relaxed mb-4">
+      <p className="text-gq-light/70 text-base leading-relaxed mb-4">
         Start with a written demand to the operator identifying the specific
         discrepancy and requesting an accounting. Under the Oklahoma Royalty
         Payment Act (52 O.S. Section 570.1), the operator has 60 days to begin
@@ -164,7 +164,7 @@ export default function RoyaltyPaymentAuditChecklist() {
         for royalty claims in Oklahoma is five years under 12 O.S. Section 95,
         so do not wait to investigate suspected underpayments.
       </p>
-      <span className="text-[#8E733E] text-sm italic">
+      <span className="text-gq-gold text-sm italic">
         52 O.S. Section 570.1 et seq.; 12 O.S. Section 95
       </span>
     </div>

@@ -32,14 +32,14 @@ export default function RoleStep({ data, onUpdate, onNext }: Props) {
             onClick={() => onUpdate({ role: role.value })}
             className={`flex items-start gap-3 p-3 rounded-lg border text-left transition-all ${
               data.role === role.value
-                ? 'border-[#C5A869] bg-[#C5A869]/8'
-                : 'border-[#C5A869]/10 hover:border-[#C5A869]/30'
+                ? 'border-gq-gold bg-gq-gold/8'
+                : 'border-gq-gold/10 hover:border-gq-gold/30'
             }`}
           >
             <div className={`w-4 h-4 mt-0.5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
-              data.role === role.value ? 'border-[#C5A869]' : 'border-[#555]'
+              data.role === role.value ? 'border-gq-gold' : 'border-[#555]'
             }`}>
-              {data.role === role.value && <div className="w-2 h-2 rounded-full bg-[#C5A869]" />}
+              {data.role === role.value && <div className="w-2 h-2 rounded-full bg-gq-gold" />}
             </div>
             <div>
               <div className="text-gq-light font-medium text-xs sm:text-sm leading-tight">{role.label}</div>

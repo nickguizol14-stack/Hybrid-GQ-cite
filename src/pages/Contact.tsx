@@ -71,19 +71,19 @@ const ContactPage = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                        <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-gq-gold/30 transition-colors">
+                        <div className="bg-gq-dark-warm/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-gq-gold/30 transition-colors">
                             <Phone className="w-6 h-6 text-gq-gold mb-4" />
                             <h3 className="font-bold text-xl mb-1">Direct Line</h3>
                             <a href="tel:405-607-2266" className="text-white/70 hover:text-white transition-colors">(405) 607-2266</a>
                         </div>
-                        <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-gq-gold/30 transition-colors">
+                        <div className="bg-gq-dark-warm/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-gq-gold/30 transition-colors">
                             <Mail className="w-6 h-6 text-gq-gold mb-4" />
                             <h3 className="font-bold text-xl mb-1">Email</h3>
                             <a href="mailto:gary@gq-law.com" className="text-white/70 hover:text-white transition-colors">gary@gq-law.com</a>
                         </div>
                     </div>
 
-                    <div className="bg-white/5 backdrop-blur-sm p-8 rounded-xl border border-white/10">
+                    <div className="bg-gq-dark-warm/5 backdrop-blur-sm p-8 rounded-xl border border-white/10">
                         <div className="flex items-start gap-4">
                             <MapPin className="w-6 h-6 text-gq-gold mt-1 shrink-0" />
                             <div>
@@ -109,7 +109,7 @@ const ContactPage = () => {
                 <div className="contact-form-reveal relative">
                     <div className="absolute inset-0 bg-gq-gold/5 blur-3xl rounded-full pointer-events-none"></div>
 
-                    <div className="bg-white rounded-2xl shadow-2xl overflow-hidden relative z-10 text-gq-dark p-8 md:p-10 border border-white/10">
+                    <div className="bg-gq-dark-warm rounded-2xl shadow-2xl overflow-hidden relative z-10 text-gq-light p-8 md:p-10 border border-white/10">
                         <div className="absolute top-0 left-0 w-full h-2 bg-gq-gold-gradient"></div>
 
                         <h2 className="font-serif text-3xl font-bold mb-2">Request Representation</h2>

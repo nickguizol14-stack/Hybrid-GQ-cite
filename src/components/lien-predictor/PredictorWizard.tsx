@@ -65,30 +65,30 @@ export default function PredictorWizard() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="bg-[#2a2219] border border-[#C5A869]/15 rounded-2xl p-10 sm:p-14 text-center"
+          className="bg-gq-dark-warm border border-gq-gold/15 rounded-2xl p-10 sm:p-14 text-center"
         >
           {/* Animated rings */}
           <div className="relative w-24 h-24 mx-auto mb-8">
             <motion.div
-              className="absolute inset-0 border-2 border-[#C5A869]/20 rounded-full"
+              className="absolute inset-0 border-2 border-gq-gold/20 rounded-full"
               animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0, 0.3] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
             />
             <motion.div
-              className="absolute inset-2 border-2 border-[#C5A869]/30 rounded-full"
+              className="absolute inset-2 border-2 border-gq-gold/30 rounded-full"
               animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.1, 0.5] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeOut', delay: 0.3 }}
             />
             <motion.div
-              className="absolute inset-4 border-2 border-[#C5A869] rounded-full flex items-center justify-center"
+              className="absolute inset-4 border-2 border-gq-gold rounded-full flex items-center justify-center"
               animate={{ rotate: 360 }}
               transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
             >
-              <div className="w-2 h-2 bg-[#C5A869] rounded-full absolute -top-1" />
+              <div className="w-2 h-2 bg-gq-gold rounded-full absolute -top-1" />
             </motion.div>
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
-                className="w-3 h-3 bg-[#C5A869] rounded-full"
+                className="w-3 h-3 bg-gq-gold rounded-full"
                 animate={{ scale: [1, 1.4, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
@@ -129,7 +129,7 @@ export default function PredictorWizard() {
   if (publicProjectRedirect) {
     return (
       <div className="max-w-2xl mx-auto">
-        <div className="bg-[#2a2219] border border-[#C5A869]/15 rounded-2xl p-8 sm:p-10 text-center">
+        <div className="bg-gq-dark-warm border border-gq-gold/15 rounded-2xl p-8 sm:p-10 text-center">
           <div className="w-14 h-14 rounded-full bg-[#eab308]/10 flex items-center justify-center mx-auto mb-6">
             <span className="text-2xl">&#9888;</span>
           </div>
@@ -147,7 +147,7 @@ export default function PredictorWizard() {
             </button>
             <a
               href="/contact"
-              className="bg-gradient-to-r from-[#7A232F] via-[#9B2D3D] to-[#B03A4A] text-white px-8 py-3 rounded-lg text-sm font-bold tracking-wide"
+              className="bg-gradient-to-r from-gq-burgundy via-gq-burgundy to-gq-burgundy text-white px-8 py-3 rounded-lg text-sm font-bold tracking-wide"
             >
               Contact Gary About Bond Claims
             </a>
@@ -178,12 +178,12 @@ export default function PredictorWizard() {
       {/* Progress Bar */}
       <div className="mb-5">
         <div className="flex items-center gap-2">
-          <span className="text-[#C5A869] text-[10px] tracking-[3px] uppercase font-semibold">
+          <span className="text-gq-gold text-[10px] tracking-[3px] uppercase font-semibold">
             Step {step + 1} of {STEP_LABELS.length}
           </span>
           <div className="flex-1 h-[3px] bg-[#333] rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-[#8e733e] to-[#C5A869] rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-gq-gold to-gq-gold rounded-full transition-all duration-500"
               style={{ width: `${((step + 1) / STEP_LABELS.length) * 100}%` }}
             />
           </div>

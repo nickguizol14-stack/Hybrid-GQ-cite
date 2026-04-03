@@ -79,11 +79,11 @@ const ResourcesPreview = () => {
         {/* Section Header */}
         <div ref={titleRef} className="text-center mb-12 lg:mb-16">
           <span className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-px bg-[#C5A869]/60" />
-            <span className="font-sans text-xs uppercase tracking-[0.2em] text-[#C5A869] font-medium">
+            <div className="w-8 h-px bg-gq-gold/60" />
+            <span className="font-sans text-xs uppercase tracking-[0.2em] text-gq-gold font-medium">
               From the Practice
             </span>
-            <div className="w-8 h-px bg-[#C5A869]/60" />
+            <div className="w-8 h-px bg-gq-gold/60" />
           </span>
           <h2 className="font-serif font-medium text-gq-light text-3xl sm:text-4xl lg:text-5xl mb-4">
             Resources &amp; <span className="text-gq-gold-gradient italic">Insights</span>
@@ -102,11 +102,15 @@ const ResourcesPreview = () => {
             <Link
               key={resource.slug}
               to={`/resources/${resource.slug}`}
-              className="resource-card group flex flex-col bg-[#2a2219] rounded-2xl border border-[#C5A869]/10 hover:border-[#C5A869]/40 transition-all duration-500 overflow-hidden"
+              className="resource-card group flex flex-col rounded-2xl backdrop-blur-xl transition-all duration-500 overflow-hidden"
+              style={{
+                background: 'var(--theme-card-bg)',
+                border: '1px solid var(--theme-card-border)',
+              }}
             >
               <div className="p-6 sm:p-8 flex flex-col flex-1">
                 {/* Type badge */}
-                <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#C5A869] font-semibold mb-2">
+                <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-gq-gold font-semibold mb-2">
                   {TYPE_LABELS[resource.type]}
                 </span>
 
@@ -116,7 +120,7 @@ const ResourcesPreview = () => {
                 </span>
 
                 {/* Title */}
-                <h3 className="font-serif text-gq-light text-lg sm:text-xl leading-snug mb-3 group-hover:text-[#E6D3A3] transition-colors duration-300">
+                <h3 className="font-serif text-gq-light text-lg sm:text-xl leading-snug mb-3 group-hover:text-gq-gold transition-colors duration-300">
                   {resource.title}
                 </h3>
 
@@ -126,7 +130,7 @@ const ResourcesPreview = () => {
                 </p>
 
                 {/* Read More */}
-                <div className="mt-auto flex items-center gap-2 text-[#C5A869] font-sans text-sm uppercase tracking-[0.15em] font-medium group-hover:text-[#E6D3A3] transition-colors duration-300">
+                <div className="mt-auto flex items-center gap-2 text-gq-gold font-sans text-sm uppercase tracking-[0.15em] font-medium group-hover:text-gq-gold transition-colors duration-300">
                   <span>Read More</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
@@ -139,7 +143,7 @@ const ResourcesPreview = () => {
         <div className="text-center">
           <Link
             to="/resources"
-            className="inline-flex items-center gap-2 text-[#C5A869] font-sans text-sm uppercase tracking-[0.15em] font-medium group transition-colors duration-300 hover:text-[#E6D3A3]"
+            className="inline-flex items-center gap-2 text-gq-gold font-sans text-sm uppercase tracking-[0.15em] font-medium group transition-colors duration-300 hover:text-gq-gold"
           >
             <span>View All Resources</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

@@ -26,7 +26,7 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
         {/* Pre-Lien Notice (not shown for GCs) */}
         {!isGC && (
           <div>
-            <label className="text-[#C5A869] text-xs font-semibold tracking-widest uppercase block mb-3">Did you send a pre-lien notice?</label>
+            <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">Did you send a pre-lien notice?</label>
             <div className="flex gap-3">
               {(['yes', 'no', 'not_sure'] as NoticeStatus[]).map((val) => (
                 <button
@@ -34,8 +34,8 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
                   onClick={() => onUpdate({ preLienNoticeSent: val })}
                   className={`flex-1 p-3 rounded-lg border text-sm text-center transition-all ${
                     data.preLienNoticeSent === val
-                      ? 'border-[#C5A869] bg-[#C5A869]/8 text-gq-light'
-                      : 'border-[#C5A869]/10 text-gq-light/60 hover:border-[#C5A869]/30'
+                      ? 'border-gq-gold bg-gq-gold/8 text-gq-light'
+                      : 'border-gq-gold/10 text-gq-light/60 hover:border-gq-gold/30'
                   }`}
                 >
                   {val === 'yes' ? 'Yes' : val === 'no' ? 'No' : 'Not Sure'}
@@ -44,14 +44,14 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
             </div>
 
             {data.preLienNoticeSent === 'yes' && (
-              <div className="mt-4 space-y-4 pl-4 border-l-2 border-[#C5A869]/20">
+              <div className="mt-4 space-y-4 pl-4 border-l-2 border-gq-gold/20">
                 <div>
                   <label className="text-gq-light/50 text-xs block mb-2">When was it sent?</label>
                   <input
                     type="date"
                     value={data.noticeDate}
                     onChange={(e) => onUpdate({ noticeDate: e.target.value })}
-                    className="w-full bg-[#1a1510] border border-[#C5A869]/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-[#C5A869]/50"
+                    className="w-full bg-gq-dark border border-gq-gold/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-gq-gold/50"
                   />
                 </div>
                 <div>
@@ -62,7 +62,7 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
                         type="checkbox"
                         checked={data.noticeToGC}
                         onChange={(e) => onUpdate({ noticeToGC: e.target.checked })}
-                        className="w-4 h-4 rounded border-[#C5A869]/30 bg-[#1a1510] accent-[#C5A869]"
+                        className="w-4 h-4 rounded border-gq-gold/30 bg-gq-dark accent-gq-gold"
                       />
                       <span className="text-gq-light/70 text-sm">General Contractor</span>
                     </label>
@@ -71,7 +71,7 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
                         type="checkbox"
                         checked={data.noticeToOwner}
                         onChange={(e) => onUpdate({ noticeToOwner: e.target.checked })}
-                        className="w-4 h-4 rounded border-[#C5A869]/30 bg-[#1a1510] accent-[#C5A869]"
+                        className="w-4 h-4 rounded border-gq-gold/30 bg-gq-dark accent-gq-gold"
                       />
                       <span className="text-gq-light/70 text-sm">Property Owner</span>
                     </label>
@@ -84,7 +84,7 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
 
         {/* Written Contract */}
         <div>
-          <label className="text-[#C5A869] text-xs font-semibold tracking-widest uppercase block mb-3">Do you have a written contract?</label>
+          <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">Do you have a written contract?</label>
           <div className="flex gap-3">
             {[true, false].map((val) => (
               <button
@@ -92,8 +92,8 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
                 onClick={() => onUpdate({ writtenContract: val })}
                 className={`flex-1 p-3 rounded-lg border text-sm text-center transition-all ${
                   data.writtenContract === val
-                    ? 'border-[#C5A869] bg-[#C5A869]/8 text-gq-light'
-                    : 'border-[#C5A869]/10 text-gq-light/60 hover:border-[#C5A869]/30'
+                    ? 'border-gq-gold bg-gq-gold/8 text-gq-light'
+                    : 'border-gq-gold/10 text-gq-light/60 hover:border-gq-gold/30'
                 }`}
               >
                 {val ? 'Yes' : 'No'}
@@ -104,7 +104,7 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
 
         {/* Lien Waivers */}
         <div>
-          <label className="text-[#C5A869] text-xs font-semibold tracking-widest uppercase block mb-3">Have you signed any lien waivers?</label>
+          <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">Have you signed any lien waivers?</label>
           <div className="flex gap-3">
             {(['none', 'partial', 'full'] as WaiverStatus[]).map((val) => (
               <button
@@ -112,8 +112,8 @@ export default function ComplianceStep({ data, onUpdate, onNext, onBack }: Props
                 onClick={() => onUpdate({ lienWaivers: val })}
                 className={`flex-1 p-3 rounded-lg border text-sm text-center transition-all ${
                   data.lienWaivers === val
-                    ? 'border-[#C5A869] bg-[#C5A869]/8 text-gq-light'
-                    : 'border-[#C5A869]/10 text-gq-light/60 hover:border-[#C5A869]/30'
+                    ? 'border-gq-gold bg-gq-gold/8 text-gq-light'
+                    : 'border-gq-gold/10 text-gq-light/60 hover:border-gq-gold/30'
                 }`}
               >
                 {val === 'none' ? 'No' : val === 'partial' ? 'Partial' : 'Full'}

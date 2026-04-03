@@ -172,12 +172,12 @@ const ContractLaw = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12 lg:gap-16 items-start">
             {/* Left: Content */}
             <div className="lg:col-span-3">
-              <h2 className="reveal-item font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1510] mb-8">
-                What Did the <span className="text-[#C5A869]">Parties Mean?</span>
+              <h2 className="reveal-item font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-gq-light mb-8">
+                What Did the <span className="text-gq-gold">Parties Mean?</span>
               </h2>
-              <div className="space-y-5 text-base sm:text-lg text-[#1A1510]/75 leading-relaxed">
+              <div className="space-y-5 text-base sm:text-lg text-gq-light/75 leading-relaxed">
                 <p className="reveal-item">
-                  Every contract dispute comes down to one question: what did the parties mean? Oklahoma courts follow <strong className="text-[#1A1510]">14 specific rules</strong> to answer that question, from the plain meaning doctrine to the parol evidence rule to the principle that ambiguous language is construed against the drafter. Gary Quinnett knows these rules because he has litigated them for 34 years.
+                  Every contract dispute comes down to one question: what did the parties mean? Oklahoma courts follow <strong className="text-gq-light">14 specific rules</strong> to answer that question, from the plain meaning doctrine to the parol evidence rule to the principle that ambiguous language is construed against the drafter. Gary Quinnett knows these rules because he has litigated them for 34 years.
                 </p>
                 <p className="reveal-item">
                   That litigation experience is what separates Gary's contract drafting from template-based lawyering. He does not draft contracts to look good on paper. He drafts them to survive a courtroom challenge. Every defined term, every performance obligation, every remedy provision is written with the knowledge of how Oklahoma judges and juries interpret contract language.
@@ -185,12 +185,12 @@ const ContractLaw = () => {
                 <p className="reveal-item">
                   Before becoming an attorney, Gary spent 13 years in Fortune 500 corporate operations. He reads contracts the way a business operator reads them: what does this cost me, what happens if they do not perform, and how fast can I get out if things go wrong. That commercial instinct, combined with his command of Oklahoma's Uniform Commercial Code (12A O.S.), produces contracts that work in the real world.
                 </p>
-                <p className="reveal-item text-sm text-[#1A1510]/40 italic">
+                <p className="reveal-item text-sm text-gq-light/40 italic">
                   15 O.S. Section 136 / 12A O.S.
                 </p>
               </div>
               <div className="reveal-item mt-8">
-                <a href="/contact" className="inline-flex items-center gap-2 font-semibold text-[#1A1510] border-b-2 border-[#C5A869] pb-1 hover:text-[#8E733E] transition-colors">
+                <a href="/contact" className="inline-flex items-center gap-2 font-semibold text-gq-light border-b-2 border-gq-gold pb-1 hover:text-gq-gold transition-colors">
                   <span>Discuss Your Contract Matter</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
@@ -200,16 +200,16 @@ const ContractLaw = () => {
             {/* Right: Dark card with who we represent */}
             <div className="lg:col-span-2 reveal-item">
               <div className="relative">
-                <div className="absolute -inset-3 bg-[#C5A869]/5 rounded-2xl -z-10 transform rotate-2" />
-                <div className="bg-[#1A1510] p-6 sm:p-8 rounded-xl text-white shadow-2xl">
+                <div className="absolute -inset-3 bg-gq-gold/5 rounded-2xl -z-10 transform rotate-2" />
+                <div className="bg-gq-dark p-6 sm:p-8 rounded-xl text-white shadow-2xl">
                   <h3 className="text-xl font-serif font-bold mb-5 flex items-center gap-3">
-                    <Briefcase className="text-[#C5A869] w-6 h-6" />
+                    <Briefcase className="text-gq-gold w-6 h-6" />
                     <span>Who We Represent</span>
                   </h3>
                   <ul className="space-y-3">
                     {whoWeRepresent.map((item, i) => (
                       <li key={i} className="flex items-center gap-3 text-white/80 text-sm">
-                        <CheckCircle2 className="w-4 h-4 text-[#C5A869] flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-gq-gold flex-shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -226,18 +226,18 @@ const ContractLaw = () => {
         <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
 
         {/* Large watermark */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif italic text-[20rem] text-[#C5A869] opacity-[0.02] pointer-events-none select-none leading-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif italic text-[20rem] text-gq-gold opacity-[0.02] pointer-events-none select-none leading-none">
           14
         </div>
 
         <div className="container-gq relative z-10">
           <div className="rules-title max-w-3xl mx-auto text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 border border-[#C5A869]/20 rounded-full px-5 py-2 bg-[#C5A869]/5 mb-6">
-              <Scale className="w-4 h-4 text-[#C5A869]" />
-              <span className="text-[#C5A869] text-[10px] tracking-[3px] uppercase font-semibold">Oklahoma Contract Law</span>
+            <div className="inline-flex items-center gap-2 border border-gq-gold/20 rounded-full px-5 py-2 bg-gq-gold/5 mb-6">
+              <Scale className="w-4 h-4 text-gq-gold" />
+              <span className="text-gq-gold text-[10px] tracking-[3px] uppercase font-semibold">Oklahoma Contract Law</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gq-light font-medium mb-4">
-              The 14 Rules Oklahoma Courts <span className="text-[#C5A869] italic">Use to Interpret Your Contract</span>
+              The 14 Rules Oklahoma Courts <span className="text-gq-gold italic">Use to Interpret Your Contract</span>
             </h2>
             <p className="text-gq-light/50 text-sm sm:text-base max-w-2xl mx-auto">
               When a dispute reaches the courtroom, these are the principles that determine whether your contract protects you. Gary has litigated every one of them.
@@ -248,9 +248,9 @@ const ContractLaw = () => {
             {interpretationRules.map((rule, i) => (
               <div
                 key={i}
-                className="rule-item flex gap-4 items-start bg-[#2a2219]/60 border border-[#C5A869]/8 rounded-xl p-4 hover:border-[#C5A869]/25 transition-colors duration-300"
+                className="rule-item flex gap-4 items-start bg-gq-dark-warm/60 border border-gq-gold/8 rounded-xl p-4 hover:border-gq-gold/25 transition-colors duration-300"
               >
-                <span className="font-serif text-2xl font-semibold text-[#C5A869]/40 leading-none mt-0.5 w-8 flex-shrink-0 text-right">
+                <span className="font-serif text-2xl font-semibold text-gq-gold/40 leading-none mt-0.5 w-8 flex-shrink-0 text-right">
                   {i + 1}
                 </span>
                 <p className="text-gq-light/70 text-sm leading-relaxed">

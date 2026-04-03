@@ -69,19 +69,19 @@ const RelatedPractices = ({ practices }: RelatedPracticesProps) => {
       className="w-full bg-gq-dark-gradient py-12 sm:py-16 lg:py-24 xl:py-32 relative overflow-hidden"
     >
       {/* Decorative borders */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#C5A869]/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#C5A869]/30 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gq-gold/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gq-gold/30 to-transparent" />
 
       <div className="container-gq relative z-10">
         {/* Section header */}
         <div ref={titleRef} className="text-center mb-10 lg:mb-16">
-          <p className="text-[#C5A869] text-sm md:text-base tracking-[0.2em] uppercase font-medium mb-4 font-sans">
+          <p className="text-gq-gold text-sm md:text-base tracking-[0.2em] uppercase font-medium mb-4 font-sans">
             Explore More
           </p>
           <h2 className="font-serif font-medium text-gq-light text-3xl sm:text-4xl md:text-5xl">
             Related Practice Areas
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#C5A869] to-transparent mx-auto mt-6 opacity-70 rounded-full" />
+          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gq-gold to-transparent mx-auto mt-6 opacity-70 rounded-full" />
         </div>
 
         {/* Cards grid */}
@@ -93,7 +93,7 @@ const RelatedPractices = ({ practices }: RelatedPracticesProps) => {
             <Link
               key={index}
               to={practice.href}
-              className="related-card group relative bg-[#2a2219] rounded-2xl p-8 border border-[#C5A869]/20 transition-all duration-500 hover:-translate-y-2 hover:border-[#C5A869]/50 hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)]"
+              className="related-card group relative bg-gq-dark-warm rounded-2xl p-8 border border-gq-gold/20 transition-all duration-500 hover:-translate-y-2 hover:border-gq-gold/50 hover:shadow-[0_12px_40px_rgb(0,0,0,0.3)]"
             >
               {/* Top accent border */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gq-gold-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-2xl" />
@@ -106,7 +106,7 @@ const RelatedPractices = ({ practices }: RelatedPracticesProps) => {
                 {practice.description}
               </p>
 
-              <div className="flex items-center gap-2 text-[#C5A869] text-sm font-sans font-medium tracking-wide">
+              <div className="flex items-center gap-2 text-gq-gold text-sm font-sans font-medium tracking-wide">
                 <span>Learn More</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </div>

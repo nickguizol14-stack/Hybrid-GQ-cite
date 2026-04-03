@@ -31,7 +31,7 @@ export default function ProjectStep({ data, onUpdate, onNext, onBack }: Props) {
       <div className="space-y-6">
         {/* Project Type */}
         <div>
-          <label className="text-[#C5A869] text-xs font-semibold tracking-widest uppercase block mb-3">Project Type</label>
+          <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">Project Type</label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {PROJECT_TYPES.map((pt) => (
               <button
@@ -39,8 +39,8 @@ export default function ProjectStep({ data, onUpdate, onNext, onBack }: Props) {
                 onClick={() => onUpdate({ projectType: pt.value })}
                 className={`p-3 rounded-lg border text-left text-sm transition-all ${
                   data.projectType === pt.value
-                    ? 'border-[#C5A869] bg-[#C5A869]/8 text-gq-light'
-                    : 'border-[#C5A869]/10 text-gq-light/60 hover:border-[#C5A869]/30'
+                    ? 'border-gq-gold bg-gq-gold/8 text-gq-light'
+                    : 'border-gq-gold/10 text-gq-light/60 hover:border-gq-gold/30'
                 }`}
               >
                 {pt.label}
@@ -51,11 +51,11 @@ export default function ProjectStep({ data, onUpdate, onNext, onBack }: Props) {
 
         {/* County */}
         <div>
-          <label className="text-[#C5A869] text-xs font-semibold tracking-widest uppercase block mb-3">County</label>
+          <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">County</label>
           <select
             value={data.county}
             onChange={(e) => onUpdate({ county: e.target.value })}
-            className="w-full bg-[#1a1510] border border-[#C5A869]/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-[#C5A869]/50"
+            className="w-full bg-gq-dark border border-gq-gold/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-gq-gold/50"
           >
             <option value="">Select county</option>
             {OKLAHOMA_COUNTIES.map((c) => (
@@ -66,7 +66,7 @@ export default function ProjectStep({ data, onUpdate, onNext, onBack }: Props) {
 
         {/* Contract Value */}
         <div>
-          <label className="text-[#C5A869] text-xs font-semibold tracking-widest uppercase block mb-3">Contract / PO Value</label>
+          <label className="text-gq-gold text-xs font-semibold tracking-widest uppercase block mb-3">Contract / PO Value</label>
           <div className="relative">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gq-light/40 text-sm">$</span>
             <input
@@ -74,7 +74,7 @@ export default function ProjectStep({ data, onUpdate, onNext, onBack }: Props) {
               value={data.contractValue ?? ''}
               onChange={(e) => onUpdate({ contractValue: e.target.value ? Number(e.target.value) : null })}
               placeholder="0"
-              className="w-full bg-[#1a1510] border border-[#C5A869]/20 rounded-lg pl-8 pr-4 py-3 text-gq-light text-sm focus:outline-none focus:border-[#C5A869]/50"
+              className="w-full bg-gq-dark border border-gq-gold/20 rounded-lg pl-8 pr-4 py-3 text-gq-light text-sm focus:outline-none focus:border-gq-gold/50"
             />
           </div>
         </div>

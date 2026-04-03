@@ -102,7 +102,7 @@ const PracticeOverview = ({
       <div className="container-gq">
         {/* Section heading */}
         <div className="mb-12 lg:mb-16">
-          <h2 className="font-serif font-medium text-gq-dark text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-6xl">
+          <h2 className="font-serif font-medium text-gq-light text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-6xl">
             {title}{' '}
             <span className="text-gq-gold-gradient italic">
               {titleAccent}
@@ -118,7 +118,7 @@ const PracticeOverview = ({
               {paragraphs.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="font-sans text-[#2d2418]/80 text-base sm:text-lg leading-relaxed font-light"
+                  className="font-sans text-gq-light/80 text-base sm:text-lg leading-relaxed font-light"
                 >
                   {paragraph}
                 </p>
@@ -126,7 +126,7 @@ const PracticeOverview = ({
             </div>
 
             {statuteRef && (
-              <p className="mt-6 font-sans text-sm italic text-[#8E733E]">
+              <p className="mt-6 font-sans text-sm italic text-gq-gold">
                 {statuteRef}
               </p>
             )}
@@ -135,9 +135,9 @@ const PracticeOverview = ({
             <div className="mt-8 lg:mt-10">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-3 text-[#9B2D3D] hover:text-[#7A232F] transition-colors group/link"
+                className="inline-flex items-center gap-3 text-gq-burgundy hover:text-gq-burgundy transition-colors group/link"
               >
-                <span className="font-sans text-sm sm:text-base font-semibold tracking-wide relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-px after:bottom-0 after:left-0 after:bg-[#9B2D3D] after:origin-bottom-right after:transition-transform after:duration-300 group-hover/link:after:scale-x-100 group-hover/link:after:origin-bottom-left">
+                <span className="font-sans text-sm sm:text-base font-semibold tracking-wide relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-px after:bottom-0 after:left-0 after:bg-gq-burgundy after:origin-bottom-right after:transition-transform after:duration-300 group-hover/link:after:scale-x-100 group-hover/link:after:origin-bottom-left">
                   {ctaText}
                 </span>
                 <ArrowRight
@@ -152,7 +152,7 @@ const PracticeOverview = ({
           <div ref={rightRef} className="lg:col-span-2">
             <div className="bg-gq-dark-gradient rounded-2xl p-8 lg:p-10 relative overflow-hidden shadow-xl">
               {/* Subtle top glow */}
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C5A869]/30 to-transparent" />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gq-gold/30 to-transparent" />
 
               {/* Noise overlay */}
               <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
@@ -160,9 +160,9 @@ const PracticeOverview = ({
               <div className="relative z-10">
                 {/* Icon */}
                 <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#C5A869]/10 border border-[#C5A869]/20">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gq-gold/10 border border-gq-gold/20">
                     <ListIcon
-                      className="h-5 w-5 text-[#C5A869]"
+                      className="h-5 w-5 text-gq-gold"
                       strokeWidth={1.5}
                     />
                   </div>
@@ -172,7 +172,7 @@ const PracticeOverview = ({
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-[#C5A869]/15 mb-6" />
+                <div className="h-px bg-gq-gold/15 mb-6" />
 
                 {/* Checklist */}
                 <ul className="space-y-4">
@@ -182,7 +182,7 @@ const PracticeOverview = ({
                       className="list-item flex items-start gap-3"
                     >
                       <CheckCircle2
-                        className="mt-0.5 h-5 w-5 shrink-0 text-[#C5A869]"
+                        className="mt-0.5 h-5 w-5 shrink-0 text-gq-gold"
                         strokeWidth={1.5}
                       />
                       <span className="font-sans text-sm sm:text-base text-gq-light/80 font-light leading-relaxed">

@@ -42,13 +42,13 @@ const PracticeCTA = ({ title, description }: PracticeCTAProps) => {
       className="w-full bg-gq-dark-gradient py-12 sm:py-16 lg:py-24 xl:py-32 relative overflow-hidden"
     >
       {/* Burgundy gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#9B2D3D]/10 via-transparent to-[#9B2D3D]/5 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gq-burgundy/10 via-transparent to-gq-burgundy/5 pointer-events-none" />
 
       {/* Decorative gold blur orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C5A869]/8 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gq-gold/8 rounded-full blur-[150px] pointer-events-none" />
 
       {/* Top accent border */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#C5A869]/30 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gq-gold/30 to-transparent" />
 
       <div className="container-gq relative z-10">
         <div ref={contentRef} className="max-w-3xl mx-auto text-center">
@@ -72,7 +72,7 @@ const PracticeCTA = ({ title, description }: PracticeCTAProps) => {
             Or call us at{' '}
             <a
               href="tel:+14056072266"
-              className="text-[#C5A869] hover:text-[#E6D3A3] transition-colors duration-300"
+              className="text-gq-gold hover:text-gq-gold transition-colors duration-300"
             >
               (405) 607-2266
             </a>

@@ -27,10 +27,10 @@ export default function ResultsView({ result, onSaveShare }: Props) {
     <motion.div initial="hidden" animate="visible" className="space-y-4">
 
       {/* Gauge + Verdict + Metrics — single card */}
-      <motion.div variants={fadeUp} custom={0} className="bg-[#2a2219] border border-[#C5A869]/10 rounded-2xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A869]/40 to-transparent" />
+      <motion.div variants={fadeUp} custom={0} className="bg-gq-dark-warm border border-gq-gold/10 rounded-2xl relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gq-gold/40 to-transparent" />
 
-        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] divide-y md:divide-y-0 md:divide-x divide-[#C5A869]/8">
+        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] divide-y md:divide-y-0 md:divide-x divide-gq-gold/8">
           {/* Gauge side */}
           <div className="flex flex-col items-center justify-center p-5 sm:p-6">
             <GaugeChart rating={result.overallRating} />
@@ -57,7 +57,7 @@ export default function ResultsView({ result, onSaveShare }: Props) {
                 <span>Filing window: {result.windowElapsedPercent}% elapsed</span>
                 <span>{deadlineDate}</span>
               </div>
-              <div className="w-full h-1.5 bg-[#1a1510] rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-gq-dark rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${result.windowElapsedPercent}%` }}
@@ -71,8 +71,8 @@ export default function ResultsView({ result, onSaveShare }: Props) {
       </motion.div>
 
       {/* Factor Analysis — clean, factual table */}
-      <motion.div variants={fadeUp} custom={1} className="bg-[#2a2219] border border-[#C5A869]/10 rounded-2xl overflow-hidden">
-        <div className="px-5 py-3 border-b border-[#C5A869]/8 flex items-center justify-between">
+      <motion.div variants={fadeUp} custom={1} className="bg-gq-dark-warm border border-gq-gold/10 rounded-2xl overflow-hidden">
+        <div className="px-5 py-3 border-b border-gq-gold/8 flex items-center justify-between">
           <h2 className="font-serif text-base text-gq-light font-medium">Statutory Compliance</h2>
           <span className="text-gq-light/20 text-[9px] tracking-wide">Oklahoma Title 42</span>
         </div>
@@ -88,7 +88,7 @@ export default function ResultsView({ result, onSaveShare }: Props) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.2 + i * 0.15, duration: 0.4 }}
-                  className="border-b border-[#C5A869]/5 last:border-0"
+                  className="border-b border-gq-gold/5 last:border-0"
                 >
                   <td className="pl-5 py-3 w-8">
                     <span className={`text-sm ${isPassing ? 'text-[#4ade80]' : isWarning ? 'text-[#eab308]' : 'text-[#ef4444]'}`}>
@@ -113,7 +113,7 @@ export default function ResultsView({ result, onSaveShare }: Props) {
         </table>
 
         {/* Expandable detail — show descriptions below table */}
-        <div className="px-5 py-3 border-t border-[#C5A869]/8 space-y-2">
+        <div className="px-5 py-3 border-t border-gq-gold/8 space-y-2">
           {result.factors.filter(f => f.score !== 'pass').map((factor) => (
             <p key={factor.id} className="text-gq-light/40 text-xs leading-relaxed">
               <span className="text-gq-light/60 font-medium">{factor.name}:</span> {factor.description}
@@ -126,7 +126,7 @@ export default function ResultsView({ result, onSaveShare }: Props) {
       </motion.div>
 
       {/* CTA */}
-      <motion.div variants={fadeUp} custom={2} className="bg-[#2a2219] border border-[#C5A869]/10 rounded-2xl p-5 sm:p-6">
+      <motion.div variants={fadeUp} custom={2} className="bg-gq-dark-warm border border-gq-gold/10 rounded-2xl p-5 sm:p-6">
         <div className="flex flex-col sm:flex-row items-center gap-5">
           <div className="flex-1 text-center sm:text-left">
             <h3 className="font-serif text-xl text-gq-light font-medium mb-1">Ready to Protect Your Rights?</h3>
@@ -135,11 +135,11 @@ export default function ResultsView({ result, onSaveShare }: Props) {
           <div className="flex flex-col items-center gap-2 flex-shrink-0">
             <button
               onClick={onSaveShare}
-              className="bg-gradient-to-r from-[#7A232F] via-[#9B2D3D] to-[#B03A4A] text-white h-11 px-7 rounded-lg text-xs font-bold tracking-widest uppercase whitespace-nowrap hover:brightness-110 transition-all"
+              className="bg-gradient-to-r from-gq-burgundy via-gq-burgundy to-gq-burgundy text-white h-11 px-7 rounded-lg text-xs font-bold tracking-widest uppercase whitespace-nowrap hover:brightness-110 transition-all"
             >
               Share With Gary
             </button>
-            <a href="tel:405-607-2266" className="text-gq-light/30 text-xs hover:text-[#C5A869] transition-colors">(405) 607-2266</a>
+            <a href="tel:405-607-2266" className="text-gq-light/30 text-xs hover:text-gq-gold transition-colors">(405) 607-2266</a>
           </div>
         </div>
       </motion.div>

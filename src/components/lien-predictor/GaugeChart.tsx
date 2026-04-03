@@ -53,20 +53,20 @@ export default function GaugeChart({ rating }: GaugeChartProps) {
         </defs>
 
         {/* Background arc */}
-        <path d="M 15 100 A 85 85 0 0 1 185 100" fill="none" stroke="#2a2219" strokeWidth="14" strokeLinecap="round" />
+        <path d="M 15 100 A 85 85 0 0 1 185 100" fill="none" stroke="var(--theme-section-alt)" strokeWidth="14" strokeLinecap="round" />
         {/* Gradient arc */}
         <path d="M 15 100 A 85 85 0 0 1 185 100" fill="none" stroke="url(#gaugeGrad)" strokeWidth="14" strokeLinecap="round" opacity="0.25" />
 
         {/* Needle group — rotates around center (100, 100) */}
         <g ref={needleRef}>
           {/* Needle line */}
-          <line x1="100" y1="100" x2="100" y2="30" stroke="#c5a869" strokeWidth="3" strokeLinecap="round" filter="url(#ndGlow)" />
+          <line x1="100" y1="100" x2="100" y2="30" stroke="var(--theme-gold)" strokeWidth="3" strokeLinecap="round" filter="url(#ndGlow)" />
           {/* Pointer tip (small triangle) */}
           <polygon points="95,35 105,35 100,20" fill="#c5a869" />
         </g>
 
         {/* Center dot */}
-        <circle cx="100" cy="100" r="7" fill="#1a1510" stroke="#c5a869" strokeWidth="2.5" />
+        <circle cx="100" cy="100" r="7" fill="var(--theme-primary)" stroke="var(--theme-gold)" strokeWidth="2.5" />
         <circle cx="100" cy="100" r="3" fill="#c5a869" />
 
         {/* Labels */}

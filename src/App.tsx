@@ -6,6 +6,8 @@ import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 
 import { trackPageView } from './lib/analytics';
+import { ThemeProvider } from './context/ThemeContext';
+import ThemeSwitcher from './components/ThemeSwitcher';
 import TopBar from './sections/TopBar';
 import Navigation from './sections/Navigation';
 import Footer from './sections/Footer';
@@ -137,12 +139,15 @@ function AppContent() {
           setShowPreloader(false);
           window.dispatchEvent(new Event('preloader-complete'));
         }} />}
-      <div className="min-h-screen bg-gq-dark flex flex-col">
+      {/* Film grain overlay for cinematic feel */}
+      <div className="grain-overlay" />
+      <div className="min-h-screen flex flex-col" style={{ background: 'var(--theme-primary)' }}>
         {/* Sticky Header - TopBar + Navigation - transparent over hero */}
         <div
           ref={headerRef}
-          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-gq-dark/95 backdrop-blur-xl shadow-lg' : 'bg-transparent'
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'backdrop-blur-xl shadow-lg' : 'bg-transparent'
             }`}
+          style={isScrolled ? { background: 'var(--theme-overlay)' } : {}}
         >
           {/* Top Utility Bar */}
           <TopBar isScrolled={isScrolled} />
@@ -179,6 +184,7 @@ function AppContent() {
         </main>
 
         <Footer />
+        <ThemeSwitcher />
       </div>
     </>
   );
@@ -186,9 +192,11 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </ThemeProvider>
   );
 }
 

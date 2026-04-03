@@ -115,20 +115,20 @@ const ProcessSteps = ({ steps }: ProcessStepsProps) => {
               {/* Connector line (between circles, not on last item) */}
               {index < steps.length - 1 && (
                 <div className="step-connector hidden lg:block absolute top-7 left-[calc(50%+28px)] w-[calc(100%-56px)] origin-left">
-                  <div className="w-full border-t-2 border-dashed border-[#C5A869]/20" />
+                  <div className="w-full border-t-2 border-dashed border-gq-gold/20" />
                 </div>
               )}
 
               {/* Number circle */}
-              <div className="relative mb-5 lg:mb-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#C5A869]/40 bg-transparent transition-colors duration-300 group hover:border-[#C5A869]">
-                <span className="font-serif font-medium text-xl text-[#C5A869]">
+              <div className="relative mb-5 lg:mb-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-gq-gold/40 bg-transparent transition-colors duration-300 group hover:border-gq-gold">
+                <span className="font-serif font-medium text-xl text-gq-gold">
                   {index + 1}
                 </span>
               </div>
 
               {/* Mobile connector (vertical dotted line) */}
               {index < steps.length - 1 && (
-                <div className="lg:hidden w-px h-6 border-l-2 border-dashed border-[#C5A869]/20 mb-2 -mt-3" />
+                <div className="lg:hidden w-px h-6 border-l-2 border-dashed border-gq-gold/20 mb-2 -mt-3" />
               )}
 
               {/* Text content */}

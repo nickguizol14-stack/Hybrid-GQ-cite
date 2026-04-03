@@ -48,26 +48,15 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // GQ Law Custom Colors - Lighter browns
-        gq: {
-          dark: '#2d2418',
-          'dark-warm': '#3d3220',
-          light: '#FAF6F0',
-          'light-warm': '#F0E8DC',
-          gold: '#C5A869', /* Refined Champagne Gold */
-          'gold-light': '#E6D3A3',
-          'gold-dark': '#8E733E',
-          burgundy: '#9B2D3D',
-          'burgundy-light': '#B03A4A',
-          'burgundy-dark': '#7A232F',
-        },
       },
       transitionTimingFunction: {
         'accordion': 'cubic-bezier(0.25, 1, 0.5, 1)',
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        serif: ['"Cinzel"', '"Playfair Display"', 'serif'],
+        display: ['"Cinzel"', 'serif'],
+        body: ['"Cormorant Garamond"', 'serif'],
+        sans: ['"Outfit"', '"Inter"', 'sans-serif'],
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
@@ -78,10 +67,11 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        'gold': '0 0 20px rgba(196, 153, 59, 0.3), 0 0 40px rgba(196, 153, 59, 0.1)',
-        'burgundy': '0 0 20px rgba(139, 35, 50, 0.3), 0 0 40px rgba(139, 35, 50, 0.1)',
-        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.2)',
-        'card-hover': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        'gold': '0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1)',
+        'glass': '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+        'glass-hover': '0 16px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
+        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.4)',
+        'card-hover': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
       },
       keyframes: {
         "accordion-down": {
@@ -110,8 +100,8 @@ module.exports = {
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(196, 153, 59, 0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(196, 153, 59, 0.5)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(212, 175, 55, 0.3)" },
+          "50%": { boxShadow: "0 0 40px rgba(212, 175, 55, 0.5)" },
         },
       },
       animation: {
@@ -122,12 +112,6 @@ module.exports = {
         "bounce-subtle": "bounce-subtle 2s ease-in-out infinite",
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 4s ease-in-out infinite",
-      },
-      backgroundImage: {
-        'gq-dark-gradient': 'linear-gradient(180deg, #2d2418 0%, #3d3220 100%)',
-        'gq-light-gradient': 'linear-gradient(180deg, #FAF6F0 0%, #F0E8DC 100%)',
-        'gq-gold-gradient': 'linear-gradient(135deg, #8E733E 0%, #C5A869 50%, #E6D3A3 100%)',
-        'gq-burgundy-gradient': 'linear-gradient(135deg, #7A232F 0%, #9B2D3D 50%, #B03A4A 100%)',
       },
     },
   },

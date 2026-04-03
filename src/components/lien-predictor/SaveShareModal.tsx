@@ -90,7 +90,7 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.97 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#2a2219] border border-[#C5A869]/20 rounded-2xl p-6 sm:p-8 w-full max-w-md relative"
+            className="bg-gq-dark-warm border border-gq-gold/20 rounded-2xl p-6 sm:p-8 w-full max-w-md relative"
           >
             <button onClick={onClose} className="absolute top-4 right-4 text-gq-light/30 hover:text-gq-light transition-colors">
               <X className="w-5 h-5" />
@@ -103,7 +103,7 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
                 </div>
                 <h3 className="font-serif text-xl text-gq-light font-medium mb-2">Assessment Shared</h3>
                 <p className="text-gq-light/50 text-sm">Gary's team will review your situation and reach out within 24 hours.</p>
-                <button onClick={onClose} className="mt-6 text-[#C5A869] text-sm hover:text-[#E6D3A3] transition-colors">Close</button>
+                <button onClick={onClose} className="mt-6 text-gq-gold text-sm hover:text-gq-gold transition-colors">Close</button>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
@@ -118,7 +118,7 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       required
-                      className="w-full bg-[#1a1510] border border-[#C5A869]/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-[#C5A869]/50"
+                      className="w-full bg-gq-dark border border-gq-gold/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-gq-gold/50"
                     />
                   </div>
                   <div>
@@ -128,7 +128,7 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       required
-                      className="w-full bg-[#1a1510] border border-[#C5A869]/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-[#C5A869]/50"
+                      className="w-full bg-gq-dark border border-gq-gold/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-gq-gold/50"
                     />
                   </div>
                   <div>
@@ -137,7 +137,7 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
                       type="tel"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full bg-[#1a1510] border border-[#C5A869]/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-[#C5A869]/50"
+                      className="w-full bg-gq-dark border border-gq-gold/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-gq-gold/50"
                     />
                   </div>
                   <div>
@@ -146,7 +146,7 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
                       value={form.notes}
                       onChange={(e) => setForm({ ...form, notes: e.target.value })}
                       rows={3}
-                      className="w-full bg-[#1a1510] border border-[#C5A869]/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-[#C5A869]/50 resize-none"
+                      className="w-full bg-gq-dark border border-gq-gold/20 rounded-lg px-4 py-3 text-gq-light text-sm focus:outline-none focus:border-gq-gold/50 resize-none"
                     />
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export default function SaveShareModal({ isOpen, onClose, wizardData, result }: 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-6 bg-gradient-to-r from-[#7A232F] via-[#9B2D3D] to-[#B03A4A] text-white py-3.5 rounded-lg text-sm font-bold tracking-wide disabled:opacity-40 hover:scale-[1.01] transition-transform"
+                  className="w-full mt-6 bg-gradient-to-r from-gq-burgundy via-gq-burgundy to-gq-burgundy text-white py-3.5 rounded-lg text-sm font-bold tracking-wide disabled:opacity-40 hover:scale-[1.01] transition-transform"
                 >
                   {isSubmitting ? 'Sending...' : 'Share Assessment'}
                 </button>

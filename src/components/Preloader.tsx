@@ -58,10 +58,14 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
     <div
       ref={containerRef}
       data-preloader
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#1A1510] overflow-hidden"
+      className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
+      style={{ background: 'var(--theme-primary, #0a0a0a)' }}
     >
       {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vh] h-[50vh] bg-[#C5A869]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vh] h-[50vh] rounded-full blur-[120px] pointer-events-none"
+        style={{ background: 'rgba(var(--theme-gold-rgb, 212, 175, 55), 0.05)' }}
+      />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -74,7 +78,7 @@ export const Preloader = ({ onComplete }: { onComplete: () => void }) => {
             src="/logo-gwinnett.png"
             alt="GQ Law"
             className="h-full w-auto object-contain relative z-10"
-            style={{ filter: 'drop-shadow(0px 0px 15px rgba(197, 168, 105, 0.15))' }}
+            style={{ filter: 'drop-shadow(0px 0px 15px rgba(var(--theme-gold-rgb, 212, 175, 55), 0.15))' }}
           />
 
           {/* Masked shine effect */}

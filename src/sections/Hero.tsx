@@ -104,7 +104,7 @@ const Hero = () => {
         ref={overlayRef}
         className="absolute inset-0 backdrop-blur-[2px]"
         style={{
-          background: `linear-gradient(135deg, rgba(26, 20, 16, 0.85) 0%, rgba(35, 28, 20, 0.70) 50%, rgba(45, 36, 24, 0.55) 100%)`,
+          background: `linear-gradient(135deg, var(--theme-gradient-from) 0%, var(--theme-gradient-via) 50%, var(--theme-gradient-to) 100%)`,
         }}
       />
 
@@ -117,7 +117,8 @@ const Hero = () => {
           {/* Firm Name - Single line with shimmer animation */}
           <p
             ref={firmNameRef}
-            className="font-serif text-[#E6D3A3] text-[0.65rem] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl tracking-[0.1em] sm:tracking-[0.2em] uppercase mb-6 font-medium shimmer-text max-w-full leading-relaxed"
+            className="font-serif text-[0.65rem] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl tracking-[0.1em] sm:tracking-[0.2em] uppercase mb-6 font-medium shimmer-text max-w-full leading-relaxed"
+            style={{ color: 'var(--theme-gold)' }}
           >
             The Law Offices of Gary David Quinnett, PLLC
           </p>
@@ -137,7 +138,7 @@ const Hero = () => {
           >
             Aggressive, business-savvy legal representation for Oklahoma&apos;s
             contractors, business owners, and dealmakers.{' '}
-            <span className="text-[#E6D3A3] font-medium shimmer-hover block mt-2 sm:inline sm:mt-0">34 years of results.</span>
+            <span className="font-medium shimmer-hover block mt-2 sm:inline sm:mt-0" style={{ color: 'var(--theme-gold)' }}>34 years of results.</span>
           </p>
 
           {/* CTA Button */}
@@ -149,7 +150,8 @@ const Hero = () => {
                 e.preventDefault();
                 document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="inline-flex btn-primary text-sm sm:text-lg tracking-wide group py-3 sm:py-4 px-6 sm:px-10 border border-[#B03A4A]/30 backdrop-blur-sm"
+              className="inline-flex btn-primary text-sm sm:text-lg tracking-wide group py-3 sm:py-4 px-6 sm:px-10 backdrop-blur-sm"
+              style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(var(--theme-accent-rgb), 0.3)' }}
             >
               <span>Schedule Your Consultation</span>
               <svg

@@ -143,7 +143,7 @@ const PracticeAreas = () => {
 
       <div className="container-gq relative z-10">
         {/* Section Header */}
-        <div ref={titleRef} className="text-center md:text-left mb-16 lg:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-[#C5A869]/20 pb-8">
+        <div ref={titleRef} className="text-center md:text-left mb-16 lg:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b pb-8" style={{ borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}>
           <div>
             <h2 className="font-serif font-medium text-gq-light text-[3rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl mb-4">
               Practice <span className="text-gq-gold-gradient italic">Areas</span>
@@ -157,7 +157,8 @@ const PracticeAreas = () => {
         {/* Horizontal Accordion Container */}
         <div
           ref={accordionRef}
-          className="flex flex-col lg:flex-row w-full lg:h-[650px] border border-[#C5A869]/30 rounded-2xl overflow-hidden shadow-2xl bg-[#1A1510]"
+          className="flex flex-col lg:flex-row w-full lg:h-[650px] border rounded-2xl overflow-hidden shadow-2xl"
+          style={{ borderColor: 'rgba(var(--theme-gold-rgb), 0.3)', backgroundColor: 'var(--theme-section-bg)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
         >
           {practiceAreas.map((area, index) => {
             const isHovered = hoveredIndex === index;
@@ -171,24 +172,30 @@ const PracticeAreas = () => {
                     setHoveredIndex(isHovered ? null : index);
                   }
                 }}
-                className={`relative group border-b lg:border-b-0 lg:border-r border-[#C5A869]/20 last:border-0 transition-all duration-700 ease-accordion cursor-pointer overflow-hidden flex flex-col lg:flex-row
-                  ${isHovered ? 'lg:flex-[3] bg-[#2A2219]' : 'lg:flex-1 bg-[#1A1510] hover:bg-[#231C14]'}
+                className={`relative group border-b lg:border-b-0 lg:border-r last:border-0 transition-all duration-700 ease-accordion cursor-pointer overflow-hidden flex flex-col lg:flex-row
+                  ${isHovered ? 'lg:flex-[3]' : 'lg:flex-1'}
                 `}
+                style={{
+                  borderColor: 'rgba(var(--theme-gold-rgb), 0.2)',
+                  backgroundColor: isHovered ? 'var(--theme-section-alt)' : 'var(--theme-section-bg)',
+                }}
               >
                 {/* Background Hover Highlight */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-b from-[#C5A869]/10 to-transparent opacity-0 transition-opacity duration-700 ${isHovered ? 'opacity-100' : ''}`}
+                  className={`absolute inset-0 opacity-0 transition-opacity duration-700 ${isHovered ? 'opacity-100' : ''}`}
+                  style={{ background: `linear-gradient(to bottom, rgba(var(--theme-gold-rgb), 0.1), transparent)` }}
                 />
 
                 {/* Vertical Header (Visible when collapsed on Desktop, always top on Mobile) */}
                 <div
-                  className={`p-6 lg:p-8 flex lg:flex-col justify-between items-center lg:items-start lg:w-32 lg:min-w-[8rem] shrink-0 border-r-0 lg:border-r border-[#C5A869]/10 transition-colors duration-500
+                  className={`p-6 lg:p-8 flex lg:flex-col justify-between items-center lg:items-start lg:w-32 lg:min-w-[8rem] shrink-0 border-r-0 lg:border-r transition-colors duration-500
                     ${isHovered ? 'border-transparent' : ''}
                   `}
+                  style={{ borderColor: isHovered ? 'transparent' : 'rgba(var(--theme-gold-rgb), 0.1)' }}
                 >
                   <div className="flex lg:flex-col items-center lg:items-start gap-4 lg:gap-8 w-full">
                     {/* Number */}
-                    <span className="font-sans font-light text-sm tracking-widest text-[#C5A869] opacity-70">
+                    <span className="font-sans font-light text-sm tracking-widest opacity-70" style={{ color: 'var(--theme-gold)' }}>
                       /{area.number}
                     </span>
 
@@ -201,7 +208,7 @@ const PracticeAreas = () => {
                   </div>
 
                   {/* Icon/Arrow indicator */}
-                  <div className={`mt-auto transition-transform duration-500 hidden lg:block ${isHovered ? '-rotate-45 text-[#C5A869]' : 'text-[#C5A869]/30'}`}>
+                  <div className={`mt-auto transition-transform duration-500 hidden lg:block ${isHovered ? '-rotate-45' : ''}`} style={{ color: isHovered ? 'var(--theme-gold)' : 'rgba(var(--theme-gold-rgb), 0.3)' }}>
                     <ArrowRight className="w-6 h-6" strokeWidth={1} />
                   </div>
                 </div>
@@ -214,7 +221,7 @@ const PracticeAreas = () => {
                 >
                   <div className="p-6 lg:p-10 lg:pl-12 h-full flex flex-col justify-center min-w-[280px] lg:min-w-[450px]">
 
-                    <h4 className="font-serif text-[1.4rem] sm:text-2xl md:text-3xl lg:text-4xl text-[#E6D3A3] mb-4 sm:mb-6 font-medium leading-[1.2] pt-4 lg:pt-0">
+                    <h4 className="font-serif text-[1.4rem] sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 font-medium leading-[1.2] pt-4 lg:pt-0" style={{ color: 'var(--theme-gold)', filter: 'brightness(1.15)' }}>
                       {area.shortDesc}
                     </h4>
 
@@ -223,11 +230,11 @@ const PracticeAreas = () => {
                     </p>
 
                     <div className="mb-10 lg:mb-12">
-                      <div className="text-xs uppercase tracking-[0.2em] text-[#C5A869] mb-4 font-semibold">Key Capabilities</div>
+                      <div className="text-xs uppercase tracking-[0.2em] mb-4 font-semibold" style={{ color: 'var(--theme-gold)' }}>Key Capabilities</div>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
                         {area.services.map((service, idx) => (
                           <li key={idx} className="flex items-start gap-3">
-                            <span className="text-[#C5A869] mt-1.5 w-1 h-1 rounded-full bg-[#C5A869] shrink-0" />
+                            <span className="mt-1.5 w-1 h-1 rounded-full shrink-0" style={{ color: 'var(--theme-gold)', backgroundColor: 'var(--theme-gold)' }} />
                             <span className="text-gq-light/90 text-sm font-light tracking-wide">{service}</span>
                           </li>
                         ))}
@@ -243,9 +250,12 @@ const PracticeAreas = () => {
                             window.scrollTo(0, 0);
                           }
                         }}
-                        className="inline-flex items-center gap-4 text-gq-light hover:text-[#C5A869] transition-colors group/btn"
+                        className="inline-flex items-center gap-4 text-gq-light transition-colors group/btn"
+                        style={{ ['--hover-color' as string]: 'var(--theme-gold)' }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--theme-gold)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = '')}
                       >
-                        <span className="font-sans text-sm tracking-widest uppercase relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-px after:bottom-0 after:left-0 after:bg-[#C5A869] after:origin-bottom-right after:transition-transform after:duration-300 group-hover/btn:after:scale-x-100 group-hover/btn:after:origin-bottom-left">
+                        <span className="font-sans text-sm tracking-widest uppercase relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-px after:bottom-0 after:left-0 after:bg-gq-gold after:origin-bottom-right after:transition-transform after:duration-300 group-hover/btn:after:scale-x-100 group-hover/btn:after:origin-bottom-left">
                           Explore Practice Area
                         </span>
                         <ArrowRight className="w-5 h-5 -rotate-45 group-hover/btn:rotate-0 transition-transform duration-500" strokeWidth={1.5} />

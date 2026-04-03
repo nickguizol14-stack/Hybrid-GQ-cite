@@ -52,7 +52,7 @@ const Footer = () => {
         transition={{ duration: 1, ease: 'easeOut' }}
         className="absolute top-0 left-0 right-0 h-0.5 gold-shimmer origin-left"
         style={{
-          background: 'linear-gradient(90deg, #8E733E 0%, #C5A869 50%, #E6D3A3 100%)',
+          background: 'linear-gradient(90deg, var(--theme-gold) 0%, var(--theme-accent) 50%, var(--theme-gold) 100%)',
           backgroundSize: '200% 200%',
         }}
       />
@@ -102,7 +102,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
-            <h4 className="font-serif font-medium tracking-wide text-[#E6D3A3] text-lg mb-6">
+            <h4 className="font-serif font-medium tracking-wide text-gq-gold text-lg mb-6">
               Menu
             </h4>
             <ul className="space-y-4">
@@ -137,7 +137,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <motion.div variants={itemVariants}>
-            <h4 className="font-serif font-medium tracking-wide text-[#E6D3A3] text-lg mb-6">
+            <h4 className="font-serif font-medium tracking-wide text-gq-gold text-lg mb-6">
               Contact
             </h4>
             <ul className="space-y-5">
@@ -146,7 +146,7 @@ const Footer = () => {
                   href="tel:405-607-2266"
                   className="flex items-center gap-3 text-gq-light/70 hover:text-gq-gold transition-colors duration-300 group"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gq-light/5 flex items-center justify-center group-hover:bg-[#C5A869]/10 transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-gq-light/5 flex items-center justify-center group-hover:bg-gq-gold/10 transition-colors">
                     <Phone className="w-3.5 h-3.5 text-gq-gold" />
                   </div>
                   <span className="text-sm font-light tracking-wide">(405) 607-2266</span>
@@ -157,7 +157,7 @@ const Footer = () => {
                   href="mailto:gary@gq-law.com"
                   className="flex items-center gap-3 text-gq-light/70 hover:text-gq-gold transition-colors duration-300 group"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gq-light/5 flex items-center justify-center group-hover:bg-[#C5A869]/10 transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-gq-light/5 flex items-center justify-center group-hover:bg-gq-gold/10 transition-colors">
                     <Mail className="w-3.5 h-3.5 text-gq-gold" />
                   </div>
                   <span className="text-sm font-light tracking-wide">gary@gq-law.com</span>
@@ -186,7 +186,8 @@ const Footer = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="border-t border-[#C5A869]/10 bg-[#0F0C09]"
+        className="border-t"
+        style={{ borderColor: 'rgba(var(--theme-gold-rgb), 0.1)', background: 'var(--theme-primary)' }}
       >
         <div className="container-gq py-8 lg:py-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">

@@ -79,7 +79,7 @@ const WhyGary = () => {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative max-w-[320px] w-full">
-              <div className="rounded-2xl overflow-hidden border border-[#C5A869]/20 shadow-2xl">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border" style={{ borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}>
                 <img
                   src="/gary2.jpg"
                   alt="Gary Quinnett"
@@ -87,7 +87,7 @@ const WhyGary = () => {
                 />
               </div>
               {/* Subtle gold glow behind card */}
-              <div className="absolute -inset-2 rounded-2xl bg-[#C5A869]/5 -z-10 blur-xl" />
+              <div className="absolute -inset-2 rounded-2xl -z-10 blur-xl" style={{ background: 'rgba(var(--theme-gold-rgb), 0.05)' }} />
             </div>
           </div>
 
@@ -96,8 +96,8 @@ const WhyGary = () => {
             {/* Gold label */}
             <div className="authority-item">
               <span className="inline-flex items-center gap-2">
-                <div className="w-8 h-px bg-[#C5A869]/60" />
-                <span className="font-sans text-xs uppercase tracking-[0.2em] text-[#C5A869] font-medium">
+                <div className="w-8 h-px" style={{ background: 'rgba(var(--theme-gold-rgb), 0.6)' }} />
+                <span className="font-sans text-xs uppercase tracking-[0.2em] font-medium" style={{ color: 'var(--theme-gold)' }}>
                   Why Gary Quinnett
                 </span>
               </span>
@@ -110,8 +110,9 @@ const WhyGary = () => {
                 className="authority-item flex items-start gap-3"
               >
                 <CheckCircle2
-                  className="w-5 h-5 text-[#C5A869] mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 mt-0.5 flex-shrink-0"
                   strokeWidth={1.5}
+                  style={{ color: 'var(--theme-gold)' }}
                 />
                 <p className="text-gq-light/80 text-sm sm:text-base leading-relaxed font-light">
                   {item}
@@ -120,7 +121,7 @@ const WhyGary = () => {
             ))}
 
             {/* Standout line */}
-            <p className="authority-item font-serif italic text-[#C5A869] text-lg sm:text-xl leading-relaxed mt-2">
+            <p className="authority-item font-serif italic text-lg sm:text-xl leading-relaxed mt-2" style={{ color: 'var(--theme-gold)' }}>
               Your opponent's attorney may have attended one of Gary's training seminars.
             </p>
 
@@ -128,7 +129,8 @@ const WhyGary = () => {
             <div className="authority-item mt-2">
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 text-[#C5A869] font-sans text-sm uppercase tracking-[0.15em] font-medium group transition-colors duration-300 hover:text-[#E6D3A3]"
+                className="inline-flex items-center gap-2 font-sans text-sm uppercase tracking-[0.15em] font-medium group transition-colors duration-300"
+                style={{ color: 'var(--theme-gold)' }}
               >
                 <span>Learn More About Gary</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

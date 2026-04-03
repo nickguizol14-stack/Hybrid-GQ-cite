@@ -98,7 +98,7 @@ const PracticeHero = ({
       </div>
 
       {/* Gradient overlay: dark left to transparent right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1A1510] via-[#1A1510]/85 to-transparent" />
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 85%, transparent), transparent)' }} />
 
       {/* Subtle noise overlay */}
       <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
@@ -111,12 +111,16 @@ const PracticeHero = ({
             <nav className="flex items-center gap-2 text-sm font-sans tracking-wide">
               <Link
                 to="/#practice-areas"
-                className="text-[#C5A869]/70 hover:text-[#C5A869] transition-colors duration-300"
+                className="transition-colors duration-300"
+                style={{ color: 'rgba(var(--theme-gold-rgb), 0.7)' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--theme-gold)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(var(--theme-gold-rgb), 0.7)')}
               >
                 Practice Areas
               </Link>
               <ChevronRight
-                className="h-3.5 w-3.5 text-[#C5A869]/40"
+                className="h-3.5 w-3.5"
+                style={{ color: 'rgba(var(--theme-gold-rgb), 0.4)' }}
                 strokeWidth={1.5}
               />
               <span className="text-gq-light/90">{title}</span>
@@ -150,7 +154,7 @@ const PracticeHero = ({
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#2d2418] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-24" style={{ background: 'linear-gradient(to top, var(--theme-primary), transparent)' }} />
     </section>
   );
 };

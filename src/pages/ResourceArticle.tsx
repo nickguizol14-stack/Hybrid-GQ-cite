@@ -87,11 +87,11 @@ const ResourceArticle = () => {
         transition={pageTransition}
       >
         <div className="text-center px-6">
-          <h1 className="font-serif text-4xl text-[#1A1510] font-medium mb-4">Resource Not Found</h1>
-          <p className="text-[#1A1510]/60 mb-8">The resource you are looking for does not exist or has not been published yet.</p>
+          <h1 className="font-serif text-4xl text-gq-light font-medium mb-4">Resource Not Found</h1>
+          <p className="text-gq-light/60 mb-8">The resource you are looking for does not exist or has not been published yet.</p>
           <button
             onClick={() => navigate('/resources')}
-            className="inline-flex items-center gap-2 btn-primary text-sm py-3 px-8 rounded-lg tracking-wide border border-[#B03A4A]/30"
+            className="inline-flex items-center gap-2 btn-primary text-sm py-3 px-8 rounded-lg tracking-wide border border-gq-burgundy/30"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Resources
@@ -137,13 +137,13 @@ const ResourceArticle = () => {
       {/* Dark Hero */}
       <section className="bg-gq-dark-gradient pt-36 sm:pt-40 pb-14 sm:pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none" />
-        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#C5A869]/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-gq-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div ref={heroRef} className="container-gq relative z-10 max-w-3xl mx-auto">
           {/* Back link */}
           <Link
             to="/resources"
-            className="reveal inline-flex items-center gap-2 text-[#C5A869]/70 hover:text-[#C5A869] text-sm tracking-wide transition-colors duration-300 mb-8"
+            className="reveal inline-flex items-center gap-2 text-gq-gold/70 hover:text-gq-gold text-sm tracking-wide transition-colors duration-300 mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             All Resources
@@ -151,7 +151,7 @@ const ResourceArticle = () => {
 
           {/* Category + Type */}
           <div className="reveal flex items-center gap-3 mb-4">
-            <span className="text-[#C5A869] text-[10px] tracking-[3px] uppercase font-semibold">
+            <span className="text-gq-gold text-[10px] tracking-[3px] uppercase font-semibold">
               {resource.categoryLabel}
             </span>
             <span className="w-1 h-1 rounded-full bg-gq-light/30" />
@@ -187,23 +187,23 @@ const ResourceArticle = () => {
             <ContentComponent />
 
             {/* Related Practice Link Card */}
-            <div className="mt-16 pt-10 border-t border-[#1A1510]/10">
-              <p className="text-[10px] tracking-[3px] uppercase font-semibold text-[#C5A869] mb-3">
+            <div className="mt-16 pt-10 border-t border-gq-dark/10">
+              <p className="text-[10px] tracking-[3px] uppercase font-semibold text-gq-gold mb-3">
                 Related Practice Area
               </p>
               <Link
                 to={resource.relatedPracticeHref}
-                className="group flex items-center justify-between bg-white rounded-xl border border-gray-100 p-6 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-500"
+                className="group flex items-center justify-between bg-gq-dark-warm rounded-xl border border-gray-100 p-6 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-500"
               >
                 <div>
-                  <h3 className="font-serif text-xl text-[#1A1510] font-medium group-hover:text-[#8E733E] transition-colors duration-300">
+                  <h3 className="font-serif text-xl text-gq-light font-medium group-hover:text-gq-gold transition-colors duration-300">
                     {resource.relatedPractice}
                   </h3>
-                  <p className="text-[#1A1510]/50 text-sm mt-1">
+                  <p className="text-gq-light/50 text-sm mt-1">
                     Learn more about how we help clients in this area.
                   </p>
                 </div>
-                <ArrowRight className="w-5 h-5 text-[#C5A869] group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
+                <ArrowRight className="w-5 h-5 text-gq-gold group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0" />
               </Link>
             </div>
 
@@ -219,7 +219,7 @@ const ResourceArticle = () => {
                 </p>
                 <Link
                   to="/contact"
-                  className="inline-flex btn-primary text-sm py-3 px-8 rounded-lg tracking-wide border border-[#B03A4A]/30"
+                  className="inline-flex btn-primary text-sm py-3 px-8 rounded-lg tracking-wide border border-gq-burgundy/30"
                 >
                   Schedule a Consultation
                 </Link>

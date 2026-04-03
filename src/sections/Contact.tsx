@@ -194,10 +194,10 @@ const Contact = () => {
               href="tel:405-607-2266"
               className="block group mb-6"
             >
-              <span className="text-[#C5A869] text-xs uppercase tracking-widest mb-1 block font-medium">
+              <span className="text-gq-gold text-xs uppercase tracking-widest mb-1 block font-medium">
                 Call Now
               </span>
-              <span className="font-serif font-medium tracking-tight text-2xl sm:text-4xl md:text-5xl text-gq-light group-hover:text-[#C5A869] transition-colors duration-500 block">
+              <span className="font-serif font-medium tracking-tight text-2xl sm:text-4xl md:text-5xl text-gq-light group-hover:text-gq-gold transition-colors duration-500 block">
                 (405) 607-2266
               </span>
             </a>
@@ -244,7 +244,7 @@ const Contact = () => {
           <div className="lg:col-span-7">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               {isSubmitted ? (
-                <div className="bg-gq-gold/10 rounded-xl p-6 text-center">
+                <div className="rounded-xl p-6 text-center backdrop-blur-md" style={{ background: 'rgba(var(--theme-gold-rgb), 0.1)', border: '1px solid rgba(var(--theme-gold-rgb), 0.2)' }}>
                   <div className="w-12 h-12 rounded-full bg-gq-gold/20 flex items-center justify-center mx-auto mb-3">
                     <Send className="w-6 h-6 text-gq-gold" />
                   </div>
@@ -271,7 +271,8 @@ const Contact = () => {
                           setFormData({ ...formData, name: e.target.value })
                         }
                         required
-                        className="bg-gq-dark-warm/50 border-gq-gold/20 text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        className="border text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}
                       />
                     </div>
 
@@ -288,7 +289,8 @@ const Contact = () => {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         required
-                        className="bg-gq-dark-warm/50 border-gq-gold/20 text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        className="border text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}
                       />
                     </div>
                   </div>
@@ -306,7 +308,8 @@ const Contact = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="bg-gq-dark-warm/50 border-gq-gold/20 text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        className="border text-gq-light placeholder:text-gq-light/40 form-focus h-10 text-sm"
+                        style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}
                       />
                     </div>
 
@@ -320,7 +323,7 @@ const Contact = () => {
                           setFormData({ ...formData, matterType: value })
                         }
                       >
-                        <SelectTrigger className="bg-gq-dark-warm/50 border-gq-gold/20 text-gq-light h-10 text-sm">
+                        <SelectTrigger className="border text-gq-light h-10 text-sm" style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}>
                           <SelectValue placeholder="Select area" />
                         </SelectTrigger>
                         <SelectContent className="bg-gq-dark border-gq-gold/30">
@@ -359,7 +362,8 @@ const Contact = () => {
                         setFormData({ ...formData, description: e.target.value })
                       }
                       rows={3}
-                      className="bg-gq-dark-warm/50 border-gq-gold/20 text-gq-light placeholder:text-gq-light/40 form-focus resize-none text-sm"
+                      className="border text-gq-light placeholder:text-gq-light/40 form-focus resize-none text-sm"
+                      style={{ background: 'var(--theme-input-bg)', borderColor: 'rgba(var(--theme-gold-rgb), 0.2)' }}
                     />
                   </div>
 
