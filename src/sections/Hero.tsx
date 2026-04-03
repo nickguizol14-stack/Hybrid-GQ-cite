@@ -59,17 +59,9 @@ const Hero = () => {
       });
     };
 
-    // On initial load, wait for preloader to finish before animating.
-    // On navigation back to home (no preloader), run immediately.
-    const preloaderActive = document.querySelector('[data-preloader]');
-    if (preloaderActive) {
-      window.addEventListener('preloader-complete', runAnimations, { once: true });
-    } else {
-      runAnimations();
-    }
+    runAnimations();
 
     return () => {
-      window.removeEventListener('preloader-complete', runAnimations);
       ctx?.revert();
     };
   }, []);

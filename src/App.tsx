@@ -24,8 +24,6 @@ const LienPredictorPage = lazy(() => import('./pages/LienPredictor'));
 const ResourcesPage = lazy(() => import('./pages/Articles'));
 const ResourceArticle = lazy(() => import('./pages/ResourceArticle'));
 
-import Preloader from './components/Preloader';
-
 import './App.css';
 
 // Register GSAP plugins
@@ -42,7 +40,6 @@ function ScrollToTop() {
 }
 
 function AppContent() {
-  const [showPreloader, setShowPreloader] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -121,9 +118,9 @@ function AppContent() {
     trackPageView(location.pathname);
   }, [location.pathname]);
 
-  // Lock body scroll while preloading or transitioning between pages
+  // Lock body scroll while transitioning between pages
   useEffect(() => {
-    if (showPreloader || isTransitioning) {
+    if (isTransitioning) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -131,14 +128,10 @@ function AppContent() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [showPreloader, isTransitioning]);
+  }, [isTransitioning]);
 
   return (
     <>
-      {showPreloader && <Preloader onComplete={() => {
-          setShowPreloader(false);
-          window.dispatchEvent(new Event('preloader-complete'));
-        }} />}
       {/* Film grain overlay for cinematic feel */}
       <div className="grain-overlay" />
       <div className="min-h-screen flex flex-col" style={{ background: 'var(--theme-primary)' }}>
